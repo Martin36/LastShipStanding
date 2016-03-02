@@ -11,10 +11,25 @@
 </head>
 <body>
 
-	<div id="view1">
-		<button type="button" class="btn btn-primary">Play</button> <br>
-		<button type="button" class="btn btn-primary">Settings</button>
+	<div id="view1" class="wrapper">
+		<h1 id="view1_title">Last Ship Standing</h1>
+		<button type="button" class="btn btn-primary" id="view1_playBtn">Play</button> <br>
+		<button type="button" class="btn btn-primary" id="view1_settingsBtn">Settings</button>
+	</div>
+	<div id="view2" class="wrapper" hidden>
+		<h1>View2 - Play Menu</h1>
+	</div>
+	<div id="view3" class="wrapper" hidden>
+		<h1>View3 - Settings Menu</h1>
 	</div>
 
+	<!-- The application JavaScript code -->
+	<script src="js/main.js"></script>
+	<script src="js/view/View1.js"></script>
+	<script src="js/view/View2.js"></script>
+	<script src="js/view/View3.js"></script>
+	<script src="js/view/Controllerview1.js"></script>
+	<script src="js/view/Controllerview2.js"></script>
+	<script src="js/view/Controllerview3.js"></script>
 </body>
 </html>

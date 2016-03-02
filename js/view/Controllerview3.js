@@ -1,5 +1,8 @@
-var Controllerview3 = function(view, model,controller, controller2) {
+var Controllerview3 = function(view, model) {
 	
+	//Exempel kod från Matlagnings-sidan
+	
+	/*
 	var starter = model.getAllDishes("starter","");
 	var main = model.getAllDishes("main dish","");
 	var dessert = model.getAllDishes("dessert","");
@@ -91,5 +94,8 @@ var Controllerview3 = function(view, model,controller, controller2) {
 	
 	
 	changeStarter();
+
+
+	*/
 	
 }

@@ -1,8 +1,12 @@
 var Controllerview1 = function(view,model) {
-	view.dinner[0].addEventListener("click", function() {
-		$("[id=view1]").hide();
-		$("[id=view2]").show();
-		$("[id=view3]").show();
-	});
+	view.playBtn[0].onclick = function() {
+		$("[id=view1]").hide(); //main menu
+		$("[id=view2]").show(); //play menu
+	};
+
+	view.settingsBtn[0].onclick = function() {
+		$("[id=view1]").hide(); //main menu
+		$("[id=view3]").show();	//settings menu
+	};
 	
 }

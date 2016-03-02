@@ -1,10 +1,17 @@
-#playBtn {
-	position: absolute;
-	top: 50%;
-	left: 50%;
+.btn {
+	display: table;
+	margin: 0 auto;
+ 	}
+body {
+	background-color: gray;
 }
-#settingsBtn {
-	position: absolute;
-	top: 75%;
-	left: 50%;
+.wrapper {
+	background: gray;
+	padding: 40em;
+}
+#view1_title {
+	color:blue;
+}
+#view1_title:hover {
+	color:orange;
 }

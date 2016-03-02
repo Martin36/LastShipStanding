@@ -1,5 +1,8 @@
 var Controllerview2 = function(view, model ) {
 
+
+	//Exempel kod från Matlagnings-sidan
+	/*
 	view.people_form[0].onchange = function(){
 		model.setNumberOfGuests(this[this.selectedIndex].value);
 	}
@@ -27,4 +30,5 @@ var Controllerview2 = function(view, model ) {
 	this.cancelPending = function(){
 		view.pending[0].html = 0;
 	}
+	*/
 }
