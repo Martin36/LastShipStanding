@@ -1,10 +1,15 @@
-#playBtn {
-	position: absolute;
-	top: 50%;
-	left: 50%;
+.btn {
+	display: table;
+	margin: 0 auto;
+ 	}
+.body {
+	background-image: url("../images/sketch.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-position: center;
+    background-size: 400px 300px;
 }
-#settingsBtn {
-	position: absolute;
-	top: 75%;
-	left: 50%;
+.wrapper {
+	background: gray;
+	padding: 4em 0;
 }
