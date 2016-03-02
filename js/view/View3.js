@@ -1,6 +1,10 @@
 //View Object constructor
 var View3 = function (model) {
-	
+
+
+	//Exempel kod från Matlagnings-sidan
+
+	/*
 	this.pictureView3 = $("#PictureView3");
 	this.titlePicture = $("#TitlePicture");
 	this.descriptionPicture = $("#DescriptionPicture");
@@ -27,7 +31,7 @@ var View3 = function (model) {
 	}
 	
 	
-	/*
+	
 	this.okButton[0].addEventListener("click", function() {
 		
 		menu.innerHTML = ("In the menu: " + model.getFullMenu());

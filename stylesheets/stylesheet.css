@@ -2,14 +2,16 @@
 	display: table;
 	margin: 0 auto;
  	}
-.body {
-	background-image: url("../images/sketch.jpg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-    background-position: center;
-    background-size: 400px 300px;
+body {
+	background-color: gray;
 }
 .wrapper {
 	background: gray;
-	padding: 4em 0;
+	padding: 40em;
+}
+#view1_title {
+	color:blue;
+}
+#view1_title:hover {
+	color:orange;
 }

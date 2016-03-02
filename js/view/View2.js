@@ -1,5 +1,9 @@
 //View Object constructor
 var View2 = function (model) {
+	
+	//Exempel kod från Matlagnings-sidan
+
+	/*
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
 	this.people_form = $("#nrOfPeople");
@@ -61,4 +65,5 @@ var View2 = function (model) {
 	
 
 	//this.confirmdinner = $("#confirmDinner");
+	*/
 }
