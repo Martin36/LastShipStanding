@@ -1,26 +1,30 @@
-var Player = function(){
+// Did not manage to get setter to work
+// in chrome console it says "undefined" when i call the set functions
+var Player = function( ){
 
-	var name = "";
-	var position = [];	
-	var angle = 0.0;
-	var speed = 0.0;
-	var hp = 100;
-	var isDead = false;
+	var name = "",
+	    position = [],	
+	    angle = 0.0,
+	    speed = 0.0,
+	    hp = 0,
+	    dead = false;
 
-	this.setName(name){name = name;}
-	this.getName(){return name;}
-	this.setPosition(pos){position = pos;}
-	this.getPosition(){return position;}
-	this.setAngle(angle){angle = angle;}
-	this.getAngle(){return angle;}
-	this.setSpeed(speed){speed = speed;}
-	this.takeDamage(){
-		hp -= 10;
-		if(hp <= 0){
-			isDead = true;
-		}
-	}
-	this.getHp(){return hp;}
-	this.isDead(){return isDead;}
+	this.setName = function (name) { this.name = name; };
+	this.getName = function () { return name; };
+	this.setPosition = function (pos) { this.pos = pos; };
+	this.getPosition = function () { return position; };
+	this.setAngle = function (angle) { this.angle = angle; };
+	this.getAngle = function () { return this.angle; };
+	var setSpeed = function (speed) { this.speed = speed; };
 
+	this.takeDamage = function () {
+	    hp -= 10;
+	    if (hp <= 0) {
+	        this.dead = true;
+	    }
+	};
+
+	this.getHp = function () { return this.hp; };
+	this.isDead = function () { return this.dead; };
 }
+
