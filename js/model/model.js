@@ -1,16 +1,27 @@
 var Model = function(){
-	this.players = [];
 	
+    var players = [];
 
-	this.addPlayer(){
-		//TODO: Fill list with the nr of players specified
-		this.players.push = new Player();
-	}
+    this.addPlayer = function(){
+        //TODO: Fill list with the nr of players specified
+        players.push = new Player();
+    };
 	
-	this.removePlayer(){
-		//TODO: Remove last player from list
-	}
-	
-		
+    this.removePlayer = function () {
+        // Don't remove player if the list is empty
+        if (players.length > 0)
+            players.pop();
+        else
+            alert("The list of players is empty!");
+    };
+
+    // Vector algebra by using the Victor package
+    this.update = function (dt) {
+        // TODO: get wind direction and strength from environment.
+        // calculate new position of all players.
+        // Update things....
+    }
+
+    
 
 }
