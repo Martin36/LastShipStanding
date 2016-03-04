@@ -15,6 +15,10 @@ var Model = function(){
             alert("The list of players is empty!");
     };
 
+    this.playersLeft = function () {
+        return players.length;
+    }
+
     // Vector algebra by using the Victor package
     this.update = function (dt) {
         // TODO: get wind direction and strength from environment.
@@ -22,7 +26,5 @@ var Model = function(){
         // Update things....
         // Should Controller contain a gameloop which calls this??
     }
-
-    
 
 }
