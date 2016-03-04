@@ -20,6 +20,7 @@ var Model = function(){
         // TODO: get wind direction and strength from environment.
         // calculate new position of all players.
         // Update things....
+        // Should Controller contain a gameloop which calls this??
     }
 
     

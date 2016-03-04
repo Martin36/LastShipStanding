@@ -1,4 +1,6 @@
-$(function() {
+// $(function () {}); This is jQuery's document ready function.
+// it runs when the document has finished loading.   
+$(function () {
 	//We instantiate our model
 	var model = new DinnerModel();
 	

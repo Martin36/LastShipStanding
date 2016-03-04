@@ -1,6 +1,4 @@
-// Did not manage to get setter to work
-// in chrome console it says "undefined" when i call the set functions
-var Player = new function( ){
+var Player = new function(){
 
     var name = "",
 	    pos = new Victor(),
@@ -11,6 +9,7 @@ var Player = new function( ){
         deltaA = 0.0,
 	    dead = false;
 
+    // Give variables standard values
     hp = 100;
     deltaA = 15;
 
@@ -21,19 +20,27 @@ var Player = new function( ){
 	    pos.y = p.y;
 	};
 	this.getPosition = function () { return pos; };
-	this.setAngle = function (a) { angle = a; };
-	this.rotateLeft = function () { angle += deltaA; };
-	this.rotateRight = function () { angle -= deltaA; };
+	this.setAngle = function (a) { angle = a; }; // Will we use this or rotate?
+	this.rotateLeft = function () {
+	    angle += deltaA;
+	    if (angle > 360) {
+	        angle -= 360;
+	    }
+	};
+	this.rotateRight = function () {
+	    angle -= deltaA;
+	    if (angle < 0) {
+	        angle += 360;
+	    }
+	};
 	this.getAngle = function () { return this.angle; };
-	var setSpeed = function (s) { speed = s; };
-
+	this.setSpeed = function (s) { speed = s; };
 	this.takeDamage = function () {
 	    hp -= 10;
 	    if (hp <= 0) {
 	        this.dead = true;
 	    }
 	};
-
 	this.getHp = function () { return this.hp; };
 	this.isDead = function () { return this.dead; };
 }
