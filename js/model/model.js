@@ -43,15 +43,11 @@ var Model = function () {
 			//Here the player is moved to the right position
 			var currPos = players[i].getPosition();
 			var distance = speed * dt;
-			document.write(distance + "<br/>");
 			var dir = players[i].getDirection();
-			document.write(dir.toString() + "<br/>");
 			scalar.x = distance;
 			scalar.y = distance;
 			var distanceVector = scalar.multiply(dir);		//The lenght and direction to move the player
-			document.write(distanceVector.toString() + "<br/>");
 			players[i].setPosition(currPos.add(distanceVector));
-			document.write(currPos.toString() + "<br/>");
 
 		}
 		// calculate new position of all players.
