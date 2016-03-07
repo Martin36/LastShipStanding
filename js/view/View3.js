@@ -1,6 +1,7 @@
 //View Object constructor
 var View3 = function (model) {
 
+	this.slider = $("#view3_slider");
 
 	//Exempel kod från Matlagnings-sidan
 

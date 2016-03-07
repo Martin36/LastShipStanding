@@ -1,5 +1,13 @@
 var Controllerview3 = function(view, model) {
 	
+
+	//volume-slider
+	$(function() {
+	    view.slider.slider();
+	  });
+
+
+
 	//Exempel kod från Matlagnings-sidan
 	
 	/*

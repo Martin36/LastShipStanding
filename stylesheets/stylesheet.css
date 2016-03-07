@@ -1,17 +1,45 @@
-.btn {
-	display: table;
-	margin: 0 auto;
- 	}
+
 body {
 	background-color: gray;
 }
+
 .wrapper {
 	background: gray;
-	padding: 40em;
 }
+
+#view1 img{
+	width: 20em;
+	height: 20em;
+	border: solid black;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 4em;
+}
+
+#view1 button {
+	display: table;
+	margin: 0 auto;
+	width:30em;
+	height: 5em;
+	margin-bottom: 2em;
+}
+
 #view1_title {
-	color:blue;
+
+	text-align: center;
+	text-shadow: 0em 0em 2em blue;
+	color:white;
+	font-size: 500%;
+
+	margin-top: 2em;
+	margin-bottom: 2em;
+
+	/* Positioning */
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 #view1_title:hover {
-	color:orange;
+	color:blue;
 }
