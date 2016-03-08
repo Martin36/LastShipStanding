@@ -95,6 +95,7 @@ var Player = function () {
 	this.getSpeed = function () { return speed; };
 	this.getHp = function () { return hp; };
 	this.setKeyBindings = function(keys) { keyBindings = keys; };
+	this.getKeyBindings = function() { return keyBindings; };
 	this.getCanonballs = function() { return canonballs; };
 	this.getCollisionRadius = function() { return collisionRadius;};
 	this.setCollisionRadius = function(colRad) { collisionRadius = colRad; }; 

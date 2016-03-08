@@ -1,12 +1,17 @@
-$(function() {
-	var model;
-	//var model = new Model();
-	var view1 = new View1(model);
-	var controller1 = new Controllerview1(view1, model);
+$(function () {
+	var models = new model();
+	models.addPlayer("Anton");
+	models.addPlayer("Julian");
+	models.addPlayer("Steffe");
+	models.addPlayer("Martin");
+	
+	
+	var view1 = new View1(models);
+	var controller1 = new Controllerview1(view1, models);
 
-	var view2 = new View2(model);
-	var controller2 = new Controllerview2(view2, model);
+	var view2 = new View2(models);
+	var controller2 = new Controllerview2(view2, models);
 
-	var view3 = new View3(model);
-	var controller3 = new Controllerview3(view3, model);
+	var view3 = new View3(models);
+	var controller3 = new playController(view3, models);
 });

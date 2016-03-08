@@ -1,11 +1,12 @@
-var Model = function () {
+var model = function () {
 
 	var players = [];
 	var environment = new Environment();
 	var randomizePos = false;
 	var canonballSpeed = 10;
 	var folder = ""; 		//Path to the folder where the source images is contained
-
+	var defaultKeyBinding = new defaultKeyBindings();
+	
 	this.addPlayer = function (name) {
 		var player = new Player();
 		player.setName(name);
@@ -15,8 +16,8 @@ var Model = function () {
 		}
 	    // Assign default keybindings
 		player.setKeyBindings(
-            defaultKeyBindings.
-            getDefault(players.length-1));
+            defaultKeyBinding.
+            getDefault(players.length+1));
 
 		players.push(player);
 	};
