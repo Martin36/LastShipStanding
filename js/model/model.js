@@ -13,6 +13,11 @@ var Model = function () {
 		if (randomizePos) {
 			player.setPosition(new Victor(/*Random values*/));
 		}
+	    // Assign default keybindings
+		player.setKeybindings(
+            defaultKeybindings.
+            getDefault(players.length-1));
+
 		players.push(player);
 	};
 
