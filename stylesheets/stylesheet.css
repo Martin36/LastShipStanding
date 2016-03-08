@@ -43,3 +43,11 @@ body {
 #view1_title:hover {
 	color:blue;
 }
+
+#view3_canvas{
+	width: 80%;
+	height: 100%;
+	outline:20;
+	border:1px solid #000;
+	float:left;
+}

@@ -18,19 +18,20 @@
         var v = new Victor(42, 34);
     </script>
 
-	<div id="view1" class="wrapper">
+	<div id="view1" class="wrapper" hidden>
 		<h1 id="view1_title">LAST SHIP STANDING</h1>
 		<img src="images/sketch.jpg" alt="A cool boat">
 		<button type="button" class="btn btn-primary" id="view1_playBtn">Play</button> <br>
 		<button type="button" class="btn btn-primary" id="view1_settingsBtn">Settings</button>
 	</div>
 	<div id="view2" class="wrapper" hidden>
-		<h1>View2 - Play Menu</h1>
+		<h1>View2- choose players etc...</h1>
 	</div>
-	<div id="view3" class="wrapper" hidden>
-		<h1>View3 - Settings Menu</h1>
-		<div id="view3_slider"></div><br>
-		<button type="button" class="btn btn-primary" id="view2_backBtn">Back</button>
+	<div id="view3" class="wrapper">
+		<canvas id="view3_canvas">
+			Your browser does not support the HTML5 canvas tag.</canvas>
+		<button type="button" class="btn btn-primary" id="view3_refreshBtn">Refresh Canvas</button><br>
+		<button type="button" class="btn btn-primary" id="view3_backBtn">Back</button>
 	</div>
 
 	<!-- The application JavaScript code -->
