@@ -1,7 +1,9 @@
-var playController = function(model) {
+var playController = function(view,model) {
+	
+	//Assign View keys up here.
 	
 	this.Setup = function(){
-		var allPlayers = model.getPlayers()
+		var allPlayers = model.getPlayers() //<--- kmr heta det.
 		assignKeyBindings(allPlayers);
 		//
 		//
@@ -20,6 +22,7 @@ var playController = function(model) {
 			//Asign keybinds here.
 			doc.onkeydown = function(evt) {
 				evt = evt || window.event;
+				
 				alert("keydown: " + evt.keyCode);
 				
 			};
