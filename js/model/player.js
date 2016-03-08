@@ -49,7 +49,7 @@ var Player = function () {
 	this.setSpeed = function (s) { speed = Math.abs(s); };
 	this.getSpeed = function () { return speed; };
 	this.getHp = function () { return hp; };
-	this.setKeyBindings(keys) {}
+	this.setKeyBindings(keys) {};
 	return this;
 }
 

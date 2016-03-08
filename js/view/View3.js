@@ -10,6 +10,7 @@ var View3 = function (model) {
 		clearMap();
 		drawMap();
 		drawPlayers();
+		drawProjectile();
 	}
 	function drawMap(){
 		var mapImage = new Image();  //!--------- Get map from Model ---------!
@@ -41,5 +42,8 @@ var View3 = function (model) {
 			ctx.drawImage(image, 10, 10)
 		}
 		image.src = "images/player1.png";
+	}
+	function drawProjectile(){
+								//!-----------------code for canonballs ---------------------!
 	}
 }
