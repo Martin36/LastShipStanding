@@ -4,7 +4,7 @@
 	var velocity = new Victor();
 	var speed = 5;
 
-	this.updatePos = function(dt){
+	this.updatePosition = function(windVelocity, dt){
 		velocity.add(windVelocity);		//Calculate the new velocity depending on the wind velocity
 		var distanceVector = new Victor(dt, dt).multiply(velocity);
 		position.add(distanceVector);

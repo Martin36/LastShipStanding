@@ -54,24 +54,25 @@ var Player = function () {
 
 	this.updatePosition = function(windVelocity, dt){
 		var windDirection = windVelocity.clone().normalize();
-		var windMagnitude = windVelocity.lenght();
+		var windMagnitude = windVelocity.length();
 
 		var cosOfAngle = windDirection.dot(dir);		//The cos-value of the angle between the wind direction and the direction of the boat
 		speed = windMagnitude * cosOfAngle;		//If the wind is parallell to the boat then the speed becomes equal to the magnitue of the wind, if it is perpendicular then it becomes 0	
 
 		//Here the player is moved to the right position
 		var distance = speed * dt;
+		var scalar = new Victor();
 		scalar.x = distance;
 		scalar.y = distance;
 		var distanceVector = scalar.multiply(dir);		//The lenght and direction to move the player
 		pos.add(distanceVector);
 
-		updateCanonballPos(windVelocity, dt);
+		this.updateCanonballPos(windVelocity, dt);
 	}
 	
 	this.updateCanonballPos = function(windVelocity, dt){
-		for(canonball in canonballs){
-			canonball.updatePos();
+	    for(var i = 0; i < canonballs.length; i ++) {
+	        canonballs[i].updatePosition(windVelocity, dt);
 		}
 
 	}
