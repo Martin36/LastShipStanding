@@ -11,11 +11,11 @@ var playController = function(view,model) {
 	
 	var interValID;
 	
-	this.StartGame(){
+	this.StartGame = function(){
 		interValID = setInterval(timer,17);
 	}
 	
-	this.StopGame(){
+	this.StopGame = function(){
 		clearInterval(interValID);
 	}
 	
