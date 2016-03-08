@@ -1,7 +1,7 @@
 var Player = function () {
 
 	var name = "",
-		pos = new Victor(0, 0),
+		pos = new Victor(10, 10),
 		dir = new Victor(1, 0), // Use a direction instead of angle?
 		angle = 0.0,
 		speed = 0.0,

@@ -10,12 +10,21 @@ var playController = function(view,model) {
 	//alert( Players[0].getKeyBindings()[0]);
 	
 	var interValID;
+
+	view.pauseBtn[0].onclick = function(){
+		stopGame(); 
+	}
+
+	view.backBtn[0].onclick = function(){
+		$("[id=view3]").hide(); //main menu
+		$("[id=view2]").show(); //play menu
+	}
 	
-	this.StartGame = function(){
+	this.startGame = function(){
 		interValID = setInterval(timer,17);
 	}
 	
-	this.StopGame = function(){
+	var stopGame = function(){
 		clearInterval(interValID);
 	}
 	
@@ -35,7 +44,7 @@ var playController = function(view,model) {
 	}
 
 	function timer(){
-		//console.log("update");
+		//model.update(17);
 		model.update(17);
 		view.update();
 	}

@@ -2,6 +2,7 @@
 var View3 = function (model) {
 	this.refreshBtn = $("#view3_refreshBtn");
 	this.backBtn = $("#view3_backBtn");
+	this.pauseBtn = $("#view3_pauseBtn");
 	var canvas = $("#view3_canvas")
 	var ctx = canvas[0].getContext('2d');
 

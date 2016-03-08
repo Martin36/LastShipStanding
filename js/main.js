@@ -8,5 +8,5 @@ $(function () {
 	var controller3 = new playController(view3, models);
 
 	var view2 = new View2(models);
-	var controller2 = new Controllerview2(view2, models);
+	var controller2 = new Controllerview2(view2, controller3, models);
 });
