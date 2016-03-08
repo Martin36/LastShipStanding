@@ -95,6 +95,7 @@ var Player = function () {
 	this.setKeyBindings = function(keys) { keyBindings = keys; };
 	this.getCanonballs = function() { return canonballs; };
 
+
 	return this;
 }
 
