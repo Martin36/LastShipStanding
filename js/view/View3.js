@@ -6,11 +6,10 @@ var View3 = function (model) {
 	var ctx = canvas[0].getContext('2d');
 
 	this.update = function(){
-		console.log("view3_update");
 		clearMap();
 		drawMap();
 		drawPlayers();
-		drawProjectile();
+		//drawProjectiles();
 	}
 	function drawMap(){
 		var mapImage = new Image();  //!--------- Get map from Model ---------!
@@ -27,7 +26,6 @@ var View3 = function (model) {
 	}
 	function drawPlayers(){
 		var players = model.getPlayers();
-		console.log('player length: ' + players.length);
 		for(index in players){
 			drawPlayer(players[index]);
 		}
@@ -39,12 +37,14 @@ var View3 = function (model) {
 			image.width = "220";
 			image.height = "277";
 			var playerPos = player.getPosition();
+			console.log(playerPos.x + ", " + playerPos.y);
 			ctx.drawImage(image, playerPos.x, playerPos.y);
 		}
 		image.src = "images/player1.png";
 	}
 	function drawProjectiles(){
 		var canonballs = model.getCanonballs();	//!-----------------code for canonballs ---------------------!
+		console.log('len: ' + canonballs.length() );
 		for(index in canonballs){
 			drawProjectile(canonballs[index]);
 			
