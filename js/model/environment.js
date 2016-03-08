@@ -9,7 +9,8 @@ var Environment = function () {
 
 	this.update = function () {
 		//Should be updated every specified time interval
-		windMagnitude = Math.random() * 10;
+		//windMagnitude = Math.random() * 10;
+		windMagnitude = 0;
 		/* Code to randomize the wind direction using random values for the x and y coordinates 
 		var x = Math.random() * (max - min) + min;
 		var y = Math.random() * (max - min) + min;

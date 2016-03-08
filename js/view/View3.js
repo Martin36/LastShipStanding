@@ -38,8 +38,13 @@ var View3 = function (model) {
 			image.width = "220";
 			image.height = "277";
 			var playerPos = player.getPosition();
-			console.log(playerPos.x + ", " + playerPos.y);
+			//console.log(playerPos.x + ", " + playerPos.y);
+			//console.log("player angle: " + player.getAngle());
+			console.log( Math.PI );
+			ctx.save();
+			ctx.rotate( (player.getAngle() * Math.PI / 180) ); //convert to radians
 			ctx.drawImage(image, playerPos.x, playerPos.y);
+			ctx.restore();
 		}
 		image.src = "images/player1.png";
 	}
