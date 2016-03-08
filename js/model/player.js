@@ -10,7 +10,8 @@ var Player = function () {
 		dead = false,
 		image = "",
 		keyBindings = [],
-		canonballs = [];
+		canonballs = [],
+		collisionRadius = 5;
 
 	// Give variables standard values
 	hp = 100;
@@ -95,7 +96,8 @@ var Player = function () {
 	this.getHp = function () { return hp; };
 	this.setKeyBindings = function(keys) { keyBindings = keys; };
 	this.getCanonballs = function() { return canonballs; };
-
+	this.getCollisionRadius = function() { return collisionRadius;};
+	this.setCollisionRadius = function(colRad) { collisionRadius = colRad; }; 
 
 	return this;
 }
