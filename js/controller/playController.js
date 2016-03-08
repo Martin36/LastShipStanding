@@ -24,9 +24,9 @@ var playController = function(view,model) {
 	}
 
 	
-	//setInterval(timer,17);
+	setInterval(timer,17);
 	function timer(){
-		console.log("update");
+		//console.log("update");
 		model.update(17);
 		view.update();
 	}

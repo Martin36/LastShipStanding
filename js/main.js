@@ -1,10 +1,5 @@
 $(function () {
 	var models = new model();
-	models.addPlayer("Anton");
-	models.addPlayer("Julian");
-	models.addPlayer("Steffe");
-	models.addPlayer("Martin");
-	
 	
 	var view1 = new View1(models);
 	var controller1 = new Controllerview1(view1, models);
