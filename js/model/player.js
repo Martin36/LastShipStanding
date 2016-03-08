@@ -8,7 +8,7 @@ var Player = function () {
 		hp = 0,
 		deltaA = 0.0,
 		dead = false;
-
+		color = "blue";
 	// Give variables standard values
 	hp = 100;
 	deltaA = 15;
