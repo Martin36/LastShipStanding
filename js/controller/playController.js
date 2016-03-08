@@ -9,8 +9,18 @@ var playController = function(view,model) {
 	//Players[3].setKeyBindings([37, 38, 39]);
 	//alert( Players[0].getKeyBindings()[0]);
 	
+	var interValID;
+	
+	this.StartGame(){
+		interValID = setInterval(timer,17);
+	}
+	
+	this.StopGame(){
+		clearInterval(interValID);
+	}
+	
 	var map = [];
-	onkeydown = onkeyup = function(e){
+	document.onkeydown = document.onkeyup = function(e){
 		e = e || event;
 		map[e.keyCode] = e.type == 'keydown';
 		
@@ -21,10 +31,9 @@ var playController = function(view,model) {
 			if (map[keys[1]])	{ Players[i].fire();		 /*console.log(Players[i].getName()+"'s shots fired!!");*/}
 			if (map[keys[2]])	{ Players[i].rotateRight();  /*console.log(Players[i].getName()+"'s Going right!");*/ }
 		}
+		
 	}
 
-	
-	setInterval(timer,17);
 	function timer(){
 		//console.log("update");
 		model.update(17);
