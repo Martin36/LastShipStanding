@@ -1,4 +1,4 @@
-var defaultKeyBindings = function () {
+var defaultKeyBindings = new function () {
 	
 	this.getDefault = function(playerNr){
 		switch (playerNr){
