@@ -2,11 +2,11 @@
 var View3 = function (model) {
 	this.refreshBtn = $("#view3_refreshBtn");
 	this.backBtn = $("#view3_backBtn");
-
 	var canvas = $("#view3_canvas")
 	var ctx = canvas[0].getContext('2d');
 
 	this.update = function(){
+		console.log("view3_update");
 		clearMap();
 		drawMap();
 		drawPlayers();
@@ -26,24 +26,39 @@ var View3 = function (model) {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	}
 	function drawPlayers(){
-		var players = ["player1"]; //testing purpose, remove after.
-		//var players = model.getPlayers();	//!---------model.GetPlayers------!
+		var players = model.getPlayers();
+		console.log('player length: ' + players.length);
 		for(index in players){
 			drawPlayer(players[index]);
 		}
 	}
 	function drawPlayer(player){
 		var image = new Image();
-
 		image.onload = function(){ //!-------------- Get info from player instead ---------------!
-			image.alt = "player1";
+			image.alt = "player";
 			image.width = "220";
 			image.height = "277";
-			ctx.drawImage(image, 10, 10)
+			var playerPos = player.getPosition();
+			ctx.drawImage(image, playerPos.x, playerPos.y);
 		}
 		image.src = "images/player1.png";
 	}
-	function drawProjectile(){
-								//!-----------------code for canonballs ---------------------!
+	function drawProjectiles(){
+		var canonballs = model.getCanonballs();	//!-----------------code for canonballs ---------------------!
+		for(index in canonballs){
+			drawProjectile(canonballs[index]);
+			
+		}
+	}
+	function drawProjectile(canonball){
+		var image = new Image();
+		image.onload = function(){ //!-------------- Get info from player instead ---------------!
+			image.alt = "canonball";
+			image.width = "20";
+			image.height = "30";
+			var position = canonball.getPosition();
+			ctx.drawImage(image, position.x, position.y);
+		}
+		image.src = "images/player1.png";
 	}
 }

@@ -48,7 +48,7 @@ var model = function () {
 
 		//for (var player in players) {
 		for (var i = 0; i < players.length; i ++) {
-		    document.write(players[i].getName());
+		    //document.write(players[i].getName());
 		    players[i].updatePosition(windVelocity, dt);
 		}
 
