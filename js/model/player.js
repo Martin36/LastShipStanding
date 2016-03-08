@@ -8,6 +8,7 @@ var Player = function () {
 		hp = 0,
 		deltaA = 0.0,
 		dead = false;
+
 		keyBindings = []
 
 	// Give variables standard values
@@ -48,7 +49,7 @@ var Player = function () {
 	this.setSpeed = function (s) { speed = Math.abs(s); };
 	this.getSpeed = function () { return speed; };
 	this.getHp = function () { return hp; };
-	this.setKeyBindings(keys) {}
+	this.setKeyBindings(keys) {};
 	return this;
 }
 

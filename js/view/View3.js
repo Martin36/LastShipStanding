@@ -1,43 +1,49 @@
 //View Object constructor
 var View3 = function (model) {
+	this.refreshBtn = $("#view3_refreshBtn");
+	this.backBtn = $("#view3_backBtn");
 
-	this.slider = $("#view3_slider");
+	var canvas = $("#view3_canvas")
+	var ctx = canvas[0].getContext('2d');
 
-	//Exempel kod från Matlagnings-sidan
-
-	/*
-	this.pictureView3 = $("#PictureView3");
-	this.titlePicture = $("#TitlePicture");
-	this.descriptionPicture = $("#DescriptionPicture");
-	
-	this.dishSelect = $("#DishSelect");
-	this.searchBox = $("#SearchBox");
-	this.searchFood = $("#SearchFood");
-	
-	
-	this.Clear = function(){
-		var parent1 = this.pictureView3[0];
-		var parent2 = this.titlePicture[0];
-		var parent3 = this.descriptionPicture[0];
-		
-		while (parent1.firstChild) {
-			parent1.removeChild(parent1.firstChild);
+	this.update = function(){
+		clearMap();
+		drawMap();
+		drawPlayers();
+		drawProjectile();
+	}
+	function drawMap(){
+		var mapImage = new Image();  //!--------- Get map from Model ---------!
+		mapImage.onload = function(){
+			mapImage.alt = "background";
+			mapImage.width = canvas.width;
+			mapImage.height = canvas.height;
+			ctx.drawImage(mapImage,0,0);
 		}
-		while (parent2.firstChild) {
-			parent2.removeChild(parent2.firstChild);
-		}
-		while (parent3.firstChild) {
-			parent3.removeChild(parent3.firstChild);
+		mapImage.src = "images/sketch.jpg";
+	}
+	function clearMap(){
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+	}
+	function drawPlayers(){
+		var players = ["player1"]; //testing purpose, remove after.
+		//var players = model.getPlayers();	//!---------model.GetPlayers------!
+		for(index in players){
+			drawPlayer(players[index]);
 		}
 	}
-	
-	
-	
-	this.okButton[0].addEventListener("click", function() {
-		
-		menu.innerHTML = ("In the menu: " + model.getFullMenu());
-		totalcost.innerHTML = ("Total price for " + model.getNumberOfGuests() + " peson is: "  + model.getTotalMenuPrice() +" kr");
-		
-	});
-	*/
+	function drawPlayer(player){
+		var image = new Image();
+
+		image.onload = function(){ //!-------------- Get info from player instead ---------------!
+			image.alt = "player1";
+			image.width = "220";
+			image.height = "277";
+			ctx.drawImage(image, 10, 10)
+		}
+		image.src = "images/player1.png";
+	}
+	function drawProjectile(){
+								//!-----------------code for canonballs ---------------------!
+	}
 }
