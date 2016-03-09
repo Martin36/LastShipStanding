@@ -9,7 +9,7 @@ var View3 = function (model) {
 	var ctx = canvas[0].getContext('2d');
 	
 	this.update = function(){ 
-		//clearMap();
+		clearMap();
 		drawPlayers();
 		//drawMap();
 		//drawProjectiles();
@@ -43,7 +43,7 @@ var View3 = function (model) {
 			//console.log(playerPos.x + ", " + playerPos.y);
 			//console.log("player angle: " + player.getAngle());
 			ctx.save();
-			ctx.clearRect(0, 0, canvas.width, canvas.height); //clear the canvas
+			//ctx.clearRect(0, 0, canvas.width, canvas.height); //clear the canvas
 			ctx.translate( playerPos.x, playerPos.y);
 			//ctx.rotate( (player.getAngle() * Math.PI / 180) ); //convert to radians
 			ctx.rotate( player.getAngle() );
@@ -57,6 +57,13 @@ var View3 = function (model) {
 		image.src = "images/player1.png";
 	}
 	function drawProjectiles(){
+		var players = model.getPlayers();
+		for(index in players){
+			var cannonballs = players[index];
+			for(ind in canonballs){
+				drawProjectile(canonballs[ind]);
+			}
+		}
 		var canonballs = model.getCanonballs();	//!-----------------code for canonballs ---------------------!
 		console.log('len: ' + canonballs.length() );
 		for(index in canonballs){
@@ -73,6 +80,6 @@ var View3 = function (model) {
 			var position = canonball.getPosition();
 			ctx.drawImage(image, position.x, position.y);
 		}
-		image.src = "images/player1.png";
+		image.src = "images/canonball.png";
 	}
 }
