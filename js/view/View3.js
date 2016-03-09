@@ -73,6 +73,6 @@ var View3 = function (model) {
 			var position = canonball.getPosition();
 			ctx.drawImage(image, position.x, position.y);
 		}
-		image.src = "images/player1.png";
+		image.src = "images/canonball.png";
 	}
 }

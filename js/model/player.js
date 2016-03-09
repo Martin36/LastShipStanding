@@ -11,7 +11,6 @@ var Player = function () {
 		deltaA = 0.0,
 		dead = false,
 		image = {src : "", width : 10, height : 10},
-		imageWidth = 
 		keyBindings = [],
 		canonballs = [],
 		collisionRadius = 5;
@@ -21,7 +20,7 @@ var Player = function () {
 	deltaA = Math.PI / 12;
 	pos.x = 700, pos.y = 400;
 
-	this.rotateLeft = function () {
+	this.rotateRight = function () {
 		angle += deltaA;
 		if (angle > Math.PI * 2) {
 			angle -= Math.PI * 2;
@@ -30,7 +29,7 @@ var Player = function () {
 		dir.x = Math.cos(angle) - Math.sin(angle);		
 		dir.y = Math.sin(angle) - Math.cos(angle);
 	};
-	this.rotateRight = function () {
+	this.rotateLeft = function () {
 		angle -= deltaA;
 		if (angle < Math.PI * 2) {
 			angle += Math.PI * 2;
@@ -83,8 +82,6 @@ var Player = function () {
 	}
 	function checkBoundaries(distance){
 	 	var tempPos = pos.clone().add(distance);
-	 	console.log(pos.toString());
-	 	console.log(tempPos.toString());
 	 	if(tempPos.y < 0 || tempPos.y > 800 ){
 
 	 	//if(tempPos.y < 0 || tempPos.y > window.innerHeight ){
