@@ -48,6 +48,12 @@ body {
 	/*width: 80%;
 	height: 100%;*/
 	outline:20;
-	border:1px solid #000;
+	border:0.125em solid #000;
 	float:left;
+}
+
+#view3_windArrow{
+	outline:20;
+	border:0.25em solid #000;
+	margin-top: 1em;
 }

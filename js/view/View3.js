@@ -3,16 +3,29 @@ var View3 = function (model) {
 	this.refreshBtn = $("#view3_refreshBtn");
 	this.backBtn = $("#view3_backBtn");
 	this.pauseBtn = $("#view3_pauseBtn");
+
+	//map canvas
 	var canvas = $("#view3_canvas");
 	canvas.width = 1400;
 	canvas.height = 800;
 	var ctx = canvas[0].getContext('2d');
-	
+
+	//mapImage
+
+	//arrow canvas
+	var arrowCanvas = $("#view3_windArrow");
+	arrowCanvas.width = 150;
+	arrowCanvas.height = 150;
+	var ctx2 = arrowCanvas[0].getContext('2d');
+
+	var arrowImg = drawArrow(); // test
+
 	this.update = function(){ 
 		clearMap();
 		drawPlayers();
 		//drawMap();
-		drawProjectiles();
+		//drawProjectiles();
+		//updateArrow(someAngle, arrowImg); //!---- need to convert wind direction to angle-----!
 	}
 	function drawMap(){
 		var mapImage = new Image();  //!--------- Get map from Model ---------!
@@ -60,16 +73,11 @@ var View3 = function (model) {
 		var players = model.getPlayers();
 		for(index in players){
 			var cannonballs = players[index];
-			for(ind in canonballs){
-				drawProjectile(canonballs[ind]);
+			for(ind in cannonballs){
+				drawProjectile(cannonballs[ind]);
 			}
 		}
-		var canonballs = model.getCanonballs();	//!-----------------code for canonballs ---------------------!
-		console.log('len: ' + canonballs.length() );
-		for(index in canonballs){
-			drawProjectile(canonballs[index]);
-			
-		}
+		
 	}
 	function drawProjectile(canonball){
 		var image = new Image();
@@ -80,6 +88,34 @@ var View3 = function (model) {
 			var position = canonball.getPosition();
 			ctx.drawImage(image, position.x, position.y);
 		}
-		image.src = "images/canonball.png";
+		image.src = "images/Canonball.png";
 	}
+
+
+	
+
+	function drawArrow(){
+		var image2 = new Image();
+		image2.onload = function(){
+			image2.alt = "arrow";
+			image2.width = "40";
+			image2.height = "60";
+			ctx2.drawImage(image2, arrowCanvas.width / 2 - image2.width / 2, arrowCanvas.height / 2 - image2.height / 2);
+		}
+		image2.src = "images/windArrow.png"
+		return image2;
+	}
+
+	function updateArrow(angle, image){
+
+		//rotate and draw
+		ctx2.save();
+		ctx2.clearRect(0, 0, arrowCanvas.width, arrowCanvas.height); //clear the canvas
+		ctx2.translate( arrowCanvas.width / 2, arrowCanvas.height / 2);
+		ctx2.rotate( angle );
+		ctx2.translate( -arrowCanvas.width / 2, -arrowCanvas.height / 2);
+		ctx2.drawImage(image, arrowCanvas.width / 2 - image.width / 2, arrowCanvas.height / 2 - image.height / 2);
+		ctx2.restore();
+	}
+
 }
