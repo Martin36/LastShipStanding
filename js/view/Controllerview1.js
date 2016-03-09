@@ -8,5 +8,4 @@ var Controllerview1 = function(view,model) {
 		$("[id=view1]").hide(); //main menu
 		$("[id=view3]").show();	//settings menu
 	};
-	
 }

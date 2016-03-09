@@ -1,17 +1,88 @@
-.btn {
-	display: table;
-	margin: 0 auto;
- 	}
+
 body {
 	background-color: gray;
 }
+
 .wrapper {
 	background: gray;
-	padding: 40em;
 }
+
+#view1 img{
+	width: 20em;
+	height: 20em;
+	border: solid black;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 4em;
+}
+
+#view1 button {
+	display: table;
+	margin: 0 auto;
+	width:30em;
+	height: 5em;
+	margin-bottom: 2em;
+}
+
 #view1_title {
-	color:blue;
+
+	text-align: center;
+	text-shadow: 0em 0em 2em blue;
+	color:white;
+	font-size: 500%;
+
+	margin-top: 2em;
+	margin-bottom: 2em;
+
+	/* Positioning */
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 #view1_title:hover {
-	color:orange;
+	color:blue;
+}
+
+#view3_canvas{
+	/*width: 80%;
+	height: 100%;*/
+	outline:20;
+	border:0.125em solid #000;
+	float:left;
+}
+
+
+#view3_windArrow{
+	outline:20;
+	border:0.25em solid #000;
+	margin-top: 1em;
+}
+#view3 button {
+	width:8em;
+	height: 3em;
+	margin-bottom: 0.05em;
+	}
+
+.col-lg-6 {
+	height: 10em;
+	border: 1px solid black;
+}
+
+.row{
+	margin-top:4px;
+}
+
+
+#container{
+	height: 90%;
+	width:  80%;
+}
+
+.btn.btn-primary{
+	display: table;
+	margin: 0 auto;
+	width: 10em;
+	height: 3em;
+	margin-bottom: 2em;
 }
