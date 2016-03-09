@@ -52,8 +52,8 @@ var Player = function () {
 			//The canonballs should be fired in the perpendicular direction to the boat
 			var canonball1 = new Canonball();
 			var canonball2 = new Canonball();
-			canonball1.setPosition(pos);		//Add offset to starting position?
-			canonball2.setPosition(pos);
+			canonball1.setPosition(pos.clone());		//Add offset to starting position?
+			canonball2.setPosition(pos.clone());
 
 			//The vector [x, y] have the orthogonal vector [y, -x] for arbitrary values of x and y the reversed vector of [y, -x] is [-y, x]
 			//The multiplication with the canonball speed makes sure that the velocity for the canonball is correct

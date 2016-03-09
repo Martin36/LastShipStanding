@@ -24,7 +24,7 @@ var View3 = function (model) {
 		clearMap();
 		drawPlayers();
 		//drawMap();
-		//drawProjectiles();
+		drawProjectiles();
 		updateArrow(model.getEnvironment().getWindAngle(), arrowImg); //!---- need to convert wind direction to angle-----!
 	}
 	function drawMap(){
@@ -72,7 +72,7 @@ var View3 = function (model) {
 	function drawProjectiles(){
 		var players = model.getPlayers();
 		for(index in players){
-			var cannonballs = players[index];
+			var cannonballs = players[index].getCanonballs();
 			for(ind in cannonballs){
 				drawProjectile(cannonballs[ind]);
 			}
@@ -96,6 +96,8 @@ var View3 = function (model) {
 
 	function drawArrow(){
 		var image2 = new Image();
+		console.log(model.getEnvironment().getWindDirection());
+		console.log(model.getEnvironment().getWindAngle());
 		image2.onload = function(){
 			image2.alt = "arrow";
 			image2.width = "40";
