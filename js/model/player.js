@@ -66,11 +66,20 @@ var Player = function () {
 		scalar.x = distance;
 		scalar.y = distance;
 		var distanceVector = scalar.multiply(dir);		//The lenght and direction to move the player
+		checkBoundaries(distanceVector);
 		pos.add(distanceVector);
 
 		this.updateCanonballPos(windVelocity, dt);
 	}
-	
+	function checkBoundaries(distance){
+	 	var tempPos = pos.clone().add(distance);
+	 	if(tempPos.y < 0 || tempPos.y > window.innerHeight){
+	 		distance.y = 0;
+	 	}
+	 	if(tempPos.x < 0 || tempPos.x > window.innerWidth){
+	 		distance.x = 0;
+	 	}
+	}
 	this.updateCanonballPos = function(windVelocity, dt){
 	    for(var i = 0; i < canonballs.length; i ++) {
 	        canonballs[i].updatePosition(windVelocity, dt);
