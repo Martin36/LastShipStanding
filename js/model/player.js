@@ -76,10 +76,14 @@ var Player = function () {
 	 	var tempPos = pos.clone().add(distance);
 	 	console.log(pos.toString());
 	 	console.log(tempPos.toString());
-	 	if(tempPos.y < 0 || tempPos.y > window.innerHeight ){
+	 	if(tempPos.y < 0 || tempPos.y > 800 ){
+
+	 	//if(tempPos.y < 0 || tempPos.y > window.innerHeight ){
 	 		distance.y = 0;
 	 	}
-	 	if(tempPos.x < 0 || tempPos.x > window.innerWidth * 0.8 - 450){
+	 	if(tempPos.x < 0 || tempPos.x > 1400){
+	 	
+	 	//if(tempPos.x < 0 || tempPos.x > window.innerWidth * 0.8 - 450){
 	 		distance.x = 0;
 	 	}
 	}
