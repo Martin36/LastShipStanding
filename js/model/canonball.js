@@ -11,7 +11,7 @@
 		var distanceVector = new Victor(dt, dt).multiply(velocity);
 		position.add(distanceVector);
 		deathTimer -= dt;
-		checkTimer();
+		this.checkTimer();
 	}
 	this.checkTimer = function(){
 		if(deathTimer <= 0) dead = true;

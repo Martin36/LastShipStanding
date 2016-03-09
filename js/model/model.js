@@ -15,7 +15,6 @@ var model = function () {
 		if (randomizePos) {
 			player.setPosition(new Victor(/*Random values*/));
 		}
-		console.log(defaultKeyBinding.getDefault(players.length+1));
 	    // Assign default keybindings
         var keyBindings = defaultKeyBinding.getDefault(players.length+1);
 		player.setKeyBindings(keyBindings);
@@ -51,7 +50,7 @@ var model = function () {
 		    players[i].updatePosition(windVelocity, dt);
 		    var canonballs = players[i].getCanonballs();
 		    for(var j = 0; j < canonballs.length; j++){
-		    	if(canonballs[i].isDead()){
+		    	if(canonballs[j].isDead()){
 		    		canonballs.pop();
 		    	}
 		    }
