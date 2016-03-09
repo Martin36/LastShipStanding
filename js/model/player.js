@@ -11,7 +11,10 @@ var Player = function () {
 		image = new Image(),
 		keyBindings = [],
 		canonballs = [],
-		collisionRadius = 5;
+		collisionRadius = 5,
+		cooldown = 1000,
+		cooldownTimer = 0,
+		fireReady = true;
 
 	// Give variables standard values
 	hp = 100;
@@ -45,20 +48,23 @@ var Player = function () {
 		}
 	};
 	this.fire = function(){
-		//The canonballs should be fired in the perpendicular direction to the boat
-		var canonball1 = new Canonball();
-		var canonball2 = new Canonball();
-		canonball1.setPosition(pos);		//Add offset to starting position?
-		canonball2.setPosition(pos);
+		if(fireReady){
+			//The canonballs should be fired in the perpendicular direction to the boat
+			var canonball1 = new Canonball();
+			var canonball2 = new Canonball();
+			canonball1.setPosition(pos);		//Add offset to starting position?
+			canonball2.setPosition(pos);
 
-		//The vector [x, y] have the orthogonal vector [y, -x] for arbitrary values of x and y the reversed vector of [y, -x] is [-y, x]
-		//The multiplication with the canonball speed makes sure that the velocity for the canonball is correct
-		var velocity1 = new Victor(dir.y * canonball1.getSpeed(), -dir.x * canonball1.getSpeed());
-		var velocity2 = new Victor(-dir.y * canonball2.getSpeed(), dir.x * canonball2.getSpeed());
-		canonball1.setVelocity(velocity1);
-		canonball2.setVelocity(velocity2);
-		canonballs.push(canonball1);
-		canonballs.push(canonball2);
+			//The vector [x, y] have the orthogonal vector [y, -x] for arbitrary values of x and y the reversed vector of [y, -x] is [-y, x]
+			//The multiplication with the canonball speed makes sure that the velocity for the canonball is correct
+			var velocity1 = new Victor(dir.y * canonball1.getSpeed(), -dir.x * canonball1.getSpeed());
+			var velocity2 = new Victor(-dir.y * canonball2.getSpeed(), dir.x * canonball2.getSpeed());
+			canonball1.setVelocity(velocity1);
+			canonball2.setVelocity(velocity2);
+			canonballs.push(canonball1);
+			canonballs.push(canonball2);
+			fireReady = false;
+		}
 
 	}
 
@@ -78,6 +84,14 @@ var Player = function () {
 		checkBoundaries(distanceVector);
 		//document.write(distanceVector.toString());
 		pos.add(distanceVector);
+		//Check if canons are ready to fire
+		if(!fireReady){
+			cooldownTimer += dt;
+			if(cooldownTimer >= cooldown){
+				fireReady = true;
+				cooldownTimer = 0;	
+			} 
+		}
 
 		this.updateCanonballPos(windVelocity, dt);
 	}

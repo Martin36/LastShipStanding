@@ -17,7 +17,6 @@ var model = function () {
 		if (randomizePos) {
 			player.setPosition(new Victor(/*Random values*/));
 		}
-		console.log(defaultKeyBinding.getDefault(players.length+1));
 	    // Assign default keybindings
         var keyBindings = defaultKeyBinding.getDefault(players.length+1);
 		player.setKeyBindings(keyBindings);
@@ -48,12 +47,18 @@ var model = function () {
 		var scalar = new Victor();			//Vector to represent distance scalar in vector multiplication(needed for Victor package)
 
 		//for (var player in players) {
-		for (var i = 0; i < players.length; i ++) {
+		for (var i = 0; i < players.length; i++) {
 		    //document.write(players[i].getName());
 		    players[i].updatePosition(windVelocity, dt);
+		    var canonballs = players[i].getCanonballs();
+		    for(var j = 0; j < canonballs.length; j++){
+		    	if(canonballs[j].isDead()){
+		    		canonballs.pop();
+		    	}
+		    }
 		}
 
-		this.checkForCollisions();
+		checkForCollisions();
 
 		// Should Controller contain a gameloop which calls this??
 	}
@@ -100,7 +105,7 @@ var model = function () {
 
 	};
 	*/
-	this.checkForCollisions = function () {
+	function checkForCollisions() {
 		//TODO: Check for intersection between canonballs and boats
 	}
 	
