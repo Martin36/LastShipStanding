@@ -1,12 +1,12 @@
 ﻿var Canonball = function () {
 
-	var position = new Victor();
-	var velocity = new Victor();
+	var position = new Victor(0, 0);
+	var velocity = new Victor(0, 0);
 	var speed = 5;
 	
 
 	this.updatePosition = function(windVelocity, dt){
-		velocity.add(windVelocity);		//Calculate the new velocity depending on the wind velocity
+		//velocity.add(windVelocity);		//Calculate the new velocity depending on the wind velocity
 		var distanceVector = new Victor(dt, dt).multiply(velocity);
 		position.add(distanceVector);
 	}

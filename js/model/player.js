@@ -1,8 +1,6 @@
 var Player = function () {
 
-
-
-	var name = "",
+    var name = "",
 		pos = new Victor(),
 		dir = new Victor(1, 0), // Use a direction instead of angle?
 		angle = 0.0,
@@ -10,7 +8,7 @@ var Player = function () {
 		hp = 0,
 		deltaA = 0.0,
 		dead = false,
-		image = {src : "", width : 10, height : 10},
+		image = new Image(),
 		keyBindings = [],
 		canonballs = [],
 		collisionRadius = 5;
@@ -19,23 +17,26 @@ var Player = function () {
 	hp = 100;
 	deltaA = Math.PI / 12;
 	pos.x = 700, pos.y = 400;
-
+//	speed = 3;
 	this.rotateRight = function () {
 		angle += deltaA;
 		if (angle > Math.PI * 2) {
 			angle -= Math.PI * 2;
 		}
-		//Using rotation matrix
-		dir.x = Math.cos(angle) - Math.sin(angle);		
-		dir.y = Math.sin(angle) - Math.cos(angle);
+		//Rotate direction
+		dir.x = Math.cos(angle);
+		dir.y = Math.sin(angle);
+		dir.normalize();
 	};
 	this.rotateLeft = function () {
 		angle -= deltaA;
 		if (angle < Math.PI * 2) {
 			angle += Math.PI * 2;
 		}
-		dir.x = Math.cos(angle) - Math.sin(angle);		
-		dir.y = Math.sin(angle) - Math.cos(angle);
+	    //Rotate direction
+		dir.x = Math.cos(angle);
+		dir.y = Math.sin(angle);
+		dir.normalize();
 	};
 	this.takeDamage = function () {
 		hp -= 10;
