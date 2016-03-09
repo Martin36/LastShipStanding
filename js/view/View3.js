@@ -10,8 +10,8 @@ var View3 = function (model) {
 	
 	this.update = function(){ 
 		//clearMap();
-		//drawMap();
 		drawPlayers();
+		//drawMap();
 		//drawProjectiles();
 	}
 	function drawMap(){
@@ -45,7 +45,8 @@ var View3 = function (model) {
 			ctx.save();
 			ctx.clearRect(0, 0, canvas.width, canvas.height); //clear the canvas
 			ctx.translate( playerPos.x, playerPos.y);
-			ctx.rotate( (player.getAngle() * Math.PI / 180) ); //convert to radians
+			//ctx.rotate( (player.getAngle() * Math.PI / 180) ); //convert to radians
+			ctx.rotate( player.getAngle() );
 			ctx.drawImage(image, 19/ -2, 28 / -2);
 
 			//ctx.translate( -canvas.width/2, -canvas.height / 2 );
