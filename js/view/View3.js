@@ -3,12 +3,14 @@ var View3 = function (model) {
 	this.refreshBtn = $("#view3_refreshBtn");
 	this.backBtn = $("#view3_backBtn");
 	this.pauseBtn = $("#view3_pauseBtn");
-	var canvas = $("#view3_canvas")
+	var canvas = $("#view3_canvas");
+	canvas.width = 1400;
+	canvas.height = 800;
 	var ctx = canvas[0].getContext('2d');
-
-	this.update = function(){
-		clearMap();
-		drawMap();
+	
+	this.update = function(){ 
+		//clearMap();
+		//drawMap();
 		drawPlayers();
 		//drawProjectiles();
 	}
@@ -35,16 +37,21 @@ var View3 = function (model) {
 		var image = new Image();
 		image.onload = function(){ //!-------------- Get info from player instead ---------------!
 			image.alt = "player";
-			image.width = "220";
-			image.height = "277";
+			image.width = "40";
+			image.height = "60";
 			var playerPos = player.getPosition();
 			//console.log(playerPos.x + ", " + playerPos.y);
 			//console.log("player angle: " + player.getAngle());
-			console.log( Math.PI );
 			ctx.save();
+			ctx.clearRect(0, 0, canvas.width, canvas.height); //clear the canvas
+			ctx.translate( playerPos.x, playerPos.y);
 			ctx.rotate( (player.getAngle() * Math.PI / 180) ); //convert to radians
-			ctx.drawImage(image, playerPos.x, playerPos.y);
+			ctx.drawImage(image, 19/ -2, 28 / -2);
+
+			//ctx.translate( -canvas.width/2, -canvas.height / 2 );
+			//ctx.drawImage(image, playerPos.x, playerPos.y );
 			ctx.restore();
+			//ctx.translate( playerPos.x, playerPos.y );
 		}
 		image.src = "images/player1.png";
 	}
