@@ -9,7 +9,7 @@ var View3 = function (model) {
 	var ctx = canvas[0].getContext('2d');
 	
 	this.update = function(){ 
-		//clearMap();
+		clearMap();
 		drawPlayers();
 		//drawMap();
 		//drawProjectiles();
@@ -43,7 +43,7 @@ var View3 = function (model) {
 			//console.log(playerPos.x + ", " + playerPos.y);
 			//console.log("player angle: " + player.getAngle());
 			ctx.save();
-			ctx.clearRect(0, 0, canvas.width, canvas.height); //clear the canvas
+			//ctx.clearRect(0, 0, canvas.width, canvas.height); //clear the canvas
 			ctx.translate( playerPos.x, playerPos.y);
 			//ctx.rotate( (player.getAngle() * Math.PI / 180) ); //convert to radians
 			ctx.rotate( player.getAngle() );
