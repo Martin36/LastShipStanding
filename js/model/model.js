@@ -55,6 +55,7 @@ var model = function () {
 
 		// Should Controller contain a gameloop which calls this??
 	}
+	this.getMap = function(){ return mapImageSrc;};
 	//Turns the player in the specified direction
 	//Give the direction input as a string
 	/*

@@ -1,5 +1,7 @@
 var Player = function () {
 
+
+
 	var name = "",
 		pos = new Victor(),
 		dir = new Victor(1, 0), // Use a direction instead of angle?
@@ -8,7 +10,8 @@ var Player = function () {
 		hp = 0,
 		deltaA = 0.0,
 		dead = false,
-		image = "",
+		image = {src : "", width : 10, height : 10},
+		imageWidth = 
 		keyBindings = [],
 		canonballs = [],
 		collisionRadius = 5;
