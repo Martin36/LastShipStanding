@@ -1,8 +1,6 @@
 var Player = function () {
 
-
-
-	var name = "",
+    var name = "",
 		pos = new Victor(),
 		dir = new Victor(1, 0), // Use a direction instead of angle?
 		angle = 0.0,
@@ -28,9 +26,7 @@ var Player = function () {
 		if (angle > Math.PI * 2) {
 			angle -= Math.PI * 2;
 		}
-		//Using rotation matrix
-//		dir.x = Math.cos(angle) * dir.x - Math.sin(angle) * dir.y;		
-//		dir.y = Math.sin(angle) * dir.x + Math.cos(angle) * dir.y;
+		//Rotate direction
 		dir.x = Math.cos(angle);
 		dir.y = Math.sin(angle);
 		dir.normalize();
@@ -40,9 +36,7 @@ var Player = function () {
 		if (angle < Math.PI * 2) {
 			angle += Math.PI * 2;
 		}
-		//Using rotation matrix
-//		dir.x = Math.cos(angle) * dir.x - Math.sin(angle) * dir.y;		
-//		dir.y = Math.sin(angle) * dir.x + Math.cos(angle) * dir.y;
+	    //Rotate direction
 		dir.x = Math.cos(angle);
 		dir.y = Math.sin(angle);
 		dir.normalize();
