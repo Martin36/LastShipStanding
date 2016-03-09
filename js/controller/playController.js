@@ -35,6 +35,8 @@ var playController = function(view,model) {
 		
 		for(i in Players){
 			var keys = Players[i].getKeyBindings();
+			console.log(keys);
+			console.log(Players[i].getName());
 			//console.log(keys[0] + " " + keys[1] + " " + keys[2]);
 			if (map[keys[0]])	{ Players[i].rotateLeft();   /*console.log(Players[i].getName()+"'s Going left!");*/ }
 			if (map[keys[1]])	{ Players[i].fire();		 /*console.log(Players[i].getName()+"'s shots fired!!");*/}

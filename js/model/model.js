@@ -15,10 +15,10 @@ var model = function () {
 		if (randomizePos) {
 			player.setPosition(new Victor(/*Random values*/));
 		}
+		console.log(defaultKeyBinding.getDefault(players.length+1));
 	    // Assign default keybindings
-		player.setKeyBindings(
-            defaultKeyBinding.
-            getDefault(players.length+1));
+        var keyBindings = defaultKeyBinding.getDefault(players.length+1);
+		player.setKeyBindings(keyBindings);
 
 		players.push(player);
 	};
@@ -55,6 +55,7 @@ var model = function () {
 
 		// Should Controller contain a gameloop which calls this??
 	}
+	this.getMap = function(){ return mapImageSrc;};
 	//Turns the player in the specified direction
 	//Give the direction input as a string
 	/*
