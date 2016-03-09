@@ -3,6 +3,7 @@
 	var position = new Victor();
 	var velocity = new Victor();
 	var speed = 5;
+	
 
 	this.updatePosition = function(windVelocity, dt){
 		velocity.add(windVelocity);		//Calculate the new velocity depending on the wind velocity

@@ -6,7 +6,8 @@ var model = function () {
 	var canonballSpeed = 10;
 	var folder = ""; 		//Path to the folder where the source images is contained
 	var defaultKeyBinding = new defaultKeyBindings();
-	
+	var mapImageSrc = "";
+
 	this.addPlayer = function (name) {
 		var player = new Player();
 		player.setName(name);
@@ -37,8 +38,6 @@ var model = function () {
 		return players[index];
 	}
 	this.getPlayers = function(){ return players; };
-	this.setFolder = function(f) { folder = f;};
-	this.getFolder = function() { return folder; };
 
 	// Vector algebra by using the Victor package
 	this.update = function (dt) {
