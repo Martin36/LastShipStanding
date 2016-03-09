@@ -1,7 +1,7 @@
 var Player = function () {
 
 	var name = "",
-		pos = new Victor(10, 10),
+		pos = new Victor(),
 		dir = new Victor(1, 0), // Use a direction instead of angle?
 		angle = 0.0,
 		speed = 0.0,
@@ -15,19 +15,25 @@ var Player = function () {
 
 	// Give variables standard values
 	hp = 100;
-	deltaA = 15;
+	deltaA = Math.PI / 12;
+	pos.x = 700, pos.y = 400;
 
 	this.rotateLeft = function () {
 		angle += deltaA;
-		if (angle > 360) {
-			angle -= 360;
+		if (angle > Math.PI * 2) {
+			angle -= Math.PI * 2;
 		}
+		//Using rotation matrix
+		dir.x = Math.cos(angle) - Math.sin(angle);		
+		dir.y = Math.sin(angle) - Math.cos(angle);
 	};
 	this.rotateRight = function () {
 		angle -= deltaA;
-		if (angle < 0) {
-			angle += 360;
+		if (angle < Math.PI * 2) {
+			angle += Math.PI * 2;
 		}
+		dir.x = Math.cos(angle) - Math.sin(angle);		
+		dir.y = Math.sin(angle) - Math.cos(angle);
 	};
 	this.takeDamage = function () {
 		hp -= 10;
