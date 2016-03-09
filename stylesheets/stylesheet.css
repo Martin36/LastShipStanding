@@ -58,7 +58,11 @@ body {
 	border:0.25em solid #000;
 	margin-top: 1em;
 }
-
+#view3 button {
+	width:8em;
+	height: 3em;
+	margin-bottom: 0.05em;
+	}
 
 .col-lg-6 {
 	height: 10em;
