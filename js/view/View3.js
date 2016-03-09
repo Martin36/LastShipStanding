@@ -12,7 +12,7 @@ var View3 = function (model) {
 		clearMap();
 		drawPlayers();
 		//drawMap();
-		//drawProjectiles();
+		drawProjectiles();
 	}
 	function drawMap(){
 		var mapImage = new Image();  //!--------- Get map from Model ---------!
@@ -57,6 +57,13 @@ var View3 = function (model) {
 		image.src = "images/player1.png";
 	}
 	function drawProjectiles(){
+		var players = model.getPlayers();
+		for(index in players){
+			var cannonballs = players[index];
+			for(ind in canonballs){
+				drawProjectile(canonballs[ind]);
+			}
+		}
 		var canonballs = model.getCanonballs();	//!-----------------code for canonballs ---------------------!
 		console.log('len: ' + canonballs.length() );
 		for(index in canonballs){
