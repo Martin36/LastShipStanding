@@ -25,7 +25,7 @@ var View3 = function (model) {
 		drawPlayers();
 		//drawMap();
 		//drawProjectiles();
-		//updateArrow(someAngle, arrowImg); //!---- need to convert wind direction to angle-----!
+		updateArrow(model.getEnvironment().getWindAngle(), arrowImg); //!---- need to convert wind direction to angle-----!
 	}
 	function drawMap(){
 		var mapImage = new Image();  //!--------- Get map from Model ---------!

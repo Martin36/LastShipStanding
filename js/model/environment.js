@@ -24,6 +24,7 @@ var Environment = function () {
 		windVelocity = new Victor(windDirection.x * windMagnitude, windDirection.y * windMagnitude);
 
 	}
+	this.getWindAngle = function () {return Math.atan2(windDirection.y,windDirection.x);}
 	this.getWindMagnitude = function () { return windMagnitude; };
 	this.getWindDirection = function () { return windDirection; };
 	this.getWindVelocity = function () { return windVelocity; };

@@ -8,6 +8,8 @@ var model = function () {
 	var defaultKeyBinding = new defaultKeyBindings();
 	var mapImageSrc = "";
 
+	
+
 	this.addPlayer = function (name) {
 		var player = new Player();
 		player.setName(name);
@@ -111,6 +113,12 @@ var model = function () {
 	    document.write(c[0].getPosition());
 	    this.update(17);
 	    document.write(c[0].getPosition());
-	}
+	};
+	
+
+	this.getEnvironment = function(){
+		return environment;
+	};
+
 	return this;
 }
