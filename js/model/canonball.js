@@ -1,7 +1,7 @@
 ﻿var Canonball = function () {
 
-	var position = new Victor();
-	var velocity = new Victor();
+	var position = new Victor(0, 0);
+	var velocity = new Victor(0, 0);
 	var speed = 5;
 	
 

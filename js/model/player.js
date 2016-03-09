@@ -19,23 +19,30 @@ var Player = function () {
 	hp = 100;
 	deltaA = Math.PI / 12;
 	pos.x = 700, pos.y = 400;
-
+//	speed = 3;
 	this.rotateRight = function () {
 		angle += deltaA;
 		if (angle > Math.PI * 2) {
 			angle -= Math.PI * 2;
 		}
 		//Using rotation matrix
-		dir.x = Math.cos(angle) - Math.sin(angle);		
-		dir.y = Math.sin(angle) - Math.cos(angle);
+//		dir.x = Math.cos(angle) * dir.x - Math.sin(angle) * dir.y;		
+//		dir.y = Math.sin(angle) * dir.x + Math.cos(angle) * dir.y;
+		dir.x = Math.cos(angle);
+		dir.y = Math.sin(angle);
+		dir.normalize();
 	};
 	this.rotateLeft = function () {
 		angle -= deltaA;
 		if (angle < Math.PI * 2) {
 			angle += Math.PI * 2;
 		}
-		dir.x = Math.cos(angle) - Math.sin(angle);		
-		dir.y = Math.sin(angle) - Math.cos(angle);
+		//Using rotation matrix
+//		dir.x = Math.cos(angle) * dir.x - Math.sin(angle) * dir.y;		
+//		dir.y = Math.sin(angle) * dir.x + Math.cos(angle) * dir.y;
+		dir.x = Math.cos(angle);
+		dir.y = Math.sin(angle);
+		dir.normalize();
 	};
 	this.takeDamage = function () {
 		hp -= 10;
