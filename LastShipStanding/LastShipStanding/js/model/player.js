@@ -12,7 +12,7 @@ var Player = function () {
 		keyBindings = [],
 		canonballs = [],
 		collisionRadius = 5,
-		cooldown = 1000,
+		cooldown = 400,
 		cooldownTimer = 0,
 		fireReady = true;
 

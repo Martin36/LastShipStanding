@@ -3,11 +3,11 @@
 	var position = new Victor(0, 0);
 	var velocity = new Victor(0, 0);
 	var speed = 2;
-	var deathTimer = 2000;
+	var deathTimer = 200;
 	var dead = false;
 
 	this.updatePosition = function(windVelocity, dt){
-		velocity.add(windVelocity);		//Calculate the new velocity depending on the wind velocity
+//		velocity.add(windVelocity);		//Calculate the new velocity depending on the wind velocity
 		var distanceVector = new Victor(dt, dt).multiply(velocity);
 		position.add(distanceVector);
 		deathTimer -= dt;
