@@ -21,10 +21,11 @@ var View3 = function (model) {
 	var arrowImg = drawArrow(); // test
 
 	this.update = function(){ 
-		clearMap();
+		
 		drawPlayers();
 		//drawMap();
 		drawProjectiles();
+		clearMap();
 		updateArrow(model.getEnvironment().getWindAngle(), arrowImg); //!---- need to convert wind direction to angle-----!
 	}
 	function drawMap(){
