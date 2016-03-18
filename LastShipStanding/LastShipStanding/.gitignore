@@ -4,15 +4,3 @@
 [Pp]lugins/wp8.json
 [Pp]lugins/remote_ios.json
 [Pp]latforms/
-*.v11
-*.sln
-*.vs
-merges/
-res/
-www/
-build.json
-config.xml
-*.jsproj
-package.json
-Project_Readme.html
-taco.json
