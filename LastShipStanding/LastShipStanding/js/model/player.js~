@@ -1,0 +1,7 @@
+var Player = function(){
+
+	var name;
+
+	this.setName(name){
+	
+	}
