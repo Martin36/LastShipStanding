@@ -1,0 +1,102 @@
+/* CSS of all */
+body {
+	background-color: gray;
+}
+
+.wrapper {
+	background: gray;
+}
+
+
+/* CSS of view1 */
+
+#view1 img{
+	width: 20em;
+	height: 20em;
+	border: solid black;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 4em;
+}
+
+#view1 button {
+	display: table;
+	margin: 0 auto;
+	width:30em;
+	height: 5em;
+	margin-bottom: 2em;
+}
+
+#view1_title {
+
+	text-align: center;
+	text-shadow: 0em 0em 2em blue;
+	color:white;
+	font-size: 500%;
+
+	margin-top: 2em;
+	margin-bottom: 2em;
+
+	/* Positioning */
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#view1_title:hover {
+	color:blue;
+}
+
+
+/* CSS of view2 */
+
+#view2 .col-lg-6 {
+	height: 10em;
+	border: 1px solid black;
+}
+
+#view2 .row{
+	margin-top:4px;
+}
+
+
+#view2 #container{
+	height: 90%;
+	width:  80%;
+}
+
+#view2 .btn.btn-primary{
+	display: table;
+	margin: 0 auto;
+	width: 10em;
+	height: 3em;
+	margin-bottom: 2em;
+}
+
+
+
+
+/* CSS of view3 */
+#view3{
+	margin-left: 2em;
+	margin-top:2em;
+	overflow-x:hidden;
+}
+#view3_canvas{
+	outline:20;
+	border:0.125em solid #000;
+}
+.view3ele{
+	margin-top: 1em;
+}
+
+#view3_windArrow{
+	outline:20;
+	border:0.25em solid #000;
+}
+
+#view3 button {
+	width:8em;
+	height: 3em;
+	margin-bottom: 0.5em;
+}
