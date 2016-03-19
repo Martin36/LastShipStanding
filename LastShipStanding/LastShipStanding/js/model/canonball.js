@@ -5,6 +5,7 @@
 	var speed = 2;
 	var deathTimer = 200;
 	var dead = false;
+	var whichPlayer = 0;
 
 	this.updatePosition = function(windVelocity, dt){
 //		velocity.add(windVelocity);		//Calculate the new velocity depending on the wind velocity
@@ -23,7 +24,10 @@
 	//Input of type Victor
 	this.setVelocity = function (vel) { velocity = vel; };
 	this.getVelocity = function () { return velocity; };
-	this.getSpeed = function() {return speed;};
+	this.getSpeed = function () { return speed; };
+	this.setPlayer = function (playerID) { whichPlayer = playerID; };
+	this.getPlayer = function () { return whichPlayer; };
+
 	this.isDead = function() {return dead;};
 	return this;
 };

@@ -133,10 +133,10 @@ var Player = function () {
 	this.getHp = function () { return hp; };
 	this.setKeyBindings = function(keys) { keyBindings = keys; };
 	this.getKeyBindings = function() { return keyBindings; };
-	this.getCanonballs = function() { return canonballs; };
-	this.getCollisionRadius = function() { return collisionRadius;};
-	this.setCollisionRadius = function(colRad) { collisionRadius = colRad; }; 
-
+	this.getCanonballs = function () { return canonballs; };
+	this.getCollisionRadius = function () { return collisionRadius; };
+	this.isFireReady = function () { return fireReady; };
+	this.fired = function () { fireReady = false; };
 	return this;
 }
 
