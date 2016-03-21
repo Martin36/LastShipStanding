@@ -64,6 +64,7 @@ var View3 = function (model) {
 		for(index in players){
 			drawPlayer(players[index]);
 			drawHealth(players[index]);
+			drawCooldown(players[index]);
 		}
 	}
 	function drawPlayer(player){
@@ -92,10 +93,29 @@ var View3 = function (model) {
 		ctx.fillStyle = '#33cc33';
 		ctx.beginPath();
 		//player.getHp()
-		ctx.rect( player.getPosition().x - player.getImage().width / 2,
-		 player.getPosition().y - player.getImage().height,
-		 (player.getImage().width ) *  player.getHp() / 100,
-		  healthHeight );
+		ctx.rect( player.getPosition().x - player.getImage().width / 2, //x
+		 player.getPosition().y - player.getImage().height,				//y
+		 (player.getImage().width ) *  player.getHp() / 100,			//width
+		  healthHeight );												//height
+
+		ctx.closePath();
+		ctx.fill();
+	}
+
+	function drawCooldown(player){
+		ctx.fillStyle = '#ccccb3';
+		ctx.beginPath();
+		//player.getHp()
+		var width;
+		if(player.getCooldownTimer() == 0){
+			width = (player.getImage().width );
+		}else{
+			width = (player.getImage().width ) *  player.getCooldownTimer() / 300;
+		}
+		ctx.rect( player.getPosition().x - player.getImage().width / 2, //x
+		 player.getPosition().y - player.getImage().height + 10,		//y
+		 width,															//width
+		  3 );															//height
 
 		ctx.closePath();
 		ctx.fill();

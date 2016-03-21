@@ -142,6 +142,7 @@ var Player = function () {
 	this.isFireReady = function () { return fireReady; };
 	this.fired = function () { fireReady = false; };
 	this.getImage = function () { return mapImage; };
+	this.getCooldownTimer = function () { return cooldownTimer; };
 	return this;
 }
 
