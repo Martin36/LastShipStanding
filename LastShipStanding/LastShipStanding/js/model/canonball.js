@@ -2,16 +2,18 @@
 
 	var position = new Victor(0, 0);
 	var velocity = new Victor(0, 0);
-	var speed = 2;
+	var speed = 5;
 	var deathTimer = 200;
 	var dead = false;
 	var whichPlayer = 0;
+	var windEffect = 0.1;
 
-	this.updatePosition = function(dt){
-//		velocity.add(windVelocity);		//Calculate the new velocity depending on the wind velocity
+	this.updatePosition = function(windVelocity, dt){
+		velocity.add(windVelocity.clone().multiply(new Victor(windEffect, windEffect)));		//Calculate the new velocity depending on the wind velocity
 		var distanceVector = new Victor(dt, dt).multiply(velocity);
 		position.add(distanceVector);
 		deathTimer -= dt;
+		console.log(deathTimer + "Player: " + whichPlayer);
 		this.checkTimer();
 	}
 	this.checkTimer = function(){
