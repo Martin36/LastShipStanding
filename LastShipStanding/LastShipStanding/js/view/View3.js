@@ -10,24 +10,40 @@ var View3 = function (model) {
 	canvas.height = 800;
 	var ctx = canvas[0].getContext('2d');
 
-	//mapImage
-
 	//arrow canvas
-	var arrowCanvas = $("#view3_windArrow");
+	/*var arrowCanvas = $("#view3_windArrow");
 	arrowCanvas.width = 150;
 	arrowCanvas.height = 150;
 	var ctx2 = arrowCanvas[0].getContext('2d');
-
-	var arrowImg = drawArrow(); // test
-
+*/
+	//var arrowImg = drawArrow(); // test
 	this.update = function(){ 
-		
+		drawMap();
 		drawPlayers();
-		//drawMap();
 		drawProjectiles();
-		clearMap();
-		updateArrow(model.getEnvironment().getWindAngle(), arrowImg); //!---- need to convert wind direction to angle-----!
+		//clearMap();
+		//updateArrow(model.getEnvironment().getWindAngle(), arrowImg); //!---- need to convert wind direction to angle-----!
 	}
+
+	function drawMap(){
+		ctx.fillStyle = '#0000ff';
+		//set active color to #d0e... (nice blue)
+		//UPDATE - as 'Ped7g' noticed - using clearRect() in here is useless, we cover whole surface of the canvas with blue rectangle two lines below. I just forget to remove that line
+		//ctx.clearRect(0, 0, width, height);
+		//clear whole surface
+	  	ctx.beginPath();
+		//start drawing
+  		ctx.rect(0, 0, canvas.width, canvas.height);
+		//draw rectangle from point (0, 0) to
+		//(width, height) covering whole canvas
+	  	ctx.closePath();
+		//end drawing
+	  	ctx.fill();
+		//fill rectangle with active
+		//color selected before
+		//ctx.drawImage(model.getMap(),0,0, model.getMap().width, model.getMap().height);
+	}
+	/*
 	function drawMap(){
 		var mapImage = new Image();  //!--------- Get map from Model ---------!
 		mapImage.onload = function(){
@@ -38,6 +54,7 @@ var View3 = function (model) {
 		}
 		mapImage.src = "images/sketch.jpg";
 	}
+	*/
 	function clearMap(){
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 	}
@@ -47,6 +64,15 @@ var View3 = function (model) {
 			drawPlayer(players[index]);
 		}
 	}
+	function drawPlayer(player){
+		ctx.save();
+		ctx.translate(  player.getPosition().x,  player.getPosition().y);
+		ctx.rotate( player.getAngle() );
+		ctx.drawImage(player.getImage(), player.getImage().width/ -2,  player.getImage().height / -2, player.getImage().width, player.getImage().height);
+		ctx.restore();
+	}
+
+	/*
 	function drawPlayer(player){
 		var image = new Image();
 		image.onload = function(){ //!-------------- Get info from player instead ---------------!
@@ -70,19 +96,24 @@ var View3 = function (model) {
 		}
 		image.src = "images/player1.png";
 	}
+	*/
 	function drawProjectiles(){
-		var players = model.getPlayers();
-		for(index in players){
-			var cannonballs = players[index].getCanonballs();
-			for(ind in cannonballs){
-				drawProjectile(cannonballs[ind]);
+		var balls = model.getCanonballs();
+			for(ind in balls){
+				drawProjectile(balls[ind]);
 			}
-		}
 		
 	}
 	function drawProjectile(canonball){
+	 	ctx.drawImage(model.getCanonballImage(),
+	 	 canonball.x - model.getCanonballImage().width / 2,
+	  	 canonball.y - model.getCanonballImage().height / 2,
+	 	 model.getCanonballImage().width, model.getCanonballImage().height);
+	}
+
+	/*function drawProjectile(canonball){
 		var image = new Image();
-		image.onload = function(){ //!-------------- Get info from player instead ---------------!
+		image.onload = function(){ //!-------------- Get info from model instead ---------------!
 			image.alt = "canonball";
 			image.width = "20";
 			image.height = "30";
@@ -90,7 +121,7 @@ var View3 = function (model) {
 			ctx.drawImage(image, position.x, position.y);
 		}
 		image.src = "images/Canonball.png";
-	}
+	}*/
 
 
 	

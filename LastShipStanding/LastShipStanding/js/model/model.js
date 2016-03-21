@@ -7,7 +7,19 @@ var model = function () {
 	var canonballSpeed = 10;
 	var folder = ""; 		//Path to the folder where the source images is contained
 	var defaultKeyBinding = new defaultKeyBindings();
-	var mapImageSrc = "";
+
+	var mapImage = new Image();
+	mapImage.alt = "background";
+	mapImage.width = 1400;
+	mapImage.height = 800;
+	mapImage.src = "images/oceantop.jpg";
+
+	var canonballImage = new Image();
+	canonballImage.alt = "canonballImage";
+	canonballImage.width = 20;
+	canonballImage.height = 30;
+	canonballImage.src = "images/canonBall.png";
+
 
 
 
@@ -41,6 +53,7 @@ var model = function () {
 	}
 	this.getPlayers = function () { return players; };
 
+	this.getCanonballs = function () { return canonballs; };
 	// Vector algebra by using the Victor package
 	this.update = function (dt) {
 
@@ -110,7 +123,9 @@ var model = function () {
 	}
 
 	this.getEnvironment = function () { return environment; };
-	this.getMap = function () { return mapImageSrc; };
+	this.getMap = function () { return mapImage; };
+	this.getCanonballImage = function () { return canonballImage; };
+
 
 	return this;
 }
