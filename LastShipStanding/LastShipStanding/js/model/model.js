@@ -128,8 +128,6 @@ var model = function () {
 					var distance = vectorToPlayer.length();
 					if (distance < players[j].getCollisionRadius()) {		//Then there is a collision
 						players[j].takeDamage();
-						console.log("Player " + j + 1 + " is hit!");
-						//canonballs.splice(i, 1);		//Removes the canonball from the array
 						hitIndex.push(i);
 					}
 				}

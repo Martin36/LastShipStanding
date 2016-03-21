@@ -13,7 +13,6 @@
 		var distanceVector = new Victor(dt, dt).multiply(velocity);
 		position.add(distanceVector);
 		deathTimer -= dt;
-		console.log(deathTimer + "Player: " + whichPlayer);
 		this.checkTimer();
 	}
 	this.checkTimer = function(){
