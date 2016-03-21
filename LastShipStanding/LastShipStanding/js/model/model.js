@@ -63,6 +63,7 @@ var model = function () {
 			if (canonballs[j].isDead()) {
 				canonballs.pop();
 			}
+			canonballs[j].updatePosition();
 		}
 
 		checkForCollisions();
