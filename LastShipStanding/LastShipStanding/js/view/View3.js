@@ -21,6 +21,7 @@ var View3 = function (model) {
 		drawMap();
 		drawProjectiles();
 		drawPlayers();
+		drawArrow( model.getEnvironment().getWindAngle() );
 		//clearMap();
 		//updateArrow(model.getEnvironment().getWindAngle(), arrowImg); //!---- need to convert wind direction to angle-----!
 	}
@@ -124,12 +125,19 @@ var View3 = function (model) {
 	}*/
 
 
-	
+	function drawArrow( angle ){
+		ctx.save();
+		ctx.translate( canvas.width - model.getArrowImage().width / 2, model.getArrowImage().height / 2 );
+		ctx.rotate( angle );
+		ctx.translate( -canvas.width + model.getArrowImage().width / 2, -model.getArrowImage().height / 2 );
+		ctx.drawImage(model.getArrowImage(), canvas.width - model.getArrowImage().width, 0, model.getArrowImage().width, model.getArrowImage().height);
+		ctx.restore();
+	}	
 
-	function drawArrow(){
+	/*function drawArrow(){
 		var image2 = new Image();
-		console.log(model.getEnvironment().getWindDirection());
-		console.log(model.getEnvironment().getWindAngle());
+		//console.log(model.getEnvironment().getWindDirection());
+		((console.log(model.getEnvironment().getWindAngle());
 		image2.onload = function(){
 			image2.alt = "arrow";
 			image2.width = "40";
@@ -138,9 +146,9 @@ var View3 = function (model) {
 		}
 		image2.src = "images/windArrow.png"
 		return image2;
-	}
+	}*/
 
-	function updateArrow(angle, image){
+	/*function updateArrow(angle, image){
 
 		//rotate and draw
 		ctx2.save();
@@ -150,6 +158,6 @@ var View3 = function (model) {
 		ctx2.translate( -arrowCanvas.width / 2, -arrowCanvas.height / 2);
 		ctx2.drawImage(image, arrowCanvas.width / 2 - image.width / 2, arrowCanvas.height / 2 - image.height / 2);
 		ctx2.restore();
-	}
+	}*/
 
 }
