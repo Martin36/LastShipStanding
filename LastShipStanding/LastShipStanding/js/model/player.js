@@ -22,7 +22,7 @@ var Player = function () {
 
 	// Give variables standard values
 	hp = 100;
-	deltaA = Math.PI / 12;
+	deltaA = Math.PI / 100;
 	pos.x = 700, pos.y = 400;
 //	speed = 3;
 	this.rotateRight = function () {
