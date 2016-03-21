@@ -10,15 +10,9 @@ var model = function () {
 	var folder = ""; 		//Path to the folder where the source images is contained
 	var defaultKeyBinding = new defaultKeyBindings();
 
-	var mapImage = new Image();
-	mapImage.alt = "background";
-	mapImage.width = 1400;
-	mapImage.height = 800;
-	mapImage.src = "images/oceantop.jpg";
-
 	var canonballImage = new Image();
 	canonballImage.alt = "canonballImage";
-	canonballImage.width = 20;
+	canonballImage.width = 30;
 	canonballImage.height = 30;
 	canonballImage.src = "images/canonBall.png";
 
@@ -131,7 +125,6 @@ var model = function () {
 	}
 
 	this.getEnvironment = function () { return environment; };
-	this.getMap = function () { return mapImage; };
 	this.getCanonballImage = function () { return canonballImage; };
 
 

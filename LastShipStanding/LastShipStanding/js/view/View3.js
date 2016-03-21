@@ -19,8 +19,8 @@ var View3 = function (model) {
 	//var arrowImg = drawArrow(); // test
 	this.update = function(){ 
 		drawMap();
-		drawPlayers();
 		drawProjectiles();
+		drawPlayers();
 		//clearMap();
 		//updateArrow(model.getEnvironment().getWindAngle(), arrowImg); //!---- need to convert wind direction to angle-----!
 	}
@@ -106,8 +106,8 @@ var View3 = function (model) {
 	}
 	function drawProjectile(canonball){
 	 	ctx.drawImage(model.getCanonballImage(),
-	 	 canonball.x - model.getCanonballImage().width / 2,
-	  	 canonball.y - model.getCanonballImage().height / 2,
+	 	 canonball.getPosition().x - model.getCanonballImage().width / 2,
+	  	 canonball.getPosition().y - model.getCanonballImage().height / 2,
 	 	 model.getCanonballImage().width, model.getCanonballImage().height);
 	}
 
