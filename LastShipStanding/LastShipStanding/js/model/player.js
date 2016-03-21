@@ -8,13 +8,17 @@ var Player = function () {
 		hp = 0,
 		deltaA = 0.0,
 		dead = false,
-		image = new Image(),
 		keyBindings = [],
 		canonballs = [],
 		collisionRadius = 5,
 		cooldown = 400,
 		cooldownTimer = 0,
-		fireReady = true;
+		fireReady = true,
+		mapImage = new Image();
+		mapImage.alt = "player";
+		mapImage.width = 80;
+		mapImage.height = 60;
+		mapImage.src = "images/ships/ship_pattern4.png";
 
 	// Give variables standard values
 	hp = 100;
@@ -137,6 +141,7 @@ var Player = function () {
 	this.getCollisionRadius = function () { return collisionRadius; };
 	this.isFireReady = function () { return fireReady; };
 	this.fired = function () { fireReady = false; };
+	this.getImage = function () { return mapImage; };
 	return this;
 }
 

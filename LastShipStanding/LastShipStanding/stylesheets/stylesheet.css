@@ -78,21 +78,35 @@ body {
 
 /* CSS of view3 */
 #view3{
-	margin-left: 2em;
-	margin-top:2em;
 	overflow-x:hidden;
 }
 #view3_canvas{
-	outline:20;
+	margin-left: 4em;
+	outline:1.25em;
 	border:0.125em solid #000;
 }
 .view3ele{
 	margin-top: 1em;
+	margin-left: 4em;
 }
 
 #view3_windArrow{
-	outline:20;
+	outline:1.25em;
 	border:0.25em solid #000;
+}
+
+table, th, td {
+	border: 0.25em solid black;
+}
+table{
+	margin-top: 2em;
+	margin-left: 4em;
+}
+th, td{
+	padding: 0.5em;
+}
+footer{
+	margin-left: 4em;
 }
 
 #view3 button {
