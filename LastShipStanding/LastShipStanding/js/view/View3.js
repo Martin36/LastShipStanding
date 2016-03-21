@@ -62,9 +62,12 @@ var View3 = function (model) {
 	function drawPlayers(){
 		var players = model.getPlayers();
 		for(index in players){
-			drawPlayer(players[index]);
-			drawHealth(players[index]);
-			drawCooldown(players[index]);
+			if(!players[index].isDead()){
+				drawPlayer(players[index]);
+				drawHealth(players[index]);
+				drawCooldown(players[index]);
+			}
+			
 		}
 	}
 	function drawPlayer(player){
