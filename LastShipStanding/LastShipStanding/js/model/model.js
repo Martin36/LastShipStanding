@@ -18,8 +18,8 @@ var model = function () {
 
 	var arrowImage = new Image();
 	arrowImage.alt = "arrowImage";
-	arrowImage.width = 50;
-	arrowImage.height = 50;
+	arrowImage.width = 100;
+	arrowImage.height = 100;
 	arrowImage.src = "images/windArrow.png";
 
 

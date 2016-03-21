@@ -21,7 +21,7 @@ var View3 = function (model) {
 		drawMap();
 		drawProjectiles();
 		drawPlayers();
-		drawArrow( model.getEnvironment().getWindAngle() );
+		drawArrow( model.getEnvironment().getWindAngle(), model.getEnvironment().getWindMagnitude() );
 		//clearMap();
 		//updateArrow(model.getEnvironment().getWindAngle(), arrowImg); //!---- need to convert wind direction to angle-----!
 	}
@@ -63,6 +63,7 @@ var View3 = function (model) {
 		var players = model.getPlayers();
 		for(index in players){
 			drawPlayer(players[index]);
+			drawHealth(players[index]);
 		}
 	}
 	function drawPlayer(player){
@@ -71,6 +72,33 @@ var View3 = function (model) {
 		ctx.rotate( player.getAngle() );
 		ctx.drawImage(player.getImage(), player.getImage().width/ -2,  player.getImage().height / -2, player.getImage().width, player.getImage().height);
 		ctx.restore();
+	}
+
+	function drawHealth(player){
+		//gray background
+		ctx.fillStyle = '#ff0000';
+		ctx.beginPath();
+
+		var healthHeight = 10;
+		ctx.rect( player.getPosition().x - player.getImage().width / 2, //x
+		 player.getPosition().y - player.getImage().height,				//y
+		 player.getImage().width,										//width
+		  healthHeight );												//height
+
+		ctx.closePath();
+		ctx.fill();
+
+		//green health
+		ctx.fillStyle = '#33cc33';
+		ctx.beginPath();
+		//player.getHp()
+		ctx.rect( player.getPosition().x - player.getImage().width / 2,
+		 player.getPosition().y - player.getImage().height,
+		 (player.getImage().width ) *  player.getHp() / 100,
+		  healthHeight );
+
+		ctx.closePath();
+		ctx.fill();
 	}
 
 	/*
@@ -124,15 +152,20 @@ var View3 = function (model) {
 		image.src = "images/Canonball.png";
 	}*/
 
+	
 
-	function drawArrow( angle ){
+	function drawArrow( angle, windSpeed ){
 		ctx.save();
 		ctx.translate( canvas.width - model.getArrowImage().width / 2, model.getArrowImage().height / 2 );
 		ctx.rotate( angle );
 		ctx.translate( -canvas.width + model.getArrowImage().width / 2, -model.getArrowImage().height / 2 );
 		ctx.drawImage(model.getArrowImage(), canvas.width - model.getArrowImage().width, 0, model.getArrowImage().width, model.getArrowImage().height);
 		ctx.restore();
-	}	
+
+		ctx.fillStyle = '#ffffff';
+		ctx.font = '1.875em Arial';
+		ctx.fillText( Math.floor(windSpeed*10) + ' m/s', canvas.width - model.getArrowImage().width, model.getArrowImage().height + 25);
+	}
 
 	/*function drawArrow(){
 		var image2 = new Image();
