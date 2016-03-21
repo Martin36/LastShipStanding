@@ -10,13 +10,6 @@ var Environment = function () {
 	this.update = function () {
 		//Should be updated every specified time interval
 		windMagnitude = Math.random() * 2;
-		//windMagnitude = 0;
-		/* Code to randomize the wind direction using random values for the x and y coordinates 
-		var x = Math.random() * (max - min) + min;
-		var y = Math.random() * (max - min) + min;
-		windDirection = new Victor(x, y);
-		windDirection.normalize();		//The direction vector should be a unit vector
-		*/
 		//Code to randomize the wind direction using an angle
 		//This code does not need to normalize the vector
 		var theta = Math.random() * Math.PI * 2;		//Random angle between 0 and 2pi (radians)
