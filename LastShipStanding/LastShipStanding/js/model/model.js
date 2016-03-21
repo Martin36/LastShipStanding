@@ -74,11 +74,13 @@ var model = function () {
 		}
 		for (var j = 0; j < canonballs.length; j++) {
 			if (canonballs[j].isDead()) {
+				canonballs.reverse();
 				canonballs.pop();
+				canonballs.reverse();
+				//break;
 			}
 			else {
-				canonballs[j].updatePosition(dt);
-			//	console.log("Position Updated!")
+				canonballs[j].updatePosition(windVelocity, dt);
 			}
 		}
 
@@ -117,6 +119,7 @@ var model = function () {
 
 	function checkForCollisions() {
 		//Loop through the canonballs
+		var hitIndex = [];
 		for (var i = 0; i < canonballs.length; i++) {
 			for (var j = 0; j < players.length; j++) {
 				if (canonballs[i].getPlayer() != j) {		//We dont want to be able to shoot ourselves
@@ -125,10 +128,15 @@ var model = function () {
 					var distance = vectorToPlayer.length();
 					if (distance < players[j].getCollisionRadius()) {		//Then there is a collision
 						players[j].takeDamage();
-						canonballs.splice(i, 1);		//Removes the canonball from the array
+						console.log("Player " + j + 1 + " is hit!");
+						//canonballs.splice(i, 1);		//Removes the canonball from the array
+						hitIndex.push(i);
 					}
 				}
 			}
+		}
+		for (i in hitIndex) {
+			canonballs.splice(hitIndex[i], 1);
 		}
 	}
 
