@@ -70,7 +70,10 @@ var model = function () {
 			if (canonballs[j].isDead()) {
 				canonballs.pop();
 			}
-			canonballs[j].updatePosition(windVelocity, dt);
+			else {
+				canonballs[j].updatePosition(dt);
+			//	console.log("Position Updated!")
+			}
 		}
 
 		checkForCollisions();
@@ -89,7 +92,7 @@ var model = function () {
 			var canonball1 = new Canonball();
 			var canonball2 = new Canonball();
 			canonball1.setPosition(position);
-			canonball2.setPosition(position);
+			canonball2.setPosition(position.clone());
 			canonball1.setPlayer(playerNr);
 			canonball2.setPlayer(playerNr);
 
@@ -101,7 +104,6 @@ var model = function () {
 			canonball2.setVelocity(velocity2);
 			canonballs.push(canonball1);
 			canonballs.push(canonball2);
-			console.log("Finished firing!");
 			players[playerNr].fired();
 
 		}
@@ -115,7 +117,6 @@ var model = function () {
 					var playerPosition = players[j].getPosition().clone();
 					var vectorToPlayer = playerPosition.subtract(canonballs[i].getPosition());
 					var distance = vectorToPlayer.length();
-					//console.log(distance);
 					if (distance < players[j].getCollisionRadius()) {		//Then there is a collision
 						players[j].takeDamage();
 						canonballs.splice(i, 1);		//Removes the canonball from the array
