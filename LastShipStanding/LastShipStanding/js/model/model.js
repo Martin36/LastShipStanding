@@ -18,8 +18,8 @@ var model = function () {
 
 	var arrowImage = new Image();
 	arrowImage.alt = "arrowImage";
-	arrowImage.width = 50;
-	arrowImage.height = 50;
+	arrowImage.width = 100;
+	arrowImage.height = 100;
 	arrowImage.src = "images/windArrow.png";
 
 
@@ -82,6 +82,13 @@ var model = function () {
 			else {
 				canonballs[j].updatePosition(windVelocity, dt);
 			}
+<<<<<<< HEAD
+=======
+			else {
+				canonballs[j].updatePosition(dt);
+			//	console.log("Position Updated!")
+			}
+>>>>>>> a64fad97904ecc86fb9c87cc37ceaf88bdb1731d
 		}
 
 		checkForCollisions();
@@ -112,7 +119,6 @@ var model = function () {
 			canonball2.setVelocity(velocity2);
 			canonballs.push(canonball1);
 			canonballs.push(canonball2);
-			console.log("Finished firing!");
 			players[playerNr].fired();
 
 		}
@@ -127,7 +133,6 @@ var model = function () {
 					var playerPosition = players[j].getPosition().clone();
 					var vectorToPlayer = playerPosition.subtract(canonballs[i].getPosition());
 					var distance = vectorToPlayer.length();
-					//console.log(distance);
 					if (distance < players[j].getCollisionRadius()) {		//Then there is a collision
 						players[j].takeDamage();
 						console.log("Player " + j + 1 + " is hit!");
