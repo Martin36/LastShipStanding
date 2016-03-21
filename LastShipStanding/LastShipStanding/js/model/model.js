@@ -3,6 +3,8 @@ var model = function () {
 	var players = [];
 	var canonballs = [];
 	var environment = new Environment();
+	var environmentCooldown = 300;
+	var environmentTimer = environmentCooldown;
 	var randomizePos = false;
 	var canonballSpeed = 10;
 	var folder = ""; 		//Path to the folder where the source images is contained
@@ -43,7 +45,11 @@ var model = function () {
 
 	// Vector algebra by using the Victor package
 	this.update = function (dt) {
-
+		if (environmentTimer <= 0) {
+			environmentTimer = environmentCooldown;
+			environment.update();
+			//Notify observers
+		}
 		var windVelocity = environment.getWindVelocity();
 		var scalar = new Victor();			//Vector to represent distance scalar in vector multiplication(needed for Victor package)
 
@@ -51,16 +57,17 @@ var model = function () {
 		for (var i = 0; i < players.length; i++) {
 			//document.write(players[i].getName());
 			players[i].updatePosition(windVelocity, dt);
-			var canonballs = players[i].getCanonballs();
-			for (var j = 0; j < canonballs.length; j++) {
-				if (canonballs[j].isDead()) {
-					canonballs.pop();
-				}
+//			var canonballs = players[i].getCanonballs();
+		}
+		for (var j = 0; j < canonballs.length; j++) {
+			if (canonballs[j].isDead()) {
+				canonballs.pop();
 			}
 		}
 
 		checkForCollisions();
-
+		environmentTimer -= dt;
+		
 		// Should Controller contain a gameloop which calls this??
 	}
 
@@ -88,6 +95,7 @@ var model = function () {
 			canonballs.push(canonball2);
 			console.log("Finished firing!");
 			players[playerNr].fired();
+
 		}
 	};
 
