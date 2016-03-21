@@ -63,7 +63,7 @@ var model = function () {
 			if (canonballs[j].isDead()) {
 				canonballs.pop();
 			}
-			canonballs[j].updatePosition();
+			canonballs[j].updatePosition(windVelocity, dt);
 		}
 
 		checkForCollisions();

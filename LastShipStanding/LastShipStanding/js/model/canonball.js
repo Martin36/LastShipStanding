@@ -7,7 +7,7 @@
 	var dead = false;
 	var whichPlayer = 0;
 
-	this.updatePosition = function(windVelocity, dt){
+	this.updatePosition = function(dt){
 //		velocity.add(windVelocity);		//Calculate the new velocity depending on the wind velocity
 		var distanceVector = new Victor(dt, dt).multiply(velocity);
 		position.add(distanceVector);
