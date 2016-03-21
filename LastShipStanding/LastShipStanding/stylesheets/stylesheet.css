@@ -52,11 +52,11 @@ body {
 
 #view2 .col-lg-6 {
 	height: 10em;
-	border: 1px solid black;
+	border: 0.125em solid black;
 }
 
 #view2 .row{
-	margin-top:4px;
+	margin-top:0.5em;
 }
 
 

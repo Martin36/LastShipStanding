@@ -113,7 +113,7 @@ var View3 = function (model) {
 		if(player.getCooldownTimer() == 0){
 			width = (player.getImage().width );
 		}else{
-			width = (player.getImage().width ) *  player.getCooldownTimer() / 300;
+			width = (player.getImage().width ) *  player.getCooldownTimer() / player.getCooldownTime();
 		}
 		ctx.rect( player.getPosition().x - player.getImage().width / 2, //x
 		 player.getPosition().y - player.getImage().height + 10,		//y

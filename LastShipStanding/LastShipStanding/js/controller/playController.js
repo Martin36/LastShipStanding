@@ -25,19 +25,18 @@ var playController = function(view,model) {
 	document.onkeydown = document.onkeyup = function(e){
 		e = e || event;
 		map[e.keyCode] = e.type == 'keydown';
-		
+	}
+	
+	function timer(){
+		model.update(1);
+		view.update();
 		for(i in Players){
 			var keys = Players[i].getKeyBindings();
 			if (map[keys[0]])	{ Players[i].rotateLeft();   /*console.log(Players[i].getName()+"'s Going left!");*/ }
 //			if (map[keys[1]]) { Players[i].fire();		 /*console.log(Players[i].getName()+"'s shots fired!!");*/ }
 			if (map[keys[1]]) { model.fire(i);		 /*console.log(Players[i].getName()+"'s shots fired!!");*/ }
 			if (map[keys[2]]) { Players[i].rotateRight();  /*console.log(Players[i].getName()+"'s Going right!");*/ }
-		}	
-	}
-	
-	function timer(){
-		model.update(1);
-		view.update();
+		};
 	}
 	
 	

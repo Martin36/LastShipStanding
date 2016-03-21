@@ -93,6 +93,9 @@ var model = function () {
 	//Function for firing the cannon
 	this.fire = function (playerNr) {
 		if (players[playerNr].isFireReady()) {
+			var audio = new Audio('sounds/canonFire.mp3');
+			audio.play();
+
 			var position = players[playerNr].getPosition().clone();
 			var playerDirection = players[playerNr].getDirection().clone();
 

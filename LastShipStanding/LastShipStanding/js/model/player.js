@@ -51,6 +51,7 @@ var Player = function () {
 			dead = true;
 		}
 	};
+	/*
 	this.fire = function(){
 		if(fireReady){
 			//The canonballs should be fired in the perpendicular direction to the boat
@@ -70,7 +71,7 @@ var Player = function () {
 			fireReady = false;
 		}
 
-	}
+	}*/
 
 	this.updatePosition = function(windVelocity, dt){
 		var windDirection = windVelocity.clone().normalize();
@@ -143,6 +144,7 @@ var Player = function () {
 	this.fired = function () { fireReady = false; };
 	this.getImage = function () { return mapImage; };
 	this.getCooldownTimer = function () { return cooldownTimer; };
+	this.getCooldownTime = function () { return cooldown; };
 	return this;
 }
 
