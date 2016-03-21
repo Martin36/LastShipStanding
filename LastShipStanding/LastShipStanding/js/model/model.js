@@ -16,6 +16,12 @@ var model = function () {
 	canonballImage.height = 30;
 	canonballImage.src = "images/canonBall.png";
 
+	var arrowImage = new Image();
+	arrowImage.alt = "arrowImage";
+	arrowImage.width = 50;
+	arrowImage.height = 50;
+	arrowImage.src = "images/windArrow.png";
+
 
 
 
@@ -70,7 +76,7 @@ var model = function () {
 			if (canonballs[j].isDead()) {
 				canonballs.pop();
 			}
-			canonballs[j].updatePosition();
+			canonballs[j].updatePosition(windVelocity, dt);
 		}
 
 		checkForCollisions();
@@ -127,6 +133,7 @@ var model = function () {
 
 	this.getEnvironment = function () { return environment; };
 	this.getCanonballImage = function () { return canonballImage; };
+	this.getArrowImage = function () { return arrowImage; };
 
 
 	return this;
