@@ -82,13 +82,6 @@ var model = function () {
 			else {
 				canonballs[j].updatePosition(windVelocity, dt);
 			}
-<<<<<<< HEAD
-=======
-			else {
-				canonballs[j].updatePosition(dt);
-			//	console.log("Position Updated!")
-			}
->>>>>>> a64fad97904ecc86fb9c87cc37ceaf88bdb1731d
 		}
 
 		checkForCollisions();
