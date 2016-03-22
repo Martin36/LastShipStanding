@@ -1,5 +1,7 @@
 //View Object constructor
 var View2 = function (model) {
+	this.startButton = $("#view2_startBtn");
+	this.backButton = $("#view2_backBtn");
 	//Should be created in JavaSCript because it's dynamic
 
 	///////////////////////////////////
@@ -343,11 +345,23 @@ var View2 = function (model) {
 		}
 
 	}
-	
+
+	//create the view instantly so the buttons are possible to find?
+	//this.createHtml(4);
+
+	/*
 	this.startButton = document.createElement('button');
 	this.startButton.className = 'btn btn-primary';
 	var buttonText = document.createTextNode('Start Game');
 	this.startButton.appendChild(buttonText);
 
+	this.backButton = document.createElement('button');
+	this.startButton.className = 'btn btn-primary';
+	var buttonText = document.createTextNode('Start Game');
+	this.startButton.appendChild(buttonText);
+
 	document.getElementById('view2').appendChild(this.startButton);
+	document.getElementById('view2').appendChild(this.startButton);
+	*/
+
 }
