@@ -86,9 +86,12 @@ var model = function () {
 		}
 		for (var j = 0; j < canonballs.length; j++) {
 			if (canonballs[j].isDead()) {
+				canonballs.shift();		//removes top element
+				/*
 				canonballs.reverse();
 				canonballs.pop();
 				canonballs.reverse();
+*/
 				//break;
 			}
 			else {
@@ -98,6 +101,7 @@ var model = function () {
 
 	    //checkForCollisions();
 		this.checkForCollisions();
+		this.checkForCanonballCollisions();
 		environmentTimer -= dt;
 		
 		// Should Controller contain a gameloop which calls this??
@@ -145,14 +149,31 @@ var model = function () {
 					var vectorToPlayer = playerPosition.subtract(canonballs[i].getPosition());
 					var distance = vectorToPlayer.length();
 					if (distance < players[j].getCollisionRadius()) {		//Then there is a collision
-					    this.getBoatHitAudio().play(); // Boat hit audio
+					  this.getBoatHitAudio().play(); // Boat hit audio
 						players[j].takeDamage();
 						hitIndex.push(i);
 					}
 				}
 			}
 		}
-		for (i in hitIndex) {
+		hitIndex.sort();
+		for (var i = hitIndex.length - 1; i >= 0; i--) {
+			canonballs.splice(hitIndex[i], 1);
+		}
+	}
+	this.checkForCanonballCollisions = function () {
+		var hitIndex = [];		//Which canonballs collided
+		for (var i = 0; i < canonballs.length; i++) {
+			for (var j = i + 1; j < canonballs.length; j++) {			//Just want to check the remaining canonballs
+				var distance = canonballs[i].getPosition().clone().subtract(canonballs[j].getPosition()).length();	//Distance from canonball i to canonball j
+				if (distance < canonballs[i].getCollisionRadius() * 2 && canonballs[i].getPlayer() !== canonballs[j].getPlayer()) {
+					hitIndex.push(i);
+					hitIndex.push(j);
+				}
+			}
+		}
+		hitIndex.sort();
+		for (var i = hitIndex.length - 1; i >= 0; i--) {		//Start from the end so the order doesn't fuck up
 			canonballs.splice(hitIndex[i], 1);
 		}
 	}
