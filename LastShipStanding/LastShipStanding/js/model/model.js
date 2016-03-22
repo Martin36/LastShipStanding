@@ -29,6 +29,21 @@ var model = function () {
 	this.getBgAudio = function () { return bgMusicAudio; };
 	this.getBattleAudio = function () { return battleAudio; };
 	this.getBoatHitAudio = function () { return new Audio('sounds/boatHit1.mp3'); };
+	
+	var observers = [];
+	
+	//Adds new observer.
+	this.addObserver = function(obs){
+		observers.push(obs);
+		console.log("Added an observer");
+	}
+	//Notifies observer with info. Used to update score for now.
+	this.notifyObservers = function(info){
+		console.log("Sending information to observers");
+		for(i in observers){
+			observers[i].newInfo();
+		}
+	}
 
 	this.getFireAudio = function () {
 	    fireAudio = [new Audio('sounds/canonFire2.mp3'),
@@ -62,7 +77,6 @@ var model = function () {
 	this.removeAllPlayers = function(){
 		while(players.length > 0){
 			players.pop();
-			console.log(players.length);
 		}
 	}
 

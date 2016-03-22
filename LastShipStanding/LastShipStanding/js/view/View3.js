@@ -9,6 +9,13 @@ var View3 = function (model) {
 	canvas.width = 1400;
 	canvas.height = 800;
 	var ctx = canvas[0].getContext('2d');
+	
+	model.addObserver(this);
+	
+	this.newInfo = function(){
+		//when called from model with newInfo.
+		console.log("Information retrieved from model");
+	}
 
 	this.update = function(){ 
 		drawMap();
