@@ -16,6 +16,8 @@ var playController = function(view,model) {
 		$("[id=view3]").hide(); //main menu
 		$("[id=view2]").show(); //play menu
 		stopGame();
+		model.removeAllPlayers();
+		model.getBattleAudio().pause();
 	}
 	
 	var startGame = function(){
