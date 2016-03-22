@@ -21,128 +21,20 @@
 		<h1 id="view1_title">LAST SHIP STANDING</h1>
 		<img src="images/sketch.jpg" alt="A cool boat">
 		<button type="button" class="btn btn-primary" id="view1_playBtn">Create New Game</button> <br>
-		<button type="button" class="btn btn-primary" id="view1_HOWBtn">How To Play ( Noob )</button>
+		<button type="button" class="btn btn-primary" id="view1_HOWBtn">How To Play ( Noob )</button> <br>
         <button type="button" class="btn btn-primary" id="view1_muteBtn">Mute :(</button>
 	</div>
 
 	<div id="view2" class="wrapper" hidden>
 		<div id="view2_selections"></div>
+		<button type="button" class="btn btn-primary" id="view2_startBtn">Start Game</button> <br>
+		<button type="button" class="btn btn-primary" id="view2_backBtn">Back</button>
 	</div>
-	<!--
-	<div id="view2" class="wrapper" hidden >
 	
-			<div class="row">
-				<div class="col-lg-6" >
-					<div class="row">
-						<div class="col-lg-11" >
-							<input type="text" class="form-control" id="usr" placeholder="Player Name 1">
-						</div>
-						<div class="col-lg-1" >
-							<button type="button" class="btn btn-danger">X</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-success" id="KeyAssign">A</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-success" id="KeyAssign">W</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-success" id="KeyAssign">S</button> <br>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6" >
-					<div class="row">
-						<div class="col-lg-11" >
-							<input type="text" class="form-control" id="usr" placeholder="Player Name 2">
-						</div>
-						<div class="col-lg-1" >
-							<button type="button" class="btn btn-danger">X</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-success" id="KeyAssign">F</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-success" id="KeyAssign">T</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-success" id="KeyAssign">H</button> <br>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-lg-6" >
-					<div class="row">
-						<div class="col-lg-11" >
-							<input type="text" class="form-control" id="usr" placeholder="Player Name 3">
-						</div>
-						<div class="col-lg-1" >
-							<button type="button" class="btn btn-danger">X</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-success" id="KeyAssign">J</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-success" id="KeyAssign">I</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-success" id="KeyAssign">L</button> <br>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6" >
-					<div class="row">
-						<div class="col-lg-11" >
-							<input type="text" class="form-control" id="usr" placeholder="Player Name 4">
-						</div>
-						<div class="col-lg-1" >
-							<button type="button" class="btn btn-danger">X</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-success" id="KeyAssign">ArrowLeft</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-success" id="KeyAssign">ArrowUp</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-success" id="KeyAssign">ArrowRight</button> <br>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-		<button type="button" class="btn btn-primary" id="view2_2players"> Start </button> 
-
-	</div>
-	-->
 	<div id="view3" class="wrapper" hidden>
 		<div class="row">
 			<table>
-					<tr>
-						<th>Round</th>
-						<th>0/5</th>
-
-						<th>Player1 </th>
-						<th>Score1</th>
-
-						<th>Player2 </th>
-						<th>Score2</th>
-
-						<th>Player3 </th>
-						<th>Score3</th>
-
-						<th>Player4 </th>
-						<th>Score4</th>
+					<tr id='view3_scoreTr'>
 					</tr>
 			</table>
 		</div>

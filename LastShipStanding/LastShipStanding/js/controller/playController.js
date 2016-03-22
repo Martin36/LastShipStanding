@@ -1,7 +1,6 @@
 var playController = function(view,model) {
 	
 	Players = model.getPlayers();
-	
 	var interValID;
 	
 	view.resumeBtn[0].onclick = function(){
@@ -21,6 +20,7 @@ var playController = function(view,model) {
 	}
 	
 	var startGame = function(){
+		view.initScore();
 		interValID = setInterval(timer,17);
 	}
 	

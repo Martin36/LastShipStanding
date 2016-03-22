@@ -1,4 +1,4 @@
-var startController = function(view,model) {
+    var startController = function(view,model) {
 
     // Loop the bg music
     model.getBgAudio().loop = true;

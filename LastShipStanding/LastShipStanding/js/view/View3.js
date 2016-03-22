@@ -22,6 +22,9 @@ var View3 = function (model) {
 		drawProjectiles();
 		drawPlayers();
 		drawArrow( model.getEnvironment().getWindAngle(), model.getEnvironment().getWindMagnitude() );
+
+		//move out of update if observer is added, can also change updateScore too only do 1 player for effectiveness
+		this.updateScore(); 
 	}
 
 	function drawMap(){
@@ -130,6 +133,39 @@ var View3 = function (model) {
 		ctx.fillStyle = '#ffffff';
 		ctx.font = '1.875em Arial';
 		ctx.fillText( Math.floor(windSpeed*10) + ' m/s', canvas.width - model.getArrowImage().width, model.getArrowImage().height + 25);
+	}
+
+	this.initScore = function(){
+		var players = model.getPlayers();
+		for(i=0; i<players.length; i++){
+			var playerName = document.createElement('th');
+			var textName = document.createTextNode( players[i].getName() );
+			playerName.appendChild(textName);
+
+			var playerScore = document.createElement('th');
+			var textScore = document.createTextNode('1'); //<----------------get score from model or player?
+			playerScore.setAttribute('id', 'view3_score' + i);
+			playerScore.appendChild(textScore);
+
+			document.getElementById('view3_scoreTr').appendChild(playerName);
+			document.getElementById('view3_scoreTr').appendChild(playerScore);
+		}
+	}
+
+	this.updateScore = function(){
+		console.log('updateScore');
+		var players = model.getPlayers();
+		for(i=0; i<players.length; i++){
+			var playerScore = document.getElementById('view3_score' + i);
+
+			//ugly solution
+			while (playerScore.firstChild) {
+			    playerScore.removeChild(playerScore.firstChild);
+			}
+			var textScore = document.createTextNode('2'); //<----------------get score from model or player?
+			//var textScore = players[i].getScore();
+			playerScore.appendChild(textScore);
+		}
 	}
 
 }

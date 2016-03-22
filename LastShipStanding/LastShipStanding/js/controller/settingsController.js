@@ -1,6 +1,12 @@
 var settingsController = function(view, controller, model ) {
-	view.createHtml(3);
-	view.startButton.onclick = function(){
+
+	view.createHtml(3); // creates the html for 3 players;
+
+	view.backButton[0].onclick = function(){
+		$("[id=view2]").hide(); //main menu
+		$("[id=view1]").show(); //play menu
+	};
+	view.startButton[0].onclick = function(){
 		$("[id=view2]").hide(); //main menu
 		model.addPlayer('Staffan');
 		model.getPlayers()[0].setPosition(new Victor(30,40));
@@ -16,7 +22,7 @@ var settingsController = function(view, controller, model ) {
 		model.getBattleAudio().play();
 
 		$("[id=view3]").show(); //play menu
-	}
+	};
 
 
 }
