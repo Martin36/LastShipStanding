@@ -4,7 +4,6 @@ var playController = function(view,model) {
 	var interValID;
 	var paused=false;
 	var playMusic = true;
-	var gameActive = false;
 	
 
 	view.pauseBtn[0].onclick = function(){
@@ -26,6 +25,9 @@ var playController = function(view,model) {
 		stopGame();
 		model.removeAllPlayers();
 		model.getBattleAudio().pause();
+		view.musicBtn[0].innerHTML = "Music ON";
+		view.fxBtn[0].innerHTML = "Fx ON";
+		view.pauseBtn[0].innerHTML = 'Pause Game';
 	}
 
 	view.musicBtn[0].onclick = function () {
@@ -53,23 +55,17 @@ var playController = function(view,model) {
     };
 	
 	var startGame = function(){
-		if(!gameActive){
-			interValID = setInterval(timer,17);
-			gameActive = true;
-		}
+		interValID = setInterval(timer,17);
+
 	}
 	
 	var stopGame = function(){
-		if(gameActive){
-			clearInterval(interValID);
-			gameActive = false;
-		}
+		clearInterval(interValID);
 	}
 	
 	this.startUp = function(){
 		view.initScore();
 		startGame();
-		gameActive = true;
 	}
 	
 	var map = [];
