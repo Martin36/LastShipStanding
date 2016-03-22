@@ -4,6 +4,8 @@ var playController = function(view,model) {
 	var interValID;
 	var paused=false;
 	var playMusic = true;
+	var gameActive = false;
+	
 
 	view.pauseBtn[0].onclick = function(){
 
@@ -51,16 +53,23 @@ var playController = function(view,model) {
     };
 	
 	var startGame = function(){
-		view.initScore();
-		interValID = setInterval(timer,17);
+		if(!gameActive){
+			interValID = setInterval(timer,17);
+			gameActive = true;
+		}
 	}
 	
 	var stopGame = function(){
-		clearInterval(interValID);
+		if(gameActive){
+			clearInterval(interValID);
+			gameActive = false;
+		}
 	}
 	
 	this.startUp = function(){
+		view.initScore();
 		startGame();
+		gameActive = true;
 	}
 	
 	var map = [];
