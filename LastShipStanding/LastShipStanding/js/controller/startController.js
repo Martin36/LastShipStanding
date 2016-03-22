@@ -27,17 +27,12 @@
     var vol = 0.05;
     var fadeIn = setInterval(
     function() {
-        // Reduce volume by 0.05 as long as it is above 0
-        // This works as long as you start with a multiple of 0.05!
         if (vol < 1) {
             model.getBgAudio().volume = vol;
             vol += 0.05;
         }
         else {
-            // Stop the setInterval when 0 is reached
             clearInterval(fadeIn);
         }
     }, 400);
-
-
 }
