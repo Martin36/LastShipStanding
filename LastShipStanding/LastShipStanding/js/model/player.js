@@ -2,7 +2,8 @@ var Player = function () {
 
     var name = "",
 		pos = new Victor(),
-		dir = new Victor(1, 0), // Use a direction instead of angle?
+		dir = new Victor(1, 0),
+		engineSpeed = 1,
 		angle = 0.0,
 		speed = 0.0,
 		hp = 0,
@@ -22,7 +23,7 @@ var Player = function () {
 
 	// Give variables standard values
 	hp = 100;
-	deltaA = Math.PI / 12;
+	deltaA = Math.PI / 100;
 	pos.x = 700, pos.y = 400;
 //	speed = 3;
 	this.rotateRight = function () {
@@ -51,27 +52,6 @@ var Player = function () {
 			dead = true;
 		}
 	};
-	/*
-	this.fire = function(){
-		if(fireReady){
-			//The canonballs should be fired in the perpendicular direction to the boat
-			var canonball1 = new Canonball();
-			var canonball2 = new Canonball();
-			canonball1.setPosition(pos.clone());		//Add offset to starting position?
-			canonball2.setPosition(pos.clone());
-
-			//The vector [x, y] have the orthogonal vector [y, -x] for arbitrary values of x and y the reversed vector of [y, -x] is [-y, x]
-			//The multiplication with the canonball speed makes sure that the velocity for the canonball is correct
-			var velocity1 = new Victor(dir.y * canonball1.getSpeed(), -dir.x * canonball1.getSpeed());
-			var velocity2 = new Victor(-dir.y * canonball2.getSpeed(), dir.x * canonball2.getSpeed());
-			canonball1.setVelocity(velocity1);
-			canonball2.setVelocity(velocity2);
-			canonballs.push(canonball1);
-			canonballs.push(canonball2);
-			fireReady = false;
-		}
-
-	}*/
 
 	this.updatePosition = function(windVelocity, dt){
 		var windDirection = windVelocity.clone().normalize();
@@ -81,13 +61,13 @@ var Player = function () {
 		speed = windMagnitude * cosOfAngle;		//If the wind is parallell to the boat then the speed becomes equal to the magnitue of the wind, if it is perpendicular then it becomes 0	
 
 		//Here the player is moved to the right position
-		var distance = speed * dt;
-		var scalar = new Victor();
-		scalar.x = distance;
-		scalar.y = distance;
-		var distanceVector = scalar.multiply(dir);		//The lenght and direction to move the player
+		var distanceVector = new Victor(speed * dt, speed * dt).multiply(dir);		//The distance traveled with the wind
+
+		//Effect of the engine
+		var distanceVectorFromEngine = new Victor(engineSpeed * dt, engineSpeed * dt).multiply(dir);	//The distance traveled with the engine
+		distanceVector.add(distanceVectorFromEngine);		//Final distance traveled
+
 		checkBoundaries(distanceVector);
-		//document.write(distanceVector.toString());
 		pos.add(distanceVector);
 		//Check if canons are ready to fire
 		if(!fireReady){
@@ -148,3 +128,24 @@ var Player = function () {
 	return this;
 }
 
+/*
+this.fire = function(){
+	if(fireReady){
+		//The canonballs should be fired in the perpendicular direction to the boat
+		var canonball1 = new Canonball();
+		var canonball2 = new Canonball();
+		canonball1.setPosition(pos.clone());		//Add offset to starting position?
+		canonball2.setPosition(pos.clone());
+
+		//The vector [x, y] have the orthogonal vector [y, -x] for arbitrary values of x and y the reversed vector of [y, -x] is [-y, x]
+		//The multiplication with the canonball speed makes sure that the velocity for the canonball is correct
+		var velocity1 = new Victor(dir.y * canonball1.getSpeed(), -dir.x * canonball1.getSpeed());
+		var velocity2 = new Victor(-dir.y * canonball2.getSpeed(), dir.x * canonball2.getSpeed());
+		canonball1.setVelocity(velocity1);
+		canonball2.setVelocity(velocity2);
+		canonballs.push(canonball1);
+		canonballs.push(canonball2);
+		fireReady = false;
+	}
+
+}*/
