@@ -49,32 +49,72 @@ body {
 
 
 /* CSS of view2 */
+#view2 {
+	margin: 4em;
+}
+#view2 .container{
+	width:60em;
+	display: inline-block;
+	margin: 1em;
+	border-style: solid;
+	border-width: 0.25em;
+	border-color: black;
+}
 
-#view2 .col-lg-6 {
+#view2 .btn-success{
+	display: table;
+	margin: 0.5em auto;
+	width: 10em;
 	height: 10em;
-	border: 0.125em solid black;
 }
-
-#view2 .row{
-	margin-top:0.5em;
-}
-
-
-#view2 #container{
-	height: 90%;
-	width:  80%;
-}
-
-#view2 .btn.btn-primary{
+#view2 .btn-info{
 	display: table;
 	margin: 0 auto;
-	width: 10em;
+	margin-left: 0.5em;
+	margin-bottom: 0.5em;
+	width: 8em;
 	height: 3em;
-	margin-bottom: 2em;
+}
+#view2 .btn-primary{
+	display: table;
+	margin: 0 auto;
+	width: 30em;
+	height: 5em;
+}
+#view2 .addy{
+	display: table;
+	margin: 0 auto;
+	margin-top:1em;
+	width: 36em;
+	height: 3em;
+}
+#view2 .btn-danger{
+	height: 3em;
+	width: 3em;
+	margin-top: 1em;
+	margin-left: 1.5em;
 }
 
+#view2 input{
+	margin-top: 1em;
+	height: 3em;
+	width: 30em;
+}
+#view2 img{
+	margin-top: 2.55em;
+	width: 20em;
+	height: 15em;
+}
 
+#view2 p{
+	color: white;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 2.5em;
 
+	margin-top: 1em;
+	text-align: center;
+
+}
 
 /* CSS of view3 */
 #view3{
