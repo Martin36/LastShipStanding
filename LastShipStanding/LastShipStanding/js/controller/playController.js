@@ -2,6 +2,7 @@ var playController = function(view,model) {
 	
 	Players = model.getPlayers();
 	var interValID;
+	var gameActive = false;
 	
 	view.resumeBtn[0].onclick = function(){
 		startGame(); 
@@ -20,16 +21,23 @@ var playController = function(view,model) {
 	}
 	
 	var startGame = function(){
-		view.initScore();
-		interValID = setInterval(timer,17);
+		if(!gameActive){
+			interValID = setInterval(timer,17);
+			gameActive = true;
+		}
 	}
 	
 	var stopGame = function(){
-		clearInterval(interValID);
+		if(gameActive){
+			clearInterval(interValID);
+			gameActive = false;
+		}
 	}
 	
 	this.startUp = function(){
+		view.initScore();
 		startGame();
+		gameActive = true;
 	}
 	
 	var map = [];
