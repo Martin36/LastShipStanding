@@ -16,8 +16,7 @@ var View2 = function (model) {
 	//	Add Player Btns : addPlayerBtn(j)
 	///////////////////////////////////
 
-	this.createHtml = function( players ){
-		var nr_of_players = players;
+	this.createHtml = function( nr_of_players ){
 		for(i=0; i<nr_of_players; i++){
 			//container for it all, might be unecessary
 			var container = document.createElement('div');

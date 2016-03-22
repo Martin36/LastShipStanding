@@ -2,13 +2,20 @@ var playController = function(view,model) {
 	
 	Players = model.getPlayers();
 	var interValID;
-	
-	view.resumeBtn[0].onclick = function(){
-		startGame(); 
-	}
+	var paused=false;
+	var playMusic = true;
 
 	view.pauseBtn[0].onclick = function(){
-		stopGame(); 
+
+		if(paused){
+			startGame();
+			paused=false;
+			view.pauseBtn[0].innerHTML = 'Pause Game';
+		}else{
+			stopGame();
+			paused=true;
+			view.pauseBtn[0].innerHTML = 'Start Game';
+		} 
 	}
 
 	view.backBtn[0].onclick = function(){
@@ -18,6 +25,30 @@ var playController = function(view,model) {
 		model.removeAllPlayers();
 		model.getBattleAudio().pause();
 	}
+
+	view.musicBtn[0].onclick = function () {
+        if (playMusic) {
+            model.getBattleAudio().pause();
+            playMusic = false;
+            view.musicBtn[0].innerHTML = "Music OFF";
+        }
+        else {
+            model.getBattleAudio().play();
+            playMusic = true;
+            view.musicBtn[0].innerHTML = "Music ON";
+        }
+    };
+
+    view.fxBtn[0].onclick = function () {
+        if (model.playFx) {
+            model.playFx = false;
+            view.fxBtn[0].innerHTML = "Fx OFF";
+        }
+        else {
+            model.playFx = true;
+            view.fxBtn[0].innerHTML = "Fx ON";
+        }
+    };
 	
 	var startGame = function(){
 		view.initScore();

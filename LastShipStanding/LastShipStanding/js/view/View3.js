@@ -1,11 +1,12 @@
 //View Object constructor
 var View3 = function (model) {
-	this.resumeBtn = $("#view3_resumeBtn");
-	this.backBtn = $("#view3_backBtn");
-	this.pauseBtn = $("#view3_pauseBtn");
+	this.backBtn = $('#view3_backBtn');
+	this.pauseBtn = $('#view3_pauseBtn');
+	this.musicBtn = $('#view3_musicBtn');
+	this.fxBtn = $('#view3_fxBtn');
 
 	//map canvas
-	var canvas = $("#view3_canvas");
+	var canvas = $('#view3_canvas');
 	canvas.width = 1400;
 	canvas.height = 800;
 	var ctx = canvas[0].getContext('2d');
@@ -129,6 +130,11 @@ var View3 = function (model) {
 	}
 
 	this.initScore = function(){
+		//if there are scoreboard from before, delete them
+		while (document.getElementById('view3_scoreTr').firstChild) {
+			    document.getElementById('view3_scoreTr').removeChild(document.getElementById('view3_scoreTr').firstChild);
+			}
+
 		var players = model.getPlayers();
 		for(i=0; i<players.length; i++){
 			var playerName = document.createElement('th');
@@ -146,7 +152,6 @@ var View3 = function (model) {
 	}
 
 	this.updateScore = function(){
-		console.log('updateScore');
 		var players = model.getPlayers();
 		for(i=0; i<players.length; i++){
 			var playerScore = document.getElementById('view3_score' + i);

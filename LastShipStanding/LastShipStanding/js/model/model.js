@@ -23,6 +23,8 @@ var model = function () {
 	arrowImage.height = 100;
 	arrowImage.src = "images/windArrow.png";
 
+	this.playFx = true;
+
 	bgMusicAudio = new Audio('sounds/menuMusic1.mp3');
 	battleAudio = new Audio('sounds/battleMusic.mp3');
 
@@ -118,7 +120,7 @@ var model = function () {
 	this.fire = function (playerNr) {
 		if (players[playerNr].isFireReady()) {
 
-		    this.getFireAudio().play(); // FIRE!!!
+		    if(this.playFx){ this.getFireAudio().play(); }
 
 			var position = players[playerNr].getPosition().clone();
 			var playerDirection = players[playerNr].getDirection().clone();
@@ -156,7 +158,7 @@ var model = function () {
 					var vectorToPlayer = playerPosition.subtract(canonballs[i].getPosition());
 					var distance = vectorToPlayer.length();
 					if (distance < players[j].getCollisionRadius()) {		//Then there is a collision
-					  this.getBoatHitAudio().play(); // Boat hit audio
+					  	if(this.playFx) { this.getBoatHitAudio().play(); } // Boat hit audio
 						players[j].takeDamage();
 						hitIndex.push(i);
 					}
