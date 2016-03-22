@@ -1,6 +1,6 @@
 //View Object constructor
 var View3 = function (model) {
-	this.refreshBtn = $("#view3_refreshBtn");
+	this.resumeBtn = $("#view3_resumeBtn");
 	this.backBtn = $("#view3_backBtn");
 	this.pauseBtn = $("#view3_pauseBtn");
 

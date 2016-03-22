@@ -58,6 +58,13 @@ var model = function () {
 		else
 			alert("The list of players is empty!");
 	};
+	
+	this.removeAllPlayers = function(){
+		while(players.length > 0){
+			players.pop();
+			console.log(players.length);
+		}
+	}
 
 	this.getPlayer = function (index) {
 		if (index < 0 || index > players.length) {	//Safety check

@@ -15,7 +15,7 @@ var settingsController = function(view, controller, model ) {
 		model.addPlayer('Roland');
 		model.getPlayers()[2].setPosition(new Victor(150,700));
 		model.addPlayer('Josef');
-		controller.startGame();
+		controller.startUp();
 
 		model.getBgAudio().pause(); // Pause the menu music
 		model.getBattleAudio().loop = true; // Start the battle music
