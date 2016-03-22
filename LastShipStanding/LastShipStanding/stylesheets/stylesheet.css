@@ -53,7 +53,7 @@ body {
 	margin: 4em;
 }
 #view2 .container{
-	width:60em;
+	width:55em;
 	display: inline-block;
 	margin: 1em;
 	border-style: solid;
@@ -70,8 +70,8 @@ body {
 #view2 .btn-info{
 	display: table;
 	margin: 0 auto;
-	margin-left: 0.5em;
 	margin-bottom: 0.5em;
+	margin-right:0.5em;
 	width: 8em;
 	height: 3em;
 }
@@ -85,7 +85,7 @@ body {
 	display: table;
 	margin: 0 auto;
 	margin-top:1em;
-	width: 36em;
+	width: 34em;
 	height: 3em;
 }
 #view2 .btn-danger{
