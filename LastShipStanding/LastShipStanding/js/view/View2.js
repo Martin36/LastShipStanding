@@ -127,7 +127,7 @@ var View2 = function (model) {
 			var row2_1 = document.createElement('div');
 			row2_1.className = 'row';
 			var img = document.createElement('img');
-			img.src = 'images/ships/ship_green.png';
+			img.src = 'images/ships/ship_pattern13.png';
 			img.setAttribute('id', 'boatImg' + i);
 			row2_1.appendChild(img);
 
@@ -200,7 +200,7 @@ var View2 = function (model) {
 			var row2_1 = document.createElement('div');
 			row2_1.className = 'row';
 			var img = document.createElement('img');
-			img.src = 'images/ships/ship_green.png';
+			img.src = 'images/ships/ship_pattern13.png';
 			img.setAttribute('id', 'boatImg' + i);
 			row2_1.appendChild(img);
 

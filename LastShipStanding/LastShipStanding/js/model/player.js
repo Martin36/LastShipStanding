@@ -122,13 +122,13 @@ var Player = function () {
 	this.getCollisionRadius = function () { return collisionRadius; };
 	this.isFireReady = function () { return fireReady; };
 	this.fired = function () { fireReady = false; };
-	this.getImage = function () { return mapImage; };
 	this.getCooldownTimer = function () { return cooldownTimer; };
 	this.getCooldownTime = function () { return cooldown; };
 	this.giveScore = function () { score += 10; };
 	this.getScore = function () { return score; };
-	this.setImageSource = function (newSrc) { mapImage.src = newSrc; };
+	this.setImageSource = function (newSrc) { mapImage.src = newSrc; }; // Only set shipImage?
 	this.getImage = function () { return shipImage; };
+	this.setImage = function () { return shipImage; };
 	return this;
 }
 
