@@ -11,6 +11,16 @@ body {
 /* CSS of view1 */
 
 #view1 img{
+	width: 90em;
+	height: 40em;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 4em;
+}
+
+/*
+#view1 img{
 	width: 20em;
 	height: 20em;
 	border: solid black;
@@ -19,6 +29,7 @@ body {
 	margin-right: auto;
 	margin-bottom: 4em;
 }
+*/
 
 #view1 button {
 	display: table;
@@ -37,6 +48,7 @@ body {
   box-shadow: 0 0.15em #666;
   transform: translateY(0.10em);
 }
+/*
 
 #view1_title {
 
@@ -48,7 +60,7 @@ body {
 	margin-top: 2em;
 	margin-bottom: 2em;
 
-	/* Positioning */
+
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -56,7 +68,7 @@ body {
 #view1_title:hover {
 	color:blue;
 }
-
+*/
 
 /* CSS of view2 */
 #view2 {
