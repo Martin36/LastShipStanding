@@ -15,6 +15,41 @@ var View2 = function (model) {
 	//
 	//	Add Player Btns : addPlayerBtn(j)
 	///////////////////////////////////
+	
+	this.createBtn = function(id,parentRow,text,keyName){
+			//Left
+			
+			var col3_1 = document.createElement('div');
+			col3_1.className = 'col-md-4';
+
+			var row4_1 = document.createElement('div');
+			row4_1.className = 'row';
+			
+			//text about button
+			var text1 = document.createElement('p');
+			var ph = document.createTextNode(text);
+			
+			text1.appendChild(ph);
+			row4_1.appendChild(text1);
+			col3_1.appendChild(row4_1);
+
+			var row4_2 = document.createElement('div');
+			row4_2.className = 'row';
+			
+			//button
+			var btn1 = document.createElement('button');
+			btn1.className='btn btn-success';
+			btn1.setAttribute('id', 'keyAssignBtn' + id);
+			
+			var txt1 = document.createTextNode(keyName);
+			btn1.appendChild(txt1);
+			
+			row4_2.appendChild(btn1);
+			col3_1.appendChild(row4_2);
+
+			parentRow.appendChild(col3_1);
+			
+		}
 
 	this.createHtml = function( nr_of_players ){
 		for(i=0; i<nr_of_players; i++){
@@ -186,6 +221,23 @@ var View2 = function (model) {
 
 			document.getElementById('view2_selections').appendChild(container);
 		}
+		
+		
+		this.createArrowBtn = function(id,direction,parentRow){
+			var col3_1 = document.createElement('div');
+			col3_1.className = 'col-md-6';
+			
+			var lBtn = document.createElement('button');
+			lBtn.className='btn btn-info';
+			lBtn.setAttribute('id', 'changeShipBtn' + id);
+			
+			var lTxt = document.createTextNode(direction);
+			lBtn.appendChild(lTxt);
+			
+			col3_1.appendChild(lBtn);
+			parentRow.appendChild(col3_1);
+		}
+		
 		for(j=0; j<(4-nr_of_players); j++){
 			//container for it all, might be unecessary
 			var container = document.createElement('div');
@@ -208,7 +260,11 @@ var View2 = function (model) {
 			var row2_2 = document.createElement('div');
 			row2_2.className = 'row';
 
+			//createArrowBtn = function(id,direction,parentRow)
 			//left arrow button
+			this.createArrowBtn(i,"<--",row2_2);
+			this.createArrowBtn(i,"-->",row2_2);
+			/*
 			var col3_1 = document.createElement('div');
 			col3_1.className = 'col-md-6';
 			var lBtn = document.createElement('button');
@@ -218,8 +274,10 @@ var View2 = function (model) {
 			lBtn.appendChild(lTxt);
 			col3_1.appendChild(lBtn);
 			row2_2.appendChild(col3_1);
+			*/
 
 			//right arrow button
+			/*
 			var col3_2 = document.createElement('div');
 			col3_2.className = 'col-md-6';
 			var rBtn = document.createElement('button');
@@ -229,6 +287,7 @@ var View2 = function (model) {
 			rBtn.appendChild(rTxt);
 			col3_2.appendChild(rBtn);
 			row2_2.appendChild(col3_2);
+			*/
 
 			col1_2.appendChild(row2_2);
 
@@ -256,7 +315,11 @@ var View2 = function (model) {
 			row2_2.className = 'row';
 			//left right shoot, text and buttons
 
-			//Left
+			//Left createBtn = function(id,parentRow,text,keyName)
+			this.createBtn(i,row2_2,"LEFT","A");
+			this.createBtn(i,row2_2,"SHOOT","W");
+			this.createBtn(i,row2_2,"RIGHT","D");
+			/*
 			var col3_1 = document.createElement('div');
 			col3_1.className = 'col-md-4';
 
@@ -281,7 +344,7 @@ var View2 = function (model) {
 			col3_1.appendChild(row4_2);
 
 			row2_2.appendChild(col3_1);
-
+			
 			//Shoot
 			var col3_2 = document.createElement('div');
 			col3_2.className = 'col-md-4';
@@ -307,7 +370,8 @@ var View2 = function (model) {
 			col3_2.appendChild(row4_2);
 
 			row2_2.appendChild(col3_2);
-
+			*/
+			/*
 			//Right
 			var col3_3 = document.createElement('div');
 			col3_3.className = 'col-md-4';
@@ -333,6 +397,7 @@ var View2 = function (model) {
 			col3_3.appendChild(row4_2);
 
 			row2_2.appendChild(col3_3);
+			*/
 
 			col1_1.appendChild(row2_2);
 
