@@ -88,8 +88,7 @@ var model = function () {
 	    //checkForCollisions();
 		this.checkForCollisions();
 		this.checkForCanonballCollisions();
-		environment.update();
-	    //environment.decreaseEVTimer(dt);
+		environment.update(dt);
 	}
 
 	//Function for firing the cannon

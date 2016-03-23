@@ -8,14 +8,12 @@ var Environment = function () {
 	var min = -10;
 	var eVCooldown = 300;
 	var eVTimer = eVCooldown;
-    
-	windVelocity = new Victor(0, 0);
-	windDirection = new Victor(0, 0);
 
-	this.update = function () {
+	this.update = function (dt) {
 	    if (eVTimer <= 0) {
 	        this.generateNewWind();
 	    }
+	    this.decreaseEVTimer(dt);
 	};
 
 	this.generateNewWind = function () {
