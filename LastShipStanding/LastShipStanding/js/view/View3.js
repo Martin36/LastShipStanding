@@ -167,7 +167,7 @@ var View3 = function (model) {
 			while (playerScore.firstChild) {
 			    playerScore.removeChild(playerScore.firstChild);
 			}
-			var textScore = document.createTextNode('2'); //<----------------get score from model or player?
+			var textScore = document.createTextNode(players[i].getScore().toString()); //<----------------get score from model or player?
 			//var textScore = players[i].getScore();
 			playerScore.appendChild(textScore);
 		}

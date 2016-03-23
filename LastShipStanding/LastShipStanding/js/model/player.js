@@ -7,6 +7,7 @@ var Player = function () {
 		angle = 0.0,
 		speed = 0.0,
 		hp = 0,
+        score = 0,
 		deltaA = 0.0,
 		dead = false,
 		keyBindings = [],
@@ -52,6 +53,9 @@ var Player = function () {
 			dead = true;
 		}
 	};
+
+	this.giveScore = function () { score += 10; };
+	this.getScore = function () { return score; };
 
 	this.updatePosition = function(windVelocity, dt){
 		var windDirection = windVelocity.clone().normalize();

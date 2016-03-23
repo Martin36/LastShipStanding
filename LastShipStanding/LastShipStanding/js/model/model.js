@@ -216,6 +216,7 @@ var model = function () {
 					  	if(this.playFx) { this.getBoatHitAudio().play(); } // Boat hit audio
 						players[j].takeDamage();
 						hitIndex.push(i);
+						players[canonballs[i].getPlayer()].giveScore();
 					}
 				}
 			}
