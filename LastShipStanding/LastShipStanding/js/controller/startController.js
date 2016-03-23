@@ -1,10 +1,11 @@
     var startController = function(view,model) {
 
     // Loop the bg music
-    model.getBgAudio().loop = true;
-    model.getBgAudio().volume = 0.0;
-	model.getBgAudio().play();
-	model.fadeIn(model.getBgAudio());
+   var bgAudio = model.getSounds().getBgAudio();
+   bgAudio.loop = true;
+   bgAudio.volume = 0.0;
+   bgAudio.play();
+   model.getSounds().fadeIn(bgAudio);
 	
     var i = true;
 
@@ -15,12 +16,12 @@
 
     view.muteBtn[0].onclick = function () {
         if (i) {
-            model.getBgAudio().pause();
+            model.getSounds().getBgAudio().pause();
             i = false;
             view.muteBtn[0].textContent = "Unmute :)";
         }
         else {
-            model.getBgAudio().play();
+            model.getSounds().getBgAudio().play();
             i = true;
             view.muteBtn[0].textContent = "Mute :(";
         }

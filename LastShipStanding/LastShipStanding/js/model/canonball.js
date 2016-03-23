@@ -2,7 +2,7 @@
 
 	var position = new Victor(0, 0);
 	var velocity = new Victor(0, 0);
-	var speed = 5;
+	var speed = 10;
 	var deathTimer = 200;
 	var dead = false;
 	var whichPlayer = 0;

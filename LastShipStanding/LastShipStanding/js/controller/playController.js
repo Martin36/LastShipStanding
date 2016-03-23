@@ -48,12 +48,12 @@ var playController = function(view,model) {
 
 	view.musicBtn[0].onclick = function () {
         if (playMusic) {
-            model.getBattleAudio().pause();
+            model.getSounds().getBattleAudio().pause();
             playMusic = false;
             view.musicBtn[0].innerHTML = "Music OFF";
         }
         else {
-            model.getBattleAudio().play();
+            model.getSounds().getBattleAudio().play();
             playMusic = true;
             view.musicBtn[0].innerHTML = "Music ON";
         }
