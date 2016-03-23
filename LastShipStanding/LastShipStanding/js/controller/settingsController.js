@@ -1,8 +1,6 @@
 var settingsController = function(view, controller, model ) {
 
 	view.createHtml(3); // creates the html for 3 players;
-	view.deletePlayer(0);
-	view.deletePlayer(1);
 	
 	
 

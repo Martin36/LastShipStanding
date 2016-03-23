@@ -39,6 +39,7 @@ var View2 = function (model) {
 		var btn1 = document.createElement('button');
 		btn1.className='btn btn-success';
 		btn1.setAttribute('id', 'keyAssignBtn' + id);
+		btn1.disabled = true;
 		
 		var txt1 = document.createTextNode(keyName);
 		btn1.appendChild(txt1);
@@ -64,6 +65,37 @@ var View2 = function (model) {
 		col3_1.appendChild(lBtn);
 		parentRow.appendChild(col3_1);
 	}
+
+	this.addPlayer = function( playerIndex ){
+		var parent = document.getElementById('addPlayerBtn'+playerIndex).parentElement;
+		//remove add player button
+		while(parent.firstChild){
+			parent.removeChild(parent.firstChild);
+		}
+
+		//create the input field and x button
+
+		var col3_1 = document.createElement('div');
+			col3_1.className = 'col-md-10';
+			//name input
+			var input = document.createElement('input');
+			input.className = 'form-control';
+			input.placeholder = 'Player Name ' + (playerIndex+1) ;
+			input.setAttribute('id', 'input' + playerIndex);
+			col3_1.appendChild(input);
+			parent.appendChild(col3_1);
+
+			var col3_2 = document.createElement('div');
+			col3_2.className = 'col-md-2';
+			//exit button
+			var btn = document.createElement('button');
+			btn.className='btn btn-danger';
+			btn.setAttribute('id', 'xBtn' + playerIndex);
+			var txt = document.createTextNode('X');
+			btn.appendChild(txt);
+			col3_2.appendChild(btn);
+			parent.appendChild(col3_2);
+	}
 	
 	this.deletePlayer = function( playerIndex ){
 		var parent = document.getElementById('input'+playerIndex).parentElement.parentElement;
@@ -72,7 +104,7 @@ var View2 = function (model) {
 			parent.removeChild(parent.firstChild);
 		}
 
-		//create the addy button
+		//create the add button
 		var addBtn = document.createElement('button');
 			addBtn.className = 'btn btn-primary addy';
 			addBtn.setAttribute('id', 'addPlayerBtn' + playerIndex);
