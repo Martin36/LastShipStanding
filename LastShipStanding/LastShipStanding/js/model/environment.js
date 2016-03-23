@@ -16,11 +16,12 @@ var Environment = function () {
 	    this.decreaseEVTimer(dt);
 	};
 
-	this.generateNewWind = function () {
+	this.generateNewWind = function (first) {
 	    this.resetEVTimer();
 	    //environment.update();
 	    //Should be updated every specified time interval
 	    windMagnitude = Math.random() * 2;
+	    if (first) windMagnitude = Math.random();
 	    //Code to randomize the wind direction using an angle
 	    //This code does not need to normalize the vector
 	    var theta = Math.random() * Math.PI * 2;		//Random angle between 0 and 2pi (radians)
@@ -37,7 +38,7 @@ var Environment = function () {
 	this.getEVTimer = function () { return eVTimer; };
 	this.decreaseEVTimer = function (dt) { eVTimer -= dt; };
 	this.resetEVTimer = function () { eVTimer = eVCooldown; };
-    this.generateNewWind();
+    this.generateNewWind(true);
 	return this;
 
 }

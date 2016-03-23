@@ -16,11 +16,11 @@ var Player = function () {
 		cooldown = 400,
 		cooldownTimer = 0,
 		fireReady = true,
-		shipImage = new Image();
+		shipImage = new Image(); // Set to something else in settingsController
         shipImage.alt = "player";
         shipImage.width = 80;
         shipImage.height = 60;
-        shipImage.src = "images/ships/ship_pattern4.png";
+        shipImage.src = "images/ships/ship_pattern9.png"; // Set to something else in settingsController
 
 	// Give variables standard values
 	hp = 100;
@@ -128,7 +128,7 @@ var Player = function () {
 	this.getScore = function () { return score; };
 	this.setImageSource = function (newSrc) { mapImage.src = newSrc; }; // Only set shipImage?
 	this.getImage = function () { return shipImage; };
-	this.setImage = function () { return shipImage; };
+	this.setImage = function (newship) {shipImage.src = newship;};
 	return this;
 }
 

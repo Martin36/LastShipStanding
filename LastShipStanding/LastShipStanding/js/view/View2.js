@@ -2,6 +2,7 @@
 var View2 = function (model) {
 	this.startButton = $("#view2_startBtn");
 	this.backButton = $("#view2_backBtn");
+	var keys = [["A","W","D"],["F","T","H"],["J","I","L"],["LeftArrow","UpArrow","RightArrow"]];
 	//Should be created in JavaSCript because it's dynamic
 
 	///////////////////////////////////
@@ -57,7 +58,7 @@ var View2 = function (model) {
 		
 		var lBtn = document.createElement('button');
 		lBtn.className='btn btn-info';
-		lBtn.setAttribute('id', 'changeShipBtn' + id);
+		lBtn.setAttribute('id', 'changeShipBtn' +direction+ id);
 		
 		var lTxt = document.createTextNode(direction);
 		lBtn.appendChild(lTxt);
@@ -137,8 +138,8 @@ var View2 = function (model) {
 			var row2_2 = document.createElement('div');
 			row2_2.className = 'row';
 			
-			this.createArrowBtn(i,"<--",row2_2);
-			this.createArrowBtn(i,"-->",row2_2);
+			this.createArrowBtn(i,"Left",row2_2);
+			this.createArrowBtn(i,"Right",row2_2);
 
 			col1_2.appendChild(row2_2);
 
@@ -176,9 +177,9 @@ var View2 = function (model) {
 			row2_2.className = 'row';
 			
 			//left right shoot, text and buttons
-			this.createBtn(i,row2_2,"Left","A");
-			this.createBtn(i,row2_2,"Shoot","W");
-			this.createBtn(i,row2_2,"Right","D");
+			this.createBtn(i,row2_2,"Left",keys[i][0]);
+			this.createBtn(i,row2_2,"Shoot",keys[i][1]);
+			this.createBtn(i,row2_2,"Right",keys[i][2]);
 
 			col1_1.appendChild(row2_2);
 

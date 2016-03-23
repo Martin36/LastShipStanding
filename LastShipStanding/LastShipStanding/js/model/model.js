@@ -7,8 +7,9 @@ var model = function () {
 	var sound = new Sounds();
 	var img = new Images();
 	var defaultKeyBinding = new DefaultKeyBindings();
-	var randomizePos = false;
-
+	var startPos = [new Victor(200, 400), new Victor(650, 100),
+	                new Victor(650, 700), new Victor(1100, 400)]
+	
 	//Adds new observer.
 	this.addObserver = function(obs){
 		observers.push(obs);
@@ -22,18 +23,17 @@ var model = function () {
 		}
 	}
 
-	this.addPlayer = function (name) {
+	this.addPlayer = function (name, img) {
 		var player = new Player();
 		player.setName(name);
-		//Randomize position?
-		if (randomizePos) {
-			player.setPosition(new Victor(/*Random values*/));
-		}
+		player.setPosition(startPos[players.length]);
+		player.setAngle((Math.random() * Math.PI * 2));
 		// Assign default keybindings
 		var keyBindings = defaultKeyBinding.getDefault(players.length + 1);
 		player.setKeyBindings(keyBindings);
 
 		players.push(player);
+		return player;
 	};
 
 	this.removePlayer = function () {

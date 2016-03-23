@@ -23,7 +23,6 @@ var playController = function(view,model) {
 	}	
 
 	view.pauseBtn[0].onclick = function(){
-
 		if(paused){
 			startGame();
 			paused=false;

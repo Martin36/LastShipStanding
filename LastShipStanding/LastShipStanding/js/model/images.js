@@ -15,18 +15,17 @@ var Images = function () {
     var shipImage = [];
     var nrOfBoatImages = 19;
 
+    // All ship images have similar names
     for (var i = 0; i < nrOfBoatImages; i++) {
         shipImage[i] = new Image();
         shipImage[i].alt = "player";
         shipImage[i].width = 80;
         shipImage[i].height = 60;
-        shipImage[i].src = "ship_pattern" + i.toString();
+        shipImage[i].src = "images/ships/ship_pattern" + i.toString() + ".png";
     }
 
-    this.getBoatImage = function (i) {
-        return boatImage[i];
-    };
-
+    this.getShipImage = function (i) { return shipImage[i]; };
+    this.getShipImages = function () {return shipImage; };
     this.getCanonballImage = function () { return canonballImage; };
     this.getArrowImage = function () { return arrowImage; };
 
