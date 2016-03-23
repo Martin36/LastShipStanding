@@ -1,6 +1,8 @@
 var settingsController = function(view, controller, model ) {
 
 	view.createHtml(3); // creates the html for 3 players;
+	
+	
 
 	view.backButton[0].onclick = function(){
 		$("[id=view2]").hide(); //main menu
@@ -28,6 +30,5 @@ var settingsController = function(view, controller, model ) {
 	
 		$("[id=view3]").show(); //play menu
 	};
-
 
 }
