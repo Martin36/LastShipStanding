@@ -20,7 +20,7 @@ var Player = function () {
         shipImage.alt = "player";
         shipImage.width = 80;
         shipImage.height = 60;
-        shipImage.src = "images/ships/ship_pattern4.png";
+        shipImage.src = "images/ships/ship_green.png";
 
 	// Give variables standard values
 	hp = 100;
@@ -129,6 +129,7 @@ var Player = function () {
 	this.getScore = function () { return score; };
 	this.setImageSource = function (newSrc) { mapImage.src = newSrc; };
 	this.getImage = function () { return shipImage; };
+	this.setImage = function (newship) {shipImage.src = newship;};
 	return this;
 }
 

@@ -1,58 +1,61 @@
 var settingsController = function(view, controller, model ) {
 
-	view.createHtml(2); // creates the html for 3 players;
+	var information = {status:[1,1,1,1], currentShip:[1,1,1,1]};
+	view.createHtml(4); // creates the html for 3 players;
+	var ships = model.getShips();
+	//console.log($("#input0").val());
+	var keybindings = new defaultKeyBindings();
 	
 	var remove = function(i){
 		$("#xBtn"+i)[0].onclick = function(){
 			view.deletePlayer(i)
-			console.log(i);
+			add(i);
+			information.status[i] -= 1
 		};
 	}
 	
-	for(i=0; i<2; i++){
-		remove(i);
-		console.log(i);
+	var add = function(i){
+		$("#addPlayerBtn"+i)[0].onclick = function(){
+			view.addPlayer(i)
+			remove(i);
+			information.status[i] += 1
+		};
 	}
-	for(i=2; i<4; i++){
-		
-	}
-	/*
-	var defaultKeyBinding = new defaultKeyBindings(); //temporary
-	for(i=0; i<4; i++){
-		var keys = defaultKeyBinding.getDefault(i+1);
-		//$("#textBtn"+i)= keys[0];
-		//$("#keyAssignBtn"+i).contents().last()[0]='Title';
-		//$("#keyAssignBtn"+i)[1].childNodes[0] = (keys[1]);
-		console.log(keys[0]);
-	}
-	*/
 	
-	///////////////////////////////////
-	//-------element 		Id's----------
-	//
-	//	name input field: input(i)
-	//	x button        : xBtn(i)
-	//	Control Buttons : keyAssignBtn(i)
-	//	Change Ship Btns: changeShipBtn(i)
-	//	Image of Ship   : boatImg(i)
-	//
-	//	Add Player Btns : addPlayerBtn(j)
-	///////////////////////////////////
-
+	var changeBoatPic = function(i){
+		$("#changeShipBtnLeft" + i)[0].onclick = function(){
+			if((information.currentShip[i]-1 >= 0)){
+				$("#boatImg"+i).attr("src",ships[information.currentShip[i]-1]);
+				information.currentShip[i] -= 1; 
+			}
+		};
+		
+		$("#changeShipBtnRight" + i)[0].onclick = function(){
+			if((information.currentShip[i]+1 < ships.length)){
+				$("#boatImg"+i).attr("src",ships[information.currentShip[i]+1]);
+				information.currentShip[i] += 1; 
+			}
+		};
+	}
+	
+	for(i=0; i<4; i++){
+		remove(i);
+		changeBoatPic(i);
+	}
+	
 	view.backButton[0].onclick = function(){
 		$("[id=view2]").hide(); //main menu
 		$("[id=view1]").show(); //play menu
 	};
 	view.startButton[0].onclick = function(){
 		$("[id=view2]").hide(); //main menu
-		
-		model.addPlayer('Staffan');
-		model.getPlayers()[0].setPosition(new Victor(30,40));
-		model.addPlayer('Hassan');
-		model.getPlayers()[1].setPosition(new Victor(300,400));
-		model.addPlayer('Roland');
-		model.getPlayers()[2].setPosition(new Victor(150,700));
-		model.addPlayer('Josef');
+		for(i=0; i<4; i++){
+			if(information.status[i] == 1){
+				var player = model.addPlayer($("#input"+i).val());
+				player.setImage(ships[information.currentShip[i]]);
+				player.setKeyBindings(keybindings.getDefault(i+1));
+			}
+		}
 		
 		controller.startUp();
 

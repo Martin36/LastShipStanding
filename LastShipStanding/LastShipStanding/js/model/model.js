@@ -10,6 +10,13 @@ var model = function () {
 	var folder = ""; 		//Path to the folder where the source images is contained
 	var defaultKeyBinding = new defaultKeyBindings();
 	var fireAudio, deathAudio, bgMusicAudio, battleAudio, boatHit;
+	var shipSkins = ["images/ships/ship_blue.png","images/ships/ship_green.png","images/ships/ship_orange.png",
+					"images/ships/ship_pattern1.png","images/ships/ship_pattern2.png","images/ships/ship_pattern3.png",
+					"images/ships/ship_pattern4.png","images/ships/ship_pattern5.png","images/ships/ship_pattern6.png",
+					"images/ships/ship_pattern7.png","images/ships/ship_pattern8.png","images/ships/ship_pattern9.png",
+					"images/ships/ship_pattern10.png","images/ships/ship_pattern11.png","images/ships/ship_pattern12.png",
+					"images/ships/ship_purple.png","images/ships/ship_red.png","images/ships/ship_teal.png",
+					"images/ships/ship_yellow.png"];
 	
 	var fadeInActive = false;
 	var fadeOutActive = false;
@@ -107,6 +114,7 @@ var model = function () {
 		player.setKeyBindings(keyBindings);
 
 		players.push(player);
+		return player;
 	};
 
 	this.removePlayer = function () {
@@ -246,6 +254,7 @@ var model = function () {
 	this.getEnvironment = function () { return environment; };
 	this.getCanonballImage = function () { return canonballImage; };
 	this.getArrowImage = function () { return arrowImage; };
+	this.getShips = function () {return shipSkins; };
 
 
 	return this;
