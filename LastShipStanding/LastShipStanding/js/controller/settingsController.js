@@ -19,11 +19,12 @@ var settingsController = function(view, controller, model ) {
 		
 		controller.startUp();
 
-		model.getBgAudio().pause(); // Pause the menu music
+		//model.getBgAudio().pause(); // Pause the menu music
 		model.getBattleAudio().loop = true; // Start the battle music
 		model.getBattleAudio().volume = 0.00;
 		model.getBattleAudio().play();
 		model.fadeIn(model.getBattleAudio());
+		model.fadeOut(model.getBgAudio());
 	
 		$("[id=view3]").show(); //play menu
 	};

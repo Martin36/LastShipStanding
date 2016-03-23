@@ -41,6 +41,9 @@ var playController = function(view,model) {
 		stopGame();
 		model.removeAllPlayers();
 		model.getBattleAudio().pause();
+		model.getBgAudio().play();
+		model.fadeIn(model.getBgAudio());
+		
 	}
 
 	view.musicBtn[0].onclick = function () {
