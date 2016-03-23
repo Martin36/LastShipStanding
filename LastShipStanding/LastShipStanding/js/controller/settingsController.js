@@ -1,10 +1,43 @@
 var settingsController = function(view, controller, model ) {
 
-	view.createHtml(3); // creates the html for 3 players;
-	view.deletePlayer(0);
-	view.deletePlayer(1);
+	view.createHtml(2); // creates the html for 3 players;
 	
+	var remove = function(i){
+		$("#xBtn"+i)[0].onclick = function(){
+			view.deletePlayer(i)
+			console.log(i);
+		};
+	}
 	
+	for(i=0; i<2; i++){
+		remove(i);
+		console.log(i);
+	}
+	for(i=2; i<4; i++){
+		
+	}
+	/*
+	var defaultKeyBinding = new defaultKeyBindings(); //temporary
+	for(i=0; i<4; i++){
+		var keys = defaultKeyBinding.getDefault(i+1);
+		//$("#textBtn"+i)= keys[0];
+		//$("#keyAssignBtn"+i).contents().last()[0]='Title';
+		//$("#keyAssignBtn"+i)[1].childNodes[0] = (keys[1]);
+		console.log(keys[0]);
+	}
+	*/
+	
+	///////////////////////////////////
+	//-------element 		Id's----------
+	//
+	//	name input field: input(i)
+	//	x button        : xBtn(i)
+	//	Control Buttons : keyAssignBtn(i)
+	//	Change Ship Btns: changeShipBtn(i)
+	//	Image of Ship   : boatImg(i)
+	//
+	//	Add Player Btns : addPlayerBtn(j)
+	///////////////////////////////////
 
 	view.backButton[0].onclick = function(){
 		$("[id=view2]").hide(); //main menu
