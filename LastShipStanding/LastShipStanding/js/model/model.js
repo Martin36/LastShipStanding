@@ -10,6 +10,9 @@ var model = function () {
 	var folder = ""; 		//Path to the folder where the source images is contained
 	var defaultKeyBinding = new defaultKeyBindings();
 	var fireAudio, deathAudio, bgMusicAudio, battleAudio, boatHit;
+	
+	var fadeInActive = false;
+	var fadeOutActive = false;
 
 	var canonballImage = new Image();
 	canonballImage.alt = "canonballImage";
@@ -44,6 +47,44 @@ var model = function () {
 		console.log("Sending information to observers");
 		for(i in observers){
 			observers[i].newInfo();
+		}
+	}
+	
+	
+	this.fadeIn = function(sound){
+		if(!fadeInActive){
+			fadeInActive = true;
+			var vol = 0.00;
+			var ID = setInterval(
+			function() {
+				if (vol < 1) {
+					sound.volume = vol;
+					vol += 0.05;
+				}
+				else {
+					clearInterval(ID);
+					fadeInActive = false;
+				}
+			}, 200);
+		}
+	}
+	
+	this.fadeOut = function(sound){
+		if(!fadeOutActive){
+			fadeOutActive = true;
+			var vol = 1;
+			var ID = setInterval(
+			function() {
+				if (vol > 0) {
+					sound.volume = vol;
+					vol -= 0.05;
+				}
+				else {
+					clearInterval(ID);
+					fadeOutActive = false;
+					sound.pause();
+				}
+			}, 200);
 		}
 	}
 

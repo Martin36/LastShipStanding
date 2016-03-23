@@ -8,6 +8,7 @@ var settingsController = function(view, controller, model ) {
 	};
 	view.startButton[0].onclick = function(){
 		$("[id=view2]").hide(); //main menu
+		
 		model.addPlayer('Staffan');
 		model.getPlayers()[0].setPosition(new Victor(30,40));
 		model.addPlayer('Hassan');
@@ -15,12 +16,15 @@ var settingsController = function(view, controller, model ) {
 		model.addPlayer('Roland');
 		model.getPlayers()[2].setPosition(new Victor(150,700));
 		model.addPlayer('Josef');
+		
 		controller.startUp();
 
 		model.getBgAudio().pause(); // Pause the menu music
 		model.getBattleAudio().loop = true; // Start the battle music
+		model.getBattleAudio().volume = 0.00;
 		model.getBattleAudio().play();
-
+		model.fadeIn(model.getBattleAudio());
+	
 		$("[id=view3]").show(); //play menu
 	};
 

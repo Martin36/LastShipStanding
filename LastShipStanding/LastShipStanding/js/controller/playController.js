@@ -1,9 +1,7 @@
 var playController = function(view,model) {
 	
 	Players = model.getPlayers();
-	var interValID;
-	var paused;
-	var playMusic;
+	var interValID,paused,playMusic;
 	
 	var startGame = function(){
 		interValID = setInterval(timer,17);
@@ -18,6 +16,7 @@ var playController = function(view,model) {
 		startGame();
 		paused = false;
 		playMusic = true;
+		model.playFx = true;
 		view.musicBtn[0].innerHTML = "Music ON";
 		view.fxBtn[0].innerHTML = "Fx ON";
 		view.pauseBtn[0].innerHTML = 'Pause Game';
@@ -37,8 +36,8 @@ var playController = function(view,model) {
 	}
 
 	view.backBtn[0].onclick = function(){
-		$("[id=view3]").hide(); //main menu
-		$("[id=view2]").show(); //play menu
+		$("[id=view3]").hide();
+		$("[id=view2]").show();
 		stopGame();
 		model.removeAllPlayers();
 		model.getBattleAudio().pause();
@@ -79,9 +78,9 @@ var playController = function(view,model) {
 		view.update();
 		for(i in Players){
 			var keys = Players[i].getKeyBindings();
-			if (map[keys[0]])	{ Players[i].rotateLeft();   /*console.log(Players[i].getName()+"'s Going left!");*/ }
-			if (map[keys[1]]) { model.fire(i);		 /*console.log(Players[i].getName()+"'s shots fired!!");*/ }
-			if (map[keys[2]]) { Players[i].rotateRight();  /*console.log(Players[i].getName()+"'s Going right!");*/ }
+			if (map[keys[0]])	{ Players[i].rotateLeft(); }
+			if (map[keys[1]]) { model.fire(i); }
+			if (map[keys[2]]) { Players[i].rotateRight(); }
 		};
 	}
 	
