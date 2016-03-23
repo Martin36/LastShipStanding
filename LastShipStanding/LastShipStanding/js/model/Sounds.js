@@ -5,7 +5,7 @@
     var fadeOutActive = false;
     this.playFx = true;
 
-    bgMusicAudio = new Audio('sounds/menuMusic1.mp3');
+    bgMusicAudio = new Audio('sounds/menuMusic2.mp3');
     battleAudio = new Audio('sounds/battleMusic.mp3');
 
     this.getBgAudio = function () { return bgMusicAudio; };
@@ -17,6 +17,12 @@
 	                 new Audio('sounds/canonFire3.mp3')];
         var r = Math.floor((Math.random() * fireAudio.length));
         return fireAudio[r];
+    }
+    
+    this.getDeathAudio = function () {
+        var s = new Audio('sounds/shipDeath.mp3');
+        s.volume = 0.5;
+        return s;
     }
 
     this.fadeIn = function (sound) {

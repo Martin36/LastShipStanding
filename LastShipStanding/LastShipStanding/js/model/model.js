@@ -132,8 +132,14 @@ var model = function () {
 					var vectorToPlayer = playerPosition.subtract(canonballs[i].getPosition());
 					var distance = vectorToPlayer.length();
 					if (distance < players[j].getCollisionRadius()) {		//Then there is a collision
-					  	if(this.playFx) { sound.getBoatHitAudio().play(); } // Boat hit audio
-						players[j].takeDamage();
+					    players[j].takeDamage();
+					    if (this.playFx) {
+					        if (players[j].isDead())
+					            sound.getDeathAudio().play();
+					        else {
+                                sound.getBoatHitAudio().play();
+					        }
+					    }
 						hitIndex.push(i);
 						players[canonballs[i].getPlayer()].giveScore();
 					}
