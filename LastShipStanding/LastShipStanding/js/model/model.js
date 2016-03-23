@@ -2,9 +2,11 @@ var model = function () {
 
 	var players = [];
 	var canonballs = [];
+	var observers = [];
 	var environment = new Environment();
-	var environmentCooldown = 300;
-	var environmentTimer = environmentCooldown;
+	var sound = new Sounds();
+	var img = new Images();
+	var defaultKeyBinding = new DefaultKeyBindings();
 	var randomizePos = false;
 	var canonballSpeed = 10;
 	var folder = ""; 		//Path to the folder where the source images is contained
@@ -32,17 +34,6 @@ var model = function () {
 	arrowImage.width = 100;
 	arrowImage.height = 100;
 	arrowImage.src = "images/windArrow.png";
-
-	this.playFx = true;
-
-	bgMusicAudio = new Audio('sounds/menuMusic1.mp3');
-	battleAudio = new Audio('sounds/battleMusic.mp3');
-
-	this.getBgAudio = function () { return bgMusicAudio; };
-	this.getBattleAudio = function () { return battleAudio; };
-	this.getBoatHitAudio = function () { return new Audio('sounds/boatHit1.mp3'); };
-	
-	var observers = [];
 	
 	//Adds new observer.
 	this.addObserver = function(obs){
@@ -55,51 +46,6 @@ var model = function () {
 		for(i in observers){
 			observers[i].newInfo();
 		}
-	}
-	
-	
-	this.fadeIn = function(sound){
-		if(!fadeInActive){
-			fadeInActive = true;
-			var vol = 0.00;
-			var ID = setInterval(
-			function() {
-				if (vol < 1) {
-					sound.volume = vol;
-					vol += 0.05;
-				}
-				else {
-					clearInterval(ID);
-					fadeInActive = false;
-				}
-			}, 200);
-		}
-	}
-	
-	this.fadeOut = function(sound){
-		if(!fadeOutActive){
-			fadeOutActive = true;
-			var vol = 1;
-			var ID = setInterval(
-			function() {
-				if (vol > 0) {
-					sound.volume = vol;
-					vol -= 0.05;
-				}
-				else {
-					clearInterval(ID);
-					fadeOutActive = false;
-					sound.pause();
-				}
-			}, 200);
-		}
-	}
-
-	this.getFireAudio = function () {
-	    fireAudio = [new Audio('sounds/canonFire2.mp3'),
-	                 new Audio('sounds/canonFire3.mp3')];
-	    var r = Math.floor((Math.random() * fireAudio.length));
-	    return fireAudio[r];
 	}
 
 	this.addPlayer = function (name) {
@@ -137,16 +83,11 @@ var model = function () {
 		}
 		return players[index];
 	}
-	this.getPlayers = function () { return players; };
 
-	this.getCanonballs = function () { return canonballs; };
-	// Vector algebra by using the Victor package
+
+    // Vector algebra by using the Victor package
 	this.update = function (dt) {
-		if (environmentTimer <= 0) {
-			environmentTimer = environmentCooldown;
-			environment.update();
-			//Notify observers
-		}
+	    
 		var windVelocity = environment.getWindVelocity();
 		var scalar = new Victor();			//Vector to represent distance scalar in vector multiplication(needed for Victor package)
 
@@ -174,16 +115,14 @@ var model = function () {
 	    //checkForCollisions();
 		this.checkForCollisions();
 		this.checkForCanonballCollisions();
-		environmentTimer -= dt;
-		
-		// Should Controller contain a gameloop which calls this??
+		environment.update(dt);
 	}
 
 	//Function for firing the cannon
 	this.fire = function (playerNr) {
 		if (players[playerNr].isFireReady()) {
 
-		    if(this.playFx){ this.getFireAudio().play(); }
+		    if(this.playFx){ sound.getFireAudio().play(); }
 
 			var position = players[playerNr].getPosition().clone();
 			var playerDirection = players[playerNr].getDirection().clone();
@@ -198,8 +137,8 @@ var model = function () {
 
 			//The vector [x, y] have the orthogonal vector [y, -x] for arbitrary values of x and y the reversed vector of [y, -x] is [-y, x]
 			//The multiplication with the canonball speed makes sure that the velocity for the canonball is correct
-			var velocity1 = new Victor(playerDirection.y * canonballSpeed, -playerDirection.x * canonballSpeed);
-			var velocity2 = new Victor(-playerDirection.y * canonballSpeed, playerDirection.x * canonballSpeed);
+			var velocity1 = new Victor(playerDirection.y * canonball1.getSpeed(), -playerDirection.x * canonball1.getSpeed());
+			var velocity2 = new Victor(-playerDirection.y * canonball2.getSpeed(), playerDirection.x * canonball2.getSpeed());
 			canonball1.setVelocity(velocity1);
 			canonball2.setVelocity(velocity2);
 			canonballs.push(canonball1);
@@ -209,8 +148,7 @@ var model = function () {
 		}
 	};
 
-    //function checkForCollisions() {
-    // Can't use this.getBoatHitAudio if the function is declared as above
+    // Check if someone gets hit by a canonball
 	this.checkForCollisions = function() {
 		//Loop through the canonballs
 		var hitIndex = [];
@@ -221,7 +159,7 @@ var model = function () {
 					var vectorToPlayer = playerPosition.subtract(canonballs[i].getPosition());
 					var distance = vectorToPlayer.length();
 					if (distance < players[j].getCollisionRadius()) {		//Then there is a collision
-					  	if(this.playFx) { this.getBoatHitAudio().play(); } // Boat hit audio
+					  	if(this.playFx) { sound.getBoatHitAudio().play(); } // Boat hit audio
 						players[j].takeDamage();
 						hitIndex.push(i);
 						players[canonballs[i].getPlayer()].giveScore();
@@ -234,6 +172,8 @@ var model = function () {
 			canonballs.splice(hitIndex[i], 1);
 		}
 	}
+
+    // If canonballs collide midair, they disappear
 	this.checkForCanonballCollisions = function () {
 		var hitIndex = [];		//Which canonballs collided
 		for (var i = 0; i < canonballs.length; i++) {
@@ -255,7 +195,10 @@ var model = function () {
 	this.getCanonballImage = function () { return canonballImage; };
 	this.getArrowImage = function () { return arrowImage; };
 	this.getShips = function () {return shipSkins; };
-
+	this.getImages = function () { return img; };
+	this.getPlayers = function () { return players; };
+	this.getCanonballs = function () { return canonballs; };
+	this.getSounds = function () { return sound; };
 
 	return this;
 }

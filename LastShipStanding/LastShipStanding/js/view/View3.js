@@ -116,24 +116,26 @@ var View3 = function (model) {
 			}
 		
 	}
-	function drawProjectile(canonball){
-	 	ctx.drawImage(model.getCanonballImage(),
-	 	 canonball.getPosition().x - model.getCanonballImage().width / 2,
-	  	 canonball.getPosition().y - model.getCanonballImage().height / 2,
-	 	 model.getCanonballImage().width, model.getCanonballImage().height);
+	function drawProjectile(canonball) {
+	    var cImg = model.getImages().getCanonballImage();
+	 	ctx.drawImage(cImg,
+	 	 canonball.getPosition().x - cImg.width / 2,
+	  	 canonball.getPosition().y - cImg.height / 2,
+	 	 cImg.width, cImg.height);
 	}
 
 	function drawArrow( angle, windSpeed ){
-		ctx.save();
-		ctx.translate( canvas.width - model.getArrowImage().width / 2, model.getArrowImage().height / 2 );
+	    var aImg = model.getImages().getArrowImage();
+	    ctx.save();
+	    ctx.translate(canvas.width - aImg.width / 2, aImg.height / 2);
 		ctx.rotate( angle );
-		ctx.translate( -canvas.width + model.getArrowImage().width / 2, -model.getArrowImage().height / 2 );
-		ctx.drawImage(model.getArrowImage(), canvas.width - model.getArrowImage().width, 0, model.getArrowImage().width, model.getArrowImage().height);
+		ctx.translate(-canvas.width + aImg.width / 2, -aImg.height / 2);
+		ctx.drawImage(aImg, canvas.width - aImg.width, 0, aImg.width, aImg.height);
 		ctx.restore();
 
 		ctx.fillStyle = '#ffffff';
 		ctx.font = '1.875em Arial';
-		ctx.fillText( Math.floor(windSpeed*10) + ' m/s', canvas.width - model.getArrowImage().width, model.getArrowImage().height + 25);
+		ctx.fillText(Math.floor(windSpeed * 10) + ' m/s', canvas.width - aImg.width, aImg.height + 25);
 	}
 
 	this.initScore = function(){
