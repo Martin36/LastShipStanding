@@ -16,17 +16,18 @@ var Player = function () {
 		cooldown = 400,
 		cooldownTimer = 0,
 		fireReady = true,
-		mapImage = new Image();
-		mapImage.alt = "player";
-		mapImage.width = 80;
-		mapImage.height = 60;
-		mapImage.src = "images/ships/ship_pattern4.png";
+		shipImage = new Image();
+        shipImage.alt = "player";
+        shipImage.width = 80;
+        shipImage.height = 60;
+        shipImage.src = "images/ships/ship_pattern4.png";
 
 	// Give variables standard values
 	hp = 100;
 	deltaA = Math.PI / 100;
 	pos.x = 700, pos.y = 400;
-//	speed = 3;
+    //	speed = 3;
+
 	this.rotateRight = function () {
 		angle += deltaA;
 		if (angle > Math.PI * 2) {
@@ -37,6 +38,7 @@ var Player = function () {
 		dir.y = Math.sin(angle);
 		dir.normalize();
 	};
+
 	this.rotateLeft = function () {
 		angle -= deltaA;
 		if (angle < Math.PI * 2) {
@@ -47,6 +49,7 @@ var Player = function () {
 		dir.y = Math.sin(angle);
 		dir.normalize();
 	};
+
 	this.takeDamage = function () {
 		hp -= 10;
 		if (hp <= 0) {
@@ -54,36 +57,33 @@ var Player = function () {
 		}
 	};
 
-	this.giveScore = function () { score += 10; };
-	this.getScore = function () { return score; };
+	this.updatePosition = function (windVelocity, dt) {
+	    var windDirection = windVelocity.clone().normalize();
+	    var windMagnitude = windVelocity.length();
 
-	this.updatePosition = function(windVelocity, dt){
-		var windDirection = windVelocity.clone().normalize();
-		var windMagnitude = windVelocity.length();
+	    var cosOfAngle = windDirection.dot(dir);		//The cos-value of the angle between the wind direction and the direction of the boat
+	    speed = windMagnitude * cosOfAngle;		//If the wind is parallell to the boat then the speed becomes equal to the magnitue of the wind, if it is perpendicular then it becomes 0	
 
-		var cosOfAngle = windDirection.dot(dir);		//The cos-value of the angle between the wind direction and the direction of the boat
-		speed = windMagnitude * cosOfAngle;		//If the wind is parallell to the boat then the speed becomes equal to the magnitue of the wind, if it is perpendicular then it becomes 0	
+	    //Here the player is moved to the right position
+	    var distanceVector = new Victor(speed * dt, speed * dt).multiply(dir);		//The distance traveled with the wind
 
-		//Here the player is moved to the right position
-		var distanceVector = new Victor(speed * dt, speed * dt).multiply(dir);		//The distance traveled with the wind
+	    //Effect of the engine
+	    var distanceVectorFromEngine = new Victor(engineSpeed * dt, engineSpeed * dt).multiply(dir);	//The distance traveled with the engine
+	    distanceVector.add(distanceVectorFromEngine);		//Final distance traveled
 
-		//Effect of the engine
-		var distanceVectorFromEngine = new Victor(engineSpeed * dt, engineSpeed * dt).multiply(dir);	//The distance traveled with the engine
-		distanceVector.add(distanceVectorFromEngine);		//Final distance traveled
+	    checkBoundaries(distanceVector);
+	    pos.add(distanceVector);
+	    //Check if canons are ready to fire
+	    if (!fireReady) {
+	        cooldownTimer += dt;
+	        if (cooldownTimer >= cooldown) {
+	            fireReady = true;
+	            cooldownTimer = 0;
+	        }
+	    }
+	    this.updateCanonballPos(windVelocity, dt);
+	};
 
-		checkBoundaries(distanceVector);
-		pos.add(distanceVector);
-		//Check if canons are ready to fire
-		if(!fireReady){
-			cooldownTimer += dt;
-			if(cooldownTimer >= cooldown){
-				fireReady = true;
-				cooldownTimer = 0;	
-			} 
-		}
-
-		this.updateCanonballPos(windVelocity, dt);
-	}
 	function checkBoundaries(distance){
 	 	var tempPos = pos.clone().add(distance);
 	 	if(tempPos.y < 0 || tempPos.y > 800 ){
@@ -97,23 +97,19 @@ var Player = function () {
 	 		distance.x = 0;
 	 	}
 	}
+
 	this.updateCanonballPos = function(windVelocity, dt){
 	    for(var i = 0; i < canonballs.length; i ++) {
 	        canonballs[i].updatePosition(windVelocity, dt);
 		}
-
 	}
 
 	this.isDead = function () { return dead; };
-
 	this.setName = function (n) { name = n; };
 	this.getName = function () { return name; };
 	this.setDirection = function (direction) { dir = direction; };
 	this.getDirection = function () { return dir; };
-	this.setPosition = function (p) {
-		pos.x = p.x;
-		pos.y = p.y;
-	};
+	this.setPosition = function (p) {pos.x = p.x; pos.y = p.y; };
 	this.getPosition = function () { return pos; };
 	this.setAngle = function (a) { angle = a; }; // Will we use this or rotate?
 	this.getAngle = function () { return angle; };
@@ -129,6 +125,10 @@ var Player = function () {
 	this.getImage = function () { return mapImage; };
 	this.getCooldownTimer = function () { return cooldownTimer; };
 	this.getCooldownTime = function () { return cooldown; };
+	this.giveScore = function () { score += 10; };
+	this.getScore = function () { return score; };
+	this.setImageSource = function (newSrc) { mapImage.src = newSrc; };
+	this.getImage = function () { return shipImage; };
 	return this;
 }
 
