@@ -65,6 +65,22 @@ var View2 = function (model) {
 		parentRow.appendChild(col3_1);
 	}
 	
+	this.deletePlayer = function( playerIndex ){
+		var parent = document.getElementById('input'+playerIndex).parentElement.parentElement;
+		//remove the input and x button
+		while(parent.firstChild){
+			parent.removeChild(parent.firstChild);
+		}
+
+		//create the addy button
+		var addBtn = document.createElement('button');
+			addBtn.className = 'btn btn-primary addy';
+			addBtn.setAttribute('id', 'addPlayerBtn' + playerIndex);
+			var buttonText = document.createTextNode('Add Player ' + ( playerIndex + 1));
+			addBtn.appendChild(buttonText);
+		parent.appendChild(addBtn);
+
+	}
 
 	this.createHtml = function( nr_of_players ){
 		for(i=0; i<nr_of_players; i++){
@@ -183,7 +199,7 @@ var View2 = function (model) {
 			var addBtn = document.createElement('button');
 			addBtn.className = 'btn btn-primary addy';
 			addBtn.setAttribute('id', 'addPlayerBtn' + j);
-			var buttonText = document.createTextNode('Add Player ' + (4-j));
+			var buttonText = document.createTextNode('Add Player ' + ( nr_of_players + j + 1 ));
 			addBtn.appendChild(buttonText);
 			col3_1.appendChild(addBtn);
 			row2_1.appendChild(col3_1);
