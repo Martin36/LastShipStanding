@@ -1,16 +1,18 @@
 ﻿ var Sounds = function () {
 
-    var fireAudio, deathAudio, bgMusicAudio, battleAudio, boatHit;
+    var fireAudio, deathAudio, bgMusicAudio, battleAudio, boatHit, howToAudio;
     var fadeInActive = false;
     var fadeOutActive = false;
     this.playFx = true;
 
     bgMusicAudio = new Audio('sounds/menuMusic2.mp3');
     battleAudio = new Audio('sounds/battleMusic.mp3');
+    howToAudio = new Audio('sounds/eyeOfTheTiger.mp3');
 
     this.getBgAudio = function () { return bgMusicAudio; };
     this.getBattleAudio = function () { return battleAudio; };
     this.getBoatHitAudio = function () { return new Audio('sounds/boatHit1.mp3'); };
+    this.getHowToAudio = function () { return howToAudio; };
 
     this.getFireAudio = function () {
         fireAudio = [new Audio('sounds/canonFire2.mp3'),

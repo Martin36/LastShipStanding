@@ -1,8 +1,7 @@
     var startController = function(view,model) {
 
     // Loop the bg music
-   var bgAudio = model.getSounds().getBgAudio();
-   bgAudio.loop = true;
+    model.getSounds().getBgAudio().loop = true;
    //bgAudio.volume = 0.0;
    //bgAudio.play();
    //model.getSounds().fadeIn(bgAudio);
@@ -11,6 +10,10 @@
     view.howBtn[0].onclick = function(){
       $("[id=view1]").hide(); //main menu
       $("[id=howView]").show(); //main menu
+      model.getSounds().getBgAudio().pause();
+      model.getSounds().getHowToAudio().play();
+      view.muteBtn[0].textContent = "Mute :(";
+      i = true;
     }
 
     view.playBtn[0].onclick = function () {
