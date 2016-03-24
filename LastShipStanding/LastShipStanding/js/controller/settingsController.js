@@ -54,7 +54,7 @@ var settingsController = function(view, controller, model ) {
 		for(i=0; i<4; i++){
 			if(information.status[i] == 1){
 			    var player = model.addPlayer($("#input" + i).val(),
-                    $("#boatImg" + i));
+                    ships[information.currentShip[i]].src);
 
 				//player.setImage(ships[information.currentShip[i]]);
 				//player.setKeyBindings(keybindings.getDefault(i + 1));
