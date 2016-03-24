@@ -21,8 +21,15 @@
 		<!--<h1 id="view1_title">LAST SHIP STANDING</h1>-->
 		<img src="images/drawing.png" alt="A cool boat">
 		<button type="button" class="btn btn-primary" id="view1_playBtn">Create New Game</button> <br>
-		<button type="button" class="btn btn-primary" id="view1_HOWBtn">How To Play ( Noob )</button> <br>
+		<button type="button" class="btn btn-primary" id="view1_HowBtn">How To Play ( Noob )</button> <br>
         <button type="button" class="btn btn-primary" id="view1_muteBtn">Unmute :)</button>
+	</div>
+
+	<div id="howView" class="wrapper" hidden>
+		<h1> How To Play </h1>
+		<img src="images/explain_settings.png" alt="how settings">
+        <button type="button" class="btn btn-primary" id="howView_muteBtn">Unmute :)</button>
+		<button type="button" class="btn btn-primary" id="howView_backBtn">Back</button>
 	</div>
 
 	<div id="view2" class="wrapper" hidden>
@@ -61,9 +68,11 @@
 
 	<!-- The application JavaScript code -->
 	<script src="js/main.js"></script>
+	<script src="js/view/howView.js"></script>
 	<script src="js/view/View1.js"></script>
 	<script src="js/view/View2.js"></script>
 	<script src="js/view/View3.js"></script>
+	<script src="js/controller/howController.js"></script>
 	<script src="js/controller/settingsController.js"></script>
 	<script src="js/controller/startController.js"></script>
 	<script src="js/controller/playController.js"></script>

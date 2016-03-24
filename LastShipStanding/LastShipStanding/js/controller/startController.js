@@ -8,6 +8,10 @@
    //model.getSounds().fadeIn(bgAudio);
 	
     var i = false;
+    view.howBtn[0].onclick = function(){
+      $("[id=view1]").hide(); //main menu
+      $("[id=howView]").show(); //main menu
+    }
 
     view.playBtn[0].onclick = function () {
 		$("[id=view1]").hide(); //main menu
