@@ -10,7 +10,7 @@ var model = function () {
 	var startPos = [new Victor(200, 400), new Victor(650, 100),
 	                new Victor(650, 700), new Victor(1100, 400)];
 	var names = ['myGirl', 'hisGirl', 'Anaconda', '420Swag', 'NoScopeNugget',
-	 'NotABoat', 'Placeholder', 'doritosBoy', 'YoUmAmMa', '#YOLO'];
+							'NotABoat', 'Placeholder', 'doritosBoy', 'YoUmAmMa', '#YOLO'];
 	var takenNames = [];
 	var nrOfDeads = 0;
 	var gameWon = false;
@@ -21,7 +21,7 @@ var model = function () {
 	//return random name that is not taken
 	function getRandomName() {
 		var taken = true;
-		var rndIndex;// = Math.floor(Math.random()*names.length);
+		var rndIndex;
 		while (taken) {
 			rndIndex = Math.floor(Math.random() * names.length);
 			taken = false;
