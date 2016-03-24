@@ -10,49 +10,50 @@ var model = function () {
 	var startPos = [new Victor(200, 400), new Victor(650, 100),
 	                new Victor(650, 700), new Victor(1100, 400)];
 	var names = ['myGirl', 'hisGirl', 'Anaconda', '420Swag', 'NoScopeNugget',
-	 'NotABoat', 'Placeholder', 'doritosBoy', 'YoUmAmMa', '#YOLO' ];
+	 'NotABoat', 'Placeholder', 'doritosBoy', 'YoUmAmMa', '#YOLO'];
 	var takenNames = [];
-
-	this.resetTakenNames = function(){
+	var nrOfDeads = 0;
+	var gameWon = false;
+	this.resetTakenNames = function () {
 		takenNames = [];
 	}
 
 	//return random name that is not taken
-	function getRandomName(){
+	function getRandomName() {
 		var taken = true;
-	 	var rndIndex;// = Math.floor(Math.random()*names.length);
-	 	while(taken){
-	 		rndIndex = Math.floor(Math.random()*names.length);
-	 		taken = false;
-	 		for(var i = 0; i<takenNames.length; i++){
-	 			if(rndIndex == takenNames[i]){
-	 				taken = true;
-	 				break;
-	 			}
-	 		}
-	 	}
-	 	takenNames.push( rndIndex );
-	 	return names[rndIndex];
-	 }
+		var rndIndex;// = Math.floor(Math.random()*names.length);
+		while (taken) {
+			rndIndex = Math.floor(Math.random() * names.length);
+			taken = false;
+			for (var i = 0; i < takenNames.length; i++) {
+				if (rndIndex == takenNames[i]) {
+					taken = true;
+					break;
+				}
+			}
+		}
+		takenNames.push(rndIndex);
+		return names[rndIndex];
+	}
 	//Adds new observer.
-	this.addObserver = function(obs){
+	this.addObserver = function (obs) {
 		observers.push(obs);
 		console.log("Added an observer");
 	}
 	//Notifies observer with info. Used to update score for now.
-	this.notifyObservers = function(info){
+	this.notifyObservers = function (info) {
 		console.log("Sending information to observers");
-		for(i in observers){
+		for (i in observers) {
 			observers[i].newInfo();
 		}
 	}
 
 	this.addPlayer = function (name, img) {
 		var player = new Player();
-		if(!name){ //undefined
-			player.setName( getRandomName() );
-		}else{
-			player.setName( name );
+		if (!name) { //undefined
+			player.setName(getRandomName());
+		} else {
+			player.setName(name);
 		}
 		player.setImage(img);
 		player.setPosition(startPos[players.length]);
@@ -71,9 +72,9 @@ var model = function () {
 		else
 			alert("The list of players is empty!");
 	};
-	
-	this.removeAllPlayers = function(){
-		while(players.length > 0){
+
+	this.removeAllPlayers = function () {
+		while (players.length > 0) {
 			players.pop();
 		}
 	}
@@ -86,34 +87,23 @@ var model = function () {
 	}
 
 
-    // Vector algebra by using the Victor package
+	// Vector algebra by using the Victor package
 	this.update = function (dt) {
-	    
+
 		var windVelocity = environment.getWindVelocity();
 		var scalar = new Victor();			//Vector to represent distance scalar in vector multiplication(needed for Victor package)
 
-		//for (var player in players) {
 		for (var i = 0; i < players.length; i++) {
-			//document.write(players[i].getName());
 			players[i].updatePosition(windVelocity, dt);
-//			var canonballs = players[i].getCanonballs();
 		}
 		for (var j = 0; j < canonballs.length; j++) {
 			if (canonballs[j].isDead()) {
 				canonballs.shift();		//removes top element
-				/*
-				canonballs.reverse();
-				canonballs.pop();
-				canonballs.reverse();
-*/
-				//break;
 			}
 			else {
 				canonballs[j].updatePosition(windVelocity, dt);
 			}
 		}
-
-	    //checkForCollisions();
 		this.checkForCollisions();
 		this.checkForCanonballCollisions();
 		environment.update(dt);
@@ -121,8 +111,8 @@ var model = function () {
 
 	//Function for firing the cannon
 	this.fire = function (playerNr) {
-	    if (players[playerNr].isFireReady() && !players[playerNr].isDead()) {
-		    if(this.playFx){ sound.getFireAudio().play(); }
+		if (players[playerNr].isFireReady() && !players[playerNr].isDead()) {
+			if (this.playFx) { sound.getFireAudio().play(); }
 
 			var position = players[playerNr].getPosition().clone();
 			var playerDirection = players[playerNr].getDirection().clone();
@@ -148,25 +138,28 @@ var model = function () {
 		}
 	};
 
-    // Check if someone gets hit by a canonball
-	this.checkForCollisions = function() {
+	// Check if someone gets hit by a canonball
+	this.checkForCollisions = function () {
 		//Loop through the canonballs
 		var hitIndex = [];
 		for (var i = 0; i < canonballs.length; i++) {
-		    for (var j = 0; j < players.length; j++) {
-		        if (canonballs[i].getPlayer() != j && !players[j].isDead()) {		//We dont want to be able to shoot ourselves
-				    var playerPosition = players[j].getPosition().clone();
+			for (var j = 0; j < players.length; j++) {
+				if (canonballs[i].getPlayer() != j && !players[j].isDead()) {		//We dont want to be able to shoot ourselves
+					var playerPosition = players[j].getPosition().clone();
 					var vectorToPlayer = playerPosition.subtract(canonballs[i].getPosition());
 					var distance = vectorToPlayer.length();
 					if (distance < players[j].getCollisionRadius()) {		//Then there is a collision
-					    players[j].takeDamage();
-					    if (this.playFx) {
-					        if (players[j].isDead())
-					            sound.getDeathAudio().play();
-					        else {
-                                sound.getBoatHitAudio().play();
-					        }
-					    }
+						players[j].takeDamage();
+						if (players[j].isDead()) {
+							nrOfDeads += 1;
+						}
+						if (this.playFx) {
+							if (players[j].isDead())
+								sound.getDeathAudio().play();
+							else {
+								sound.getBoatHitAudio().play();
+							}
+						}
 						hitIndex.push(i);
 						players[canonballs[i].getPlayer()].giveScore();
 					}
@@ -177,9 +170,13 @@ var model = function () {
 		for (var i = hitIndex.length - 1; i >= 0; i--) {
 			canonballs.splice(hitIndex[i], 1);
 		}
+		if (nrOfDeads === players.length - 1) {
+			gameWon = true;
+			this.notifyObservers;
+		}
 	}
 
-    // If canonballs collide midair, they disappear
+	// If canonballs collide midair, they disappear
 	this.checkForCanonballCollisions = function () {
 		var hitIndex = [];		//Which canonballs collided
 		for (var i = 0; i < canonballs.length; i++) {
@@ -202,6 +199,7 @@ var model = function () {
 	this.getPlayers = function () { return players; };
 	this.getCanonballs = function () { return canonballs; };
 	this.getSounds = function () { return sound; };
+	this.gameWon = function () { return gameWon; };
 
 	return this;
 }
