@@ -92,8 +92,7 @@ var model = function () {
 
 	//Function for firing the cannon
 	this.fire = function (playerNr) {
-		if (players[playerNr].isFireReady()) {
-
+	    if (players[playerNr].isFireReady() && !players[playerNr].isDead()) {
 		    if(this.playFx){ sound.getFireAudio().play(); }
 
 			var position = players[playerNr].getPosition().clone();
@@ -126,8 +125,7 @@ var model = function () {
 		var hitIndex = [];
 		for (var i = 0; i < canonballs.length; i++) {
 		    for (var j = 0; j < players.length; j++) {
-		        if (players[j].isDead()) break; // Don't check if canonball will hit dead player
-		        if (canonballs[i].getPlayer() != j) {		//We dont want to be able to shoot ourselves
+		        if (canonballs[i].getPlayer() != j && !players[j].isDead()) {		//We dont want to be able to shoot ourselves
 				    var playerPosition = players[j].getPosition().clone();
 					var vectorToPlayer = playerPosition.subtract(canonballs[i].getPosition());
 					var distance = vectorToPlayer.length();

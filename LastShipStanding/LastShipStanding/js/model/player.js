@@ -81,7 +81,7 @@ var Player = function () {
 	            cooldownTimer = 0;
 	        }
 	    }
-	    this.updateCanonballPos(windVelocity, dt);
+	    //this.updateCanonballPos(windVelocity, dt);
 	};
 
 	function checkBoundaries(distance){
@@ -98,11 +98,11 @@ var Player = function () {
 	 	}
 	}
 
-	this.updateCanonballPos = function(windVelocity, dt){
-	    for(var i = 0; i < canonballs.length; i ++) {
-	        canonballs[i].updatePosition(windVelocity, dt);
-		}
-	}
+	//this.updateCanonballPos = function(windVelocity, dt){
+	//    for(var i = 0; i < canonballs.length; i ++) {
+	//        canonballs[i].updatePosition(windVelocity, dt);
+	//	}
+	//}
 
 	this.isDead = function () { return dead; };
 	this.setName = function (n) { name = n; };
