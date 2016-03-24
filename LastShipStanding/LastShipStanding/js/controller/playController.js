@@ -39,9 +39,10 @@ var playController = function(view,model) {
 		$("[id=view2]").show();
 		stopGame();
 		model.removeAllPlayers();
-		model.getBattleAudio().pause();
-		model.getBgAudio().play();
-		model.fadeIn(model.getBgAudio());
+		model.getSounds().getBattleAudio().pause();
+		//model.getSounds().fadeOut( model.getSounds().getBattleAudio() );
+		model.getSounds().getBgAudio().play();
+		//model.getSounds().fadeIn( model.getSounds().getBgAudio() );
 		
 	}
 
