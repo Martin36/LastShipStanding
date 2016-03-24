@@ -12,6 +12,8 @@
       $("[id=howView]").show(); //main menu
       model.getSounds().getBgAudio().pause();
       model.getSounds().getHowToAudio().play();
+      view.muteBtn[0].textContent = "Mute :(";
+      i = true;
     }
 
     view.playBtn[0].onclick = function () {
