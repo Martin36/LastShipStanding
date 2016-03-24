@@ -152,6 +152,12 @@ var model = function () {
 						players[j].takeDamage();
 						if (players[j].isDead()) {
 							nrOfDeads += 1;
+							console.log(nrOfDeads);
+							if (nrOfDeads === players.length - 1) {
+								gameWon = true;
+								console.log(gameWon);
+								this.notifyObservers();
+							}
 						}
 						if (this.playFx) {
 							if (players[j].isDead())
@@ -169,10 +175,6 @@ var model = function () {
 		hitIndex.sort();
 		for (var i = hitIndex.length - 1; i >= 0; i--) {
 			canonballs.splice(hitIndex[i], 1);
-		}
-		if (nrOfDeads === players.length - 1) {
-			gameWon = true;
-			this.notifyObservers;
 		}
 	}
 
