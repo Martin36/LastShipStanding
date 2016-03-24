@@ -9,4 +9,7 @@ $(function () {
 
 	var view2 = new View2(models);
 	var controller2 = new settingsController(view2, controller3, models);
+
+	var tutorialView = new howView(models);
+	var tutorialController = new howController(tutorialView, models);
 });
