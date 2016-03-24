@@ -111,7 +111,12 @@ var Player = function () {
 	this.getDirection = function () { return dir; };
 	this.setPosition = function (p) {pos.x = p.x; pos.y = p.y; };
 	this.getPosition = function () { return pos; };
-	this.setAngle = function (a) { angle = a; }; // Will we use this or rotate?
+	this.setAngle = function (a) {
+		angle = a;
+		dir.x = Math.cos(angle);
+		dir.y = Math.sin(angle);
+		dir.normalize();
+	}; 
 	this.getAngle = function () { return angle; };
 	this.setSpeed = function (s) { speed = Math.abs(s); };
 	this.getSpeed = function () { return speed; };

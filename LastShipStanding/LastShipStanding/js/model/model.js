@@ -26,6 +26,7 @@ var model = function () {
 	this.addPlayer = function (name, img) {
 		var player = new Player();
 		player.setName(name);
+		player.setImage(img);
 		player.setPosition(startPos[players.length]);
 		player.setAngle((Math.random() * Math.PI * 2));
 		// Assign default keybindings
