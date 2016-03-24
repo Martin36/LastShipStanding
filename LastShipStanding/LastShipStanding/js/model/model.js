@@ -8,8 +8,32 @@ var model = function () {
 	var img = new Images();
 	var defaultKeyBinding = new DefaultKeyBindings();
 	var startPos = [new Victor(200, 400), new Victor(650, 100),
-	                new Victor(650, 700), new Victor(1100, 400)]
-	
+	                new Victor(650, 700), new Victor(1100, 400)];
+	var names = ['myGirl', 'hisGirl', 'Anaconda', '420Swag', 'NoScopeNugget',
+	 'NotABoat', 'Placeholder', 'doritosBoy', 'YoUmAmMa', '#YOLO' ];
+	var takenNames = [];
+
+	this.resetTakenNames = function(){
+		takenNames = [];
+	}
+
+	//return random name that is not taken
+	function getRandomName(){
+		var taken = true;
+	 	var rndIndex;// = Math.floor(Math.random()*names.length);
+	 	while(taken){
+	 		rndIndex = Math.floor(Math.random()*names.length);
+	 		taken = false;
+	 		for(var i = 0; i<takenNames.length; i++){
+	 			if(rndIndex == takenNames[i]){
+	 				taken = true;
+	 				break;
+	 			}
+	 		}
+	 	}
+	 	takenNames.push( rndIndex );
+	 	return names[rndIndex];
+	 }
 	//Adds new observer.
 	this.addObserver = function(obs){
 		observers.push(obs);
@@ -25,7 +49,11 @@ var model = function () {
 
 	this.addPlayer = function (name, img) {
 		var player = new Player();
-		player.setName(name);
+		if(!name){ //undefined
+			player.setName( getRandomName() );
+		}else{
+			player.setName( name );
+		}
 		player.setImage(img);
 		player.setPosition(startPos[players.length]);
 		player.setAngle((Math.random() * Math.PI * 2));

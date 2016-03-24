@@ -51,6 +51,7 @@ var settingsController = function(view, controller, model ) {
 	};
 	view.startButton[0].onclick = function(){
 		$("[id=view2]").hide(); //main menu
+		model.resetTakenNames();
 		for(i=0; i<4; i++){
 			if(information.status[i] == 1){
 			    var player = model.addPlayer($("#input" + i).val(),
@@ -65,9 +66,9 @@ var settingsController = function(view, controller, model ) {
 
 		//model.getBgAudio().pause(); // Pause the menu music
 		model.getSounds().getBattleAudio().loop = true; // Start the battle music
-		model.getSounds().getBattleAudio().volume = 0.00;
+		//model.getSounds().getBattleAudio().volume = 0.00;
 		model.getSounds().getBattleAudio().play();
-		model.getSounds().fadeIn(model.getSounds().getBattleAudio());
+		//model.getSounds().fadeIn(model.getSounds().getBattleAudio());
 		model.getSounds().fadeOut(model.getSounds().getBgAudio());
 	
 		$("[id=view3]").show(); //play menu
