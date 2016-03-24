@@ -2,7 +2,7 @@
 var View2 = function (model) {
 	this.startButton = $("#view2_startBtn");
 	this.backButton = $("#view2_backBtn");
-	var keys = [["A","W","D"],["F","T","H"],["J","I","L"],["LeftArrow","UpArrow","RightArrow"]];
+	var keys = [["A","W","D"],["F","T","H"],["J","I","L"],["L-Arrow","UpArrow","R-Arrow"]];
 	//Should be created in JavaSCript because it's dynamic
 
 	///////////////////////////////////

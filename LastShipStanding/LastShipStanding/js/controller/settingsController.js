@@ -58,7 +58,7 @@ var settingsController = function(view, controller, model ) {
                     ships[information.currentShip[i]].src);
 
 				//player.setImage(ships[information.currentShip[i]]);
-				//player.setKeyBindings(keybindings.getDefault(i + 1));
+				player.setKeyBindings(keybindings.getDefault(i + 1));
 
 			}
 		}
