@@ -1,6 +1,6 @@
 var settingsController = function(view, controller, model ) {
 
-	var information = {status:[1,1,1,1], currentShip:[1,1,1,1]};
+	var information = {status:[1,1,1,1], currentShip:[0,0,0,0]};
 	view.createHtml(4); // creates the html for 3 players;
 	var ships = model.getImages().getShipImages();
 	//console.log($("#input0").val());
@@ -24,18 +24,19 @@ var settingsController = function(view, controller, model ) {
 	
 	var changeBoatPic = function(i){
 		$("#changeShipBtnLeft" + i)[0].onclick = function(){
-			if((information.currentShip[i]-1 >= 0)){
-			    $("#boatImg" + i).attr("src", ships[information.currentShip[i] - 1].src);
-			    //console.log($("#boatImg" + i));
-			    information.currentShip[i] -= 1;
-			}
+			if ((information.currentShip[i] - 1 < 0))
+				information.currentShip[i] += ships.length;
+			information.currentShip[i] -= 1;
+			$("#boatImg" + i).attr("src", ships[information.currentShip[i]].src);
+			//console.log($("#boatImg" + i));
 		};
 		
 		$("#changeShipBtnRight" + i)[0].onclick = function(){
-			if((information.currentShip[i]+1 < ships.length)){
-				$("#boatImg"+i).attr("src",ships[information.currentShip[i]+1].src);
-				information.currentShip[i] += 1; 
+			if ((information.currentShip[i] + 1 >= ships.length)) {
+				information.currentShip[i] = -1;
 			}
+			information.currentShip[i] += 1;
+			$("#boatImg" + i).attr("src", ships[information.currentShip[i]].src);
 		};
 	}
 	
