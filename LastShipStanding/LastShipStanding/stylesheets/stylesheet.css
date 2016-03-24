@@ -48,27 +48,39 @@ body {
   box-shadow: 0 0.15em #666;
   transform: translateY(0.10em);
 }
-/*
 
-#view1_title {
+/* CSS of howView */
 
+#howView img {
+	margin-top: 1em;
+	width: 50%;
+	height: 50%;
+	position: relative;
+	left:25%;
+}
+#howView h1{
+	font-size: 6em;
+	font-family: "Times New Roman", Times, serif;
 	text-align: center;
-	text-shadow: 0em 0em 2em blue;
-	color:white;
-	font-size: 500%;
-
-	margin-top: 2em;
-	margin-bottom: 2em;
-
-
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
 }
-#view1_title:hover {
-	color:blue;
+#howView button{
+	display: table;
+	margin: 0 auto;
+	margin-top: 1em;
+	width: 14em;
+	height: 2.5em;
+
+	font-size: 2em;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+
+	box-shadow: 0 0.25em #999;
 }
-*/
+
+#howView button:active {
+  box-shadow: 0 0.15em #666;
+  transform: translateY(0.10em);
+}
 
 /* CSS of view2 */
 #view2 {
