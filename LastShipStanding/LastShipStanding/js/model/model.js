@@ -31,7 +31,6 @@ var model = function () {
 		// Assign default keybindings
 		var keyBindings = defaultKeyBinding.getDefault(players.length + 1);
 		player.setKeyBindings(keyBindings);
-
 		players.push(player);
 		return player;
 	};
@@ -126,9 +125,10 @@ var model = function () {
 		//Loop through the canonballs
 		var hitIndex = [];
 		for (var i = 0; i < canonballs.length; i++) {
-			for (var j = 0; j < players.length; j++) {
-				if (canonballs[i].getPlayer() != j) {		//We dont want to be able to shoot ourselves
-					var playerPosition = players[j].getPosition().clone();
+		    for (var j = 0; j < players.length; j++) {
+		        if (players[j].isDead()) break; // Don't check if canonball will hit dead player
+		        if (canonballs[i].getPlayer() != j) {		//We dont want to be able to shoot ourselves
+				    var playerPosition = players[j].getPosition().clone();
 					var vectorToPlayer = playerPosition.subtract(canonballs[i].getPosition());
 					var distance = vectorToPlayer.length();
 					if (distance < players[j].getCollisionRadius()) {		//Then there is a collision
