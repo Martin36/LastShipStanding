@@ -50,13 +50,22 @@ body {
 }
 
 /* CSS of howView */
+#howView p {
+	margin-left: 1.5em;
+	float:left;
+	width: 20em;
+	font-size: 2.2em;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+}
 
 #howView img {
-	margin-top: 1em;
-	width: 50%;
-	height: 50%;
-	position: relative;
-	left:25%;
+	margin: 2em;
+	margin-left:3.5em;
+
+	float:left;
+	width: 60em;
+	height: 40em;
 }
 #howView h1{
 	font-size: 6em;
