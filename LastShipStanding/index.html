@@ -18,153 +18,53 @@
     </script>
 
 	<div id="view1" class="wrapper" >
-		<h1 id="view1_title">LAST SHIP STANDING</h1>
-		<img src="images/sketch.jpg" alt="A cool boat">
-		<button type="button" class="btn btn-primary" id="view1_playBtn">Play</button> <br>
+		<!--<h1 id="view1_title">LAST SHIP STANDING</h1>-->
+		<img src="images/drawing.png" alt="A cool boat">
+		<button type="button" class="btn btn-primary" id="view1_playBtn">Create New Game</button> <br>
+		<button type="button" class="btn btn-primary" id="view1_HowBtn">How To Play ( Noob )</button> <br>
+        <button type="button" class="btn btn-primary" id="view1_muteBtn">Unmute :)</button>
 	</div>
 
-	<div id="view2" class="wrapper" hidden >
-		<button type="button" class="btn btn-primary" id="view2_2players"> Test button for 2 players </button> 
-		<div class="container" id="container">
-		
-			<div class="row">
-				<div class="col-lg-6" >
-					<div class="row">
-						<div class="col-lg-11" >
-							<input type="text" class="form-control" id="usr" placeholder="Player Name 1">
-						</div>
-						<div class="col-lg-1" >
-							<button type="button">X</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-primary" id="KeyAssign">A</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-primary" id="KeyAssign">W</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-primary" id="KeyAssign">S</button> <br>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6" >
-					<div class="row">
-						<div class="col-lg-11" >
-							<input type="text" class="form-control" id="usr" placeholder="Player Name 2">
-						</div>
-						<div class="col-lg-1" >
-							<button type="button">X</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-primary" id="KeyAssign">F</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-primary" id="KeyAssign">T</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-primary" id="KeyAssign">H</button> <br>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-lg-6" >
-					<div class="row">
-						<div class="col-lg-11" >
-							<input type="text" class="form-control" id="usr" placeholder="Player Name 3">
-						</div>
-						<div class="col-lg-1" >
-							<button type="button">X</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-primary" id="KeyAssign">J</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-primary" id="KeyAssign">I</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-primary" id="KeyAssign">L</button> <br>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6" >
-					<div class="row">
-						<div class="col-lg-11" >
-							<input type="text" class="form-control" id="usr" placeholder="Player Name 4">
-						</div>
-						<div class="col-lg-1" >
-							<button type="button">X</button>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-primary" id="KeyAssign">ArrowLeft</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-primary" id="KeyAssign">ArrowFront</button> <br>
-						</div>
-						<div class="col-lg-4">
-							<button type="button" class="btn btn-primary" id="KeyAssign">ArrowRight</button> <br>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-		</div>
+	<div id="howView" class="wrapper" hidden>
+		<h1> How To Play </h1>
+		<img src="images/explain_settings.png" alt="how settings">
+
+		<img src="images/explain_game.png" alt="how game">
+		<p>  Last Ship Standing! Challenge your friends and declare the master of the blue seas.
+		Try your best to control your vessel and shoot down the other ships. Last ship floating is the true champion!
+		Be aware, the sea is a cruel mistress...</p>
+        <button type="button" class="btn btn-primary" id="howView_muteBtn">Mute :(</button>
+		<button type="button" class="btn btn-primary" id="howView_backBtn">Back</button>
 	</div>
 
+	<div id="view2" class="wrapper" hidden>
+		<div id="view2_selections"></div>
+		<button type="button" class="btn btn-primary" id="view2_startBtn">Start Game</button> <br>
+		<button type="button" class="btn btn-primary" id="view2_backBtn">Back</button>
+	</div>
+	
 	<div id="view3" class="wrapper" hidden>
-		
 		<div class="row">
-			<div class="col-md-8">
-				<canvas id="view3_canvas" width="1400" height="800" class="view3ele">
+			<table>
+					<tr id='view3_scoreTr'></tr>
+			</table>
+		</div>
+		<div class="row">
+			<canvas id="view3_canvas" width="1400" height="800" class="view3ele">
 				Your browser does not support the HTML5 canvas tag.</canvas>
-			</div>
-			<div class="col-md-4">
-				<canvas id="view3_windArrow" width="150" height="150" class="view3ele">
-					Your browser does not support the HTML5 canvas tag.</canvas>
+		</div>
+		<div class="row">
 				<div class="view3ele" id="view3_buttonContainer">
-					<button type="button" class="btn btn-primary">Resume Game</button><br>
-					<button type="button" class="btn btn-primary" id="view3_pauseBtn">Pause Game</button><br>
 					<button type="button" class="btn btn-primary" id="view3_backBtn">Back</button>
+					<button type="button" class="btn btn-primary" id="view3_musicBtn">Music ON</button>
+					<button type="button" class="btn btn-primary" id="view3_fxBtn">Fx ON</button>
+					<button type="button" class="btn btn-primary" id="view3_pauseBtn">Pause Game</button>
 				</div>
-				<table>
-					<tr>
-						<th>Round</th>
-						<th>0/5</th>
-					</tr>
-					<tr><th>SCORE<th></tr>
-					<tr>
-						<th>Martin</th>
-						<th>0</th>
-					</tr>
-					<tr>
-						<th>Anton</th>
-						<th>0</th>
-					</tr>
-					<tr>
-						<th>Staffan</th>
-						<th>0</th>
-					</tr>
-					<tr>
-						<th>Julian</th>
-						<th>0</th>
-					</tr>
-				</table>
-			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
 				<footer>
 					<p>Made by Anton Eldh, Julian Hedén, Martin Funkquist, Staffan Sandberg.</p>
-					<p>EMAIL EMAIL</p>
 				</footer>
 			</div>
 		</div>
@@ -172,9 +72,11 @@
 
 	<!-- The application JavaScript code -->
 	<script src="js/main.js"></script>
+	<script src="js/view/howView.js"></script>
 	<script src="js/view/View1.js"></script>
 	<script src="js/view/View2.js"></script>
 	<script src="js/view/View3.js"></script>
+	<script src="js/controller/howController.js"></script>
 	<script src="js/controller/settingsController.js"></script>
 	<script src="js/controller/startController.js"></script>
 	<script src="js/controller/playController.js"></script>
@@ -183,5 +85,7 @@
     <script src="js/model/environment.js"></script>
 	<script src="js/model/canonball.js"></script>
     <script src="js/model/defaultKeyBindings.js"></script>
+    <script src="js/model/Sounds.js"></script>
+    <script src="js/model/images.js"></script>
 </body>
 </html>
