@@ -82,8 +82,8 @@ var playController = function(view,model) {
 		for(i in Players){
 			var keys = Players[i].getKeyBindings();
 			if (map[keys[0]])	{ Players[i].rotateLeft(); }
-			if (map[keys[1]]) { model.fire(i); }
-			if (map[keys[2]]) { Players[i].rotateRight(); }
+			if (map[keys[1]])	{ model.fire(i); }
+			if (map[keys[2]])	{ Players[i].rotateRight(); }
 		};
 	}
 	

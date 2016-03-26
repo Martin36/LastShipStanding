@@ -6,7 +6,7 @@ var howController = function (view, model) {
         $("[id=howView]").hide(); // hide this view
         $("[id=view1]").show(); // show main menu
         model.getSounds().getHowToAudio().pause();
-        model.getSounds().getBgAudio().play();
+        if(i){ model.getSounds().getBgAudio().play(); };
     }
 
     view.muteBtn[0].onclick = function () {

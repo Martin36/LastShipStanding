@@ -118,7 +118,7 @@ var Player = function () {
 	this.fired = function () { fireReady = false; };
 	this.getCooldownTimer = function () { return cooldownTimer; };
 	this.getCooldownTime = function () { return cooldown; };
-	this.giveScore = function () { score += 10; };
+	this.giveScore = function () { score += 1; }; //changed to 1, as it's number of this and not score
 	this.getScore = function () { return score; };
 	this.setImageSource = function (newSrc) { mapImage.src = newSrc; }; // Only set shipImage?
 	this.getImage = function () { return shipImage; };
