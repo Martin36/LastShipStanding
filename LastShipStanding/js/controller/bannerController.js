@@ -5,7 +5,8 @@ var bannerController = function (view, model) {
 
     var visible = true;
 
-    model.getSounds().getBgAudio().loop = true;
+    model.getSounds().getBGAudio().loop = true;
+    model.getSounds().getBattleAudio.loop = true;
     //variable to know if we should start playing music automatically after startView;
     var first = true;
 
@@ -23,14 +24,14 @@ var bannerController = function (view, model) {
 
     this.toggleMusic = function(){
         if(playMusic) {
-            model.getSounds().getBgAudio().pause();
+            model.getSounds().getBGAudio().pause();
             model.getSounds().getBattleAudio().pause();
             playMusic = false;
             view.muteMusicBtn[0].innerHTML = "Music OFF";
             first = false;
         }
         else {
-            if(currentView == 'playView') {model.getSounds().getBgAudio().play(); }
+            if(currentView == 'startView') {model.getSounds().getBGAudio().play(); }
             else{ model.getSounds().getBattleAudio().play(); };
             playMusic = true;
             view.muteMusicBtn[0].innerHTML = "Music ON";

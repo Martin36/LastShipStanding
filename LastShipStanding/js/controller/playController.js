@@ -19,7 +19,10 @@ var playController = function(view,model, bannerController) {
 	var startGame = function(){
 		interValID = setInterval(timer,17);
 		bannerController.toggleVisibility();
+
+		bannerController.toggleMusic(); //turn off bgAudio
 		bannerController.setCurrentView('playView');
+		bannerController.toggleMusic(); //turn on battleAudio
 	}
 	
 	var stopGame = function(){
@@ -46,7 +49,9 @@ var playController = function(view,model, bannerController) {
 	this.startUp = function(){
 		view.initScore();
 		view.update();
-		countDown();
+		//Sorry, but I commented it out until we can display it on the screen and not console.log.
+		//countDown();
+		startGame();
 		paused = false;
 		view.pauseBtn[0].innerHTML = 'Pause Game';
 	}	
@@ -69,6 +74,7 @@ var playController = function(view,model, bannerController) {
 		stopGame();
 		model.removeAllPlayers();
 		bannerController.setCurrentView('startView');
+		bannerController.toggleMusic();
 		bannerController.toggleVisibility();
 		//model.getSounds().fadeOut( model.getSounds().getBattleAudio() );
 		//model.getSounds().fadeIn( model.getSounds().getBgAudio() );

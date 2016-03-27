@@ -1,6 +1,6 @@
 ﻿ var Sounds = function () {
 
-    var fireAudio, deathAudio, bgMusicAudio, battleAudio, boatHit, howToAudio;
+    var fireAudio, deathAudio, bgMusicAudio, battleAudio, boatHit;
     var fadeInActive = false;
     var fadeOutActive = false;
     this.playFx = true;
@@ -61,7 +61,6 @@
     this.getBGAudio = function () { return bgMusicAudio; };
     this.getBattleAudio = function () { return battleAudio; };
     this.getBoatHitAudio = function () { return new Audio('sounds/boatHit1.mp3'); };
-    this.getHowToAudio = function () { return howToAudio; };
 
     return this;
 }
