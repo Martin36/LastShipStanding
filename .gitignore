@@ -4,7 +4,6 @@
 #Visual Studio Files
 .vs/
 *.sln
-libraries/
 merges/
 res/
 www/
