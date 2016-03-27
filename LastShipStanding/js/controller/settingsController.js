@@ -2,7 +2,7 @@ var settingsController = function(view, controller, model ) {
 
 	var information = {status:[1,1,1,1], currentShip:[0,0,0,0]};
 	view.createHtml(4);
-	var ships = model.getImages().getShipImages();
+	var ships = model.getImages().getShipImagesSrc();
 	var keybindings = new DefaultKeyBindings();
 	
 	var remove = function(i){
@@ -26,7 +26,7 @@ var settingsController = function(view, controller, model ) {
 			if ((information.currentShip[i] - 1 < 0))
 				information.currentShip[i] += ships.length;
 			information.currentShip[i] -= 1;
-			$("#boatImg" + i).attr("src", ships[information.currentShip[i]].src);
+			$("#boatImg" + i).attr("src", ships[information.currentShip[i]]);
 			//console.log($("#boatImg" + i));
 		};
 		
@@ -35,7 +35,7 @@ var settingsController = function(view, controller, model ) {
 				information.currentShip[i] = -1;
 			}
 			information.currentShip[i] += 1;
-			$("#boatImg" + i).attr("src", ships[information.currentShip[i]].src);
+			$("#boatImg" + i).attr("src", ships[information.currentShip[i]]);
 		};
 	}
 	

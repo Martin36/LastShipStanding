@@ -12,20 +12,15 @@ var Images = function () {
     arrowImage.height = 100;
     arrowImage.src = "images/windArrow.png";
 
-    var shipImage = [];
+    var shipImagesSrc = [];
     var nrOfBoatImages = 19;
 
     // All ship images have similar names
     for (var i = 0; i < nrOfBoatImages; i++) {
-        shipImage[i] = new Image();
-        shipImage[i].alt = "player";
-        shipImage[i].width = 80;
-        shipImage[i].height = 60;
-        shipImage[i].src = "images/ships/ship_pattern" + i.toString() + ".png";
+        shipImagesSrc[i] = "images/ships/ship_pattern" + i.toString() + ".png";
     }
 
-    this.getShipImage = function (i) { return shipImage[i]; };
-    this.getShipImages = function () {return shipImage; };
+    this.getShipImagesSrc = function () {return shipImagesSrc; };
     this.getCanonballImage = function () { return canonballImage; };
     this.getArrowImage = function () { return arrowImage; };
 
