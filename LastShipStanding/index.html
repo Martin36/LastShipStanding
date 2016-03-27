@@ -12,17 +12,31 @@
 	<link rel="stylesheet" href="stylesheets/stylesheet.css">
 </head>
 <body>
-    <!--Can create 2D Vectors like this.-->
+    <!--Can create 2D Vectors like this.
     <script>
         var v = new Victor(42, 34);
     </script>
+    -->
+
+    <div id="bannerView" class="wrapper" >
+	    <div class="row">
+		    <div class='col-md-10'>
+				<h2>Last Ship Standing</h2>
+		    </div>
+		    <div class='col-md-1'>
+				<button type="button" class="btn btn-default" id="bannerView_musicBtn"> Music OFF </button>
+		    </div>
+		    <div class='col-md-1'>
+				<button type="button" class="btn btn-default" id="bannerView_fxBtn"> Fx OFF </button>
+		    </div>
+	    </div>
+	</div>	
 
 	<div id="view1" class="wrapper" >
 		<!--<h1 id="view1_title">LAST SHIP STANDING</h1>-->
 		<img src="images/drawing.png" alt="A cool boat">
 		<button type="button" class="btn btn-primary" id="view1_playBtn">Create New Game</button> <br>
 		<button type="button" class="btn btn-primary" id="view1_HowBtn">How To Play ( Noob )</button> <br>
-        <button type="button" class="btn btn-primary" id="view1_muteBtn">Unmute :)</button>
 	</div>
 
 	<div id="howView" class="wrapper" hidden>
@@ -33,7 +47,6 @@
 		<p>  Last Ship Standing! Challenge your friends and declare the master of the blue seas.
 		Try your best to control your vessel and shoot down the other ships. Last ship floating is the true champion!
 		Be aware, the sea is a cruel mistress...</p>
-        <button type="button" class="btn btn-primary" id="howView_muteBtn">Mute :(</button>
 		<button type="button" class="btn btn-primary" id="howView_backBtn">Back</button>
 	</div>
 
@@ -72,10 +85,12 @@
 
 	<!-- The application JavaScript code -->
 	<script src="js/main.js"></script>
+	<script src="js/view/bannerView.js"></script>
 	<script src="js/view/howView.js"></script>
 	<script src="js/view/View1.js"></script>
 	<script src="js/view/View2.js"></script>
 	<script src="js/view/View3.js"></script>
+	<script src="js/controller/bannerController.js"></script>
 	<script src="js/controller/howController.js"></script>
 	<script src="js/controller/settingsController.js"></script>
 	<script src="js/controller/startController.js"></script>

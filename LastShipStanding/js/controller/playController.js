@@ -1,7 +1,7 @@
-var playController = function(view,model) {
+var playController = function(view,model, bannerController) {
 	
 	Players = model.getPlayers();
-	var interValID,paused,playMusic;
+	var interValID,paused;
 	
 	model.addObserver(this);
 	
@@ -18,6 +18,8 @@ var playController = function(view,model) {
 	
 	var startGame = function(){
 		interValID = setInterval(timer,17);
+		bannerController.toggleVisibility();
+		bannerController.setCurrentView('playView');
 	}
 	
 	var stopGame = function(){
@@ -46,10 +48,6 @@ var playController = function(view,model) {
 		view.update();
 		countDown();
 		paused = false;
-		playMusic = true;
-		model.playFx = true;
-		view.musicBtn[0].innerHTML = "Music ON";
-		view.fxBtn[0].innerHTML = "Fx ON";
 		view.pauseBtn[0].innerHTML = 'Pause Game';
 	}	
 
@@ -70,33 +68,31 @@ var playController = function(view,model) {
 		$("[id=view2]").show();
 		stopGame();
 		model.removeAllPlayers();
-		model.getSounds().getBattleAudio().pause();
+		bannerController.setCurrentView('startView');
+		bannerController.toggleVisibility();
 		//model.getSounds().fadeOut( model.getSounds().getBattleAudio() );
-		model.getSounds().getBgAudio().play();
 		//model.getSounds().fadeIn( model.getSounds().getBgAudio() );
 		
-	}
+	};
 
 	view.musicBtn[0].onclick = function () {
-        if (playMusic) {
-            model.getSounds().getBattleAudio().pause();
-            playMusic = false;
+        if ( bannerController.getPlayMusic() ){
             view.musicBtn[0].innerHTML = "Music OFF";
+            bannerController.toggleMusic();
         }
         else {
-            model.getSounds().getBattleAudio().play();
-            playMusic = true;
+            bannerController.toggleMusic();
             view.musicBtn[0].innerHTML = "Music ON";
         }
     };
 
     view.fxBtn[0].onclick = function () {
         if (model.playFx) {
-            model.playFx = false;
+            bannerController.toggleFx();
             view.fxBtn[0].innerHTML = "Fx OFF";
         }
         else {
-            model.playFx = true;
+            bannerController.toggleFx();
             view.fxBtn[0].innerHTML = "Fx ON";
         }
     };

@@ -7,6 +7,27 @@ body {
 	background: gray;
 }
 
+/* CSS of bannerView */
+
+#bannerView{
+	height: 5em;
+	background: #8C768C;
+	border-bottom: 0.25em solid #363230;
+}
+#bannerView .row{
+	margin: 0em; /*caused scroll in x direction */
+}
+
+#bannerView h2{
+	color: #EBE1EA;
+	font-size: 2em;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#bannerView button{
+	margin-top:1em;
+}
+
 
 /* CSS of view1 */
 
@@ -18,18 +39,6 @@ body {
 	margin-right: auto;
 	margin-bottom: 4em;
 }
-
-/*
-#view1 img{
-	width: 20em;
-	height: 20em;
-	border: solid black;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 4em;
-}
-*/
 
 #view1 button {
 	display: table;
