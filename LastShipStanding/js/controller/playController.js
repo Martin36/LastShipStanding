@@ -2,18 +2,27 @@ var playController = function(view,model, bannerController) {
 	
 	Players = model.getPlayers();
 	var interValID,paused;
+	var map = [];
 	
 	model.addObserver(this);
+	/*
+	document.onkeydown = document.onkeyup = function(e){
+			e = e || event;
+			map[e.keyCode] = e.type == 'keydown';
+	}
+	*/
 	
 	this.newInfo = function () {
 		var winner;
 		for(player in Players){
 			if(!(Players[player].isDead())){
 				winner = Players[player].getName();
+				
 			}
 		}
 		console.log("VICTORYYYY TO " + winner);
 		stopGame();
+		endGamePressAnyKey();
 	}
 	
 	var startGame = function(){
@@ -54,6 +63,7 @@ var playController = function(view,model, bannerController) {
 		startGame();
 		paused = false;
 		view.pauseBtn[0].innerHTML = 'Pause Game';
+		enableKeyBindings();
 	}	
 
 	view.pauseBtn[0].onclick = function(){
@@ -103,11 +113,29 @@ var playController = function(view,model, bannerController) {
         }
     };
 	
-	var map = [];
-	document.onkeydown = document.onkeyup = function(e){
-		e = e || event;
-		map[e.keyCode] = e.type == 'keydown';
+	var enableKeyBindings = function(){
+		document.onkeydown = document.onkeyup = function(e){
+			e = e || event;
+			map[e.keyCode] = e.type == 'keydown';
+		}
 	}
+	
+	var endGamePressAnyKey = function(){
+		document.onkeydown = document.onkeyup = function(e){
+			e = e || event;
+			map[e.keyCode] = e.type == 'keydown';
+			if(map[32]){ //Space keycode
+				$("[id=view3]").hide();
+				$("[id=view2]").show();
+				model.removeAllPlayers();
+				bannerController.setCurrentView('startView');
+				bannerController.toggleMusic();
+				bannerController.toggleVisibility();
+				document.onkeydown = document.onkeyup = null;
+			}
+		}
+	}
+	
 	
 	function timer(){
 		model.update(1);
