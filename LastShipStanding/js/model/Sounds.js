@@ -5,14 +5,8 @@
     var fadeOutActive = false;
     this.playFx = true;
 
-    bgMusicAudio = new Audio('sounds/menuMusic2.mp3');
+    bgMusicAudio = new Audio('sounds/menuMusic1.mp3');
     battleAudio = new Audio('sounds/battleMusic.mp3');
-    howToAudio = new Audio('sounds/howMusic.mp3');
-
-    this.getBgAudio = function () { return bgMusicAudio; };
-    this.getBattleAudio = function () { return battleAudio; };
-    this.getBoatHitAudio = function () { return new Audio('sounds/boatHit1.mp3'); };
-    this.getHowToAudio = function () { return howToAudio; };
 
     this.getFireAudio = function () {
         fireAudio = [new Audio('sounds/canonFire2.mp3'),
@@ -63,5 +57,11 @@
 			}, 200);
         }
     }
+
+    this.getBGAudio = function () { return bgMusicAudio; };
+    this.getBattleAudio = function () { return battleAudio; };
+    this.getBoatHitAudio = function () { return new Audio('sounds/boatHit1.mp3'); };
+    this.getHowToAudio = function () { return howToAudio; };
+
     return this;
 }
