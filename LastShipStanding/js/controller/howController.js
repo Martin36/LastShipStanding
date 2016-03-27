@@ -1,22 +1,20 @@
 var howController = function (view, model) {
 
-    var i = true;
+    var i = false;
 
     view.backBtn[0].onclick = function () {
         $("[id=howView]").hide(); // hide this view
         $("[id=view1]").show(); // show main menu
-        model.getSounds().getHowToAudio().pause();
-        model.getSounds().getBgAudio().play();
     }
 
     view.muteBtn[0].onclick = function () {
         if (i) {
-            model.getSounds().getHowToAudio().pause();
+            model.getSounds().getBGAudio().pause();
             i = false;
             view.muteBtn[0].textContent = "Unmute :)";
         }
         else {
-            model.getSounds().getHowToAudio().play();
+            model.getSounds().getBGAudio().play();
             i = true;
             view.muteBtn[0].textContent = "Mute :(";
         }

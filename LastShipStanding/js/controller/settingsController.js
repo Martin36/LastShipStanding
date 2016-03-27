@@ -75,7 +75,7 @@ var settingsController = function(view, controller, model ) {
 		//model.getSounds().getBattleAudio().volume = 0.00;
 		model.getSounds().getBattleAudio().play();
 		//model.getSounds().fadeIn(model.getSounds().getBattleAudio());
-		model.getSounds().fadeOut(model.getSounds().getBgAudio());
+		model.getSounds().fadeOut(model.getSounds().getBGAudio());
 	
 		$("[id=view3]").show(); //play menu
 	};
