@@ -70,13 +70,6 @@ var settingsController = function(view, controller, model ) {
 		}
 		controller.startUp();
 
-		//model.getBgAudio().pause(); // Pause the menu music
-		model.getSounds().getBattleAudio().loop = true; // Start the battle music
-		//model.getSounds().getBattleAudio().volume = 0.00;
-		model.getSounds().getBattleAudio().play();
-		//model.getSounds().fadeIn(model.getSounds().getBattleAudio());
-		model.getSounds().fadeOut(model.getSounds().getBGAudio());
-	
 		$("[id=view3]").show(); //play menu
 	};
 

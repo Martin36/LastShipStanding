@@ -28,11 +28,14 @@ var playController = function(view,model, bannerController) {
 	
 	var startGame = function(){
 		interValID = setInterval(timer,17);
-		bannerController.toggleVisibility();
 
-		bannerController.toggleMusic(); //turn off bgAudio
 		bannerController.setCurrentView('playView');
-		bannerController.toggleMusic(); //turn on battleAudio
+
+		//if music are playing, change it to battleAudio
+		if( bannerController.getPlayMusic() ){
+			bannerController.toggleMusic(); //turn off bgAudio
+			bannerController.toggleMusic(); //turn on battleAudio
+		}
 	}
 	
 	var stopGame = function(){
@@ -88,35 +91,13 @@ var playController = function(view,model, bannerController) {
 		$("[id=view2]").show();
 		stopGame();
 		model.removeAllPlayers();
+		bannerController.toggleMusic();
 		bannerController.setCurrentView('startView');
 		bannerController.toggleMusic();
-		bannerController.toggleVisibility();
 		//model.getSounds().fadeOut( model.getSounds().getBattleAudio() );
 		//model.getSounds().fadeIn( model.getSounds().getBgAudio() );
 		
 	};
-
-	view.musicBtn[0].onclick = function () {
-        if ( bannerController.getPlayMusic() ){
-            view.musicBtn[0].innerHTML = "Music OFF";
-            bannerController.toggleMusic();
-        }
-        else {
-            bannerController.toggleMusic();
-            view.musicBtn[0].innerHTML = "Music ON";
-        }
-    };
-
-    view.fxBtn[0].onclick = function () {
-        if (model.playFx) {
-            bannerController.toggleFx();
-            view.fxBtn[0].innerHTML = "Fx OFF";
-        }
-        else {
-            bannerController.toggleFx();
-            view.fxBtn[0].innerHTML = "Fx ON";
-        }
-    };
 	
 	var enableKeyBindings = function(){
 		document.onkeydown = document.onkeyup = function(e){
@@ -135,7 +116,6 @@ var playController = function(view,model, bannerController) {
 				model.removeAllPlayers();
 				bannerController.setCurrentView('startView');
 				bannerController.toggleMusic();
-				bannerController.toggleVisibility();
 				document.onkeydown = document.onkeyup = null;
 			}
 		}

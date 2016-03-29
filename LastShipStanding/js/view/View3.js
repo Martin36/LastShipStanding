@@ -2,8 +2,6 @@
 var View3 = function (model) {
 	this.backBtn = $('#view3_backBtn');
 	this.pauseBtn = $('#view3_pauseBtn');
-	this.musicBtn = $('#view3_musicBtn');
-	this.fxBtn = $('#view3_fxBtn');
 
 	//map canvas
 	var canvas = $('#view3_canvas');
