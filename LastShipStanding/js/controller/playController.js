@@ -47,6 +47,7 @@ var playController = function(view,model, bannerController) {
 		clearInterval(interValID);
 	}
 	var countDown = function(){ //Countdown from 4* = 1,2,3 and GO!
+		view.pauseBtn[0].disabled = true;
 		var i = 0;
 		ID = setInterval(
 		function () {
