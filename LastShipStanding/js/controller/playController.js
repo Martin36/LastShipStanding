@@ -6,7 +6,7 @@ var playController = function(view,model, bannerController) {
 	var map = [];
 
 	var winner;
-	var gameFinished = false;
+	var gameFinished;
 	
 	model.addObserver(this);
 	/*
@@ -30,6 +30,8 @@ var playController = function(view,model, bannerController) {
 	}
 	
 	var startGame = function(){
+		winner = undefined;
+		gameFinished = false;
 		interValID = setInterval(timer,17);
 
 		bannerController.setCurrentView('playView');
@@ -117,7 +119,7 @@ var playController = function(view,model, bannerController) {
 				$("[id=view3]").hide();
 				$("[id=view2]").show();
 				model.removeAllPlayers();
-				view.update(); // too clear the winner text on screen
+				//view.update(); // too clear the winner text on screen
 				bannerController.setCurrentView('startView');
 				if(bannerController.getPlayMusic()){ //if it's playing
 					bannerController.toggleMusic(); //turn off
