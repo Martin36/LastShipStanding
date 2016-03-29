@@ -22,7 +22,6 @@ var View3 = function (model) {
 		drawPlayers();
 		drawArrow( model.getEnvironment().getWindAngle(), model.getEnvironment().getWindMagnitude() );
 
-		//move out of update if observer is added, can also change updateScore too only do 1 player for effectiveness
 		this.updateScore(); 
 	}
 	
@@ -97,7 +96,6 @@ var View3 = function (model) {
 	function drawCooldown(player){
 		ctx.fillStyle = '#ccccb3';
 		ctx.beginPath();
-		//player.getHp()
 		var width;
 		if(player.getCooldownTimer() == 0){
 			width = (player.getImage().width );
@@ -143,7 +141,7 @@ var View3 = function (model) {
 	}
 
 	this.initScore = function(){
-		//if there are scoreboard from before, delete them
+		//if there is a scoreboard from before, delete it
 		while (document.getElementById('view3_scoreTr').firstChild) {
 			    document.getElementById('view3_scoreTr').removeChild(document.getElementById('view3_scoreTr').firstChild);
 			}
@@ -169,12 +167,10 @@ var View3 = function (model) {
 		for(i=0; i<players.length; i++){
 			var playerScore = document.getElementById('view3_score' + i);
 
-			//ugly solution
 			while (playerScore.firstChild) {
 			    playerScore.removeChild(playerScore.firstChild);
 			}
 			var textScore = document.createTextNode(players[i].getScore().toString()); //<----------------get score from model or player?
-			//var textScore = players[i].getScore();
 			playerScore.appendChild(textScore);
 		}
 	}

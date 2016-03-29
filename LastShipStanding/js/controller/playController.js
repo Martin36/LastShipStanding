@@ -9,12 +9,6 @@ var playController = function(view,model, bannerController) {
 	var gameFinished;
 	
 	model.addObserver(this);
-	/*
-	document.onkeydown = document.onkeyup = function(e){
-			e = e || event;
-			map[e.keyCode] = e.type == 'keydown';
-	}
-	*/
 	
 	this.newInfo = function () {
 		for(player in Players){
@@ -23,9 +17,7 @@ var playController = function(view,model, bannerController) {
 				gameFinished = true;
 			}
 		}
-		console.log("Winner: " + winner);
 		stopGame();
-		//view.drawText("Winner: " + winner);
 		endGamePressAnyKey();
 	}
 	
@@ -54,9 +46,6 @@ var playController = function(view,model, bannerController) {
 			//here goes the update on view for String/Int that shows countdown on screen.
 			++i;
 			if(i>3){
-				//view.update();
-				//view.drawText("GOOOO!!");
-				//console.log("GOOOO!!");
 				clearInterval(ID);
 				startGame();
 				view.pauseBtn[0].disabled = false;
@@ -64,7 +53,6 @@ var playController = function(view,model, bannerController) {
 			else{
 				view.update();
 				view.drawText(4-i);
-				console.log(4-i);
 			}
 		}, 1000);
 	}
@@ -72,9 +60,7 @@ var playController = function(view,model, bannerController) {
 	this.startUp = function(){
 		view.initScore();
 		view.update();
-		//Sorry, but I commented it out until we can display it on the screen and not console.log.
 		countDown();
-		//startGame();
 		paused = false;
 		view.pauseBtn[0].innerHTML = 'Pause Game';
 		enableKeyBindings();
@@ -123,7 +109,6 @@ var playController = function(view,model, bannerController) {
 				$("[id=view2]").show();
 				model.removeAllPlayers();
 				gameFinished = false;
-				//view.update(); // too clear the winner text on screen
 				bannerController.setCurrentView('startView');
 				if(bannerController.getPlayMusic()){ //if it's playing
 					bannerController.toggleMusic(); //turn off

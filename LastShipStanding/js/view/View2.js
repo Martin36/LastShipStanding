@@ -3,7 +3,6 @@ var View2 = function (model) {
 	this.startButton = $("#view2_startBtn");
 	this.backButton = $("#view2_backBtn");
 	var keys = [["A","W","D"],["F","T","H"],["J","I","L"],["Numpad4","Numpad8","Numpad6"]];
-	//Should be created in JavaSCript because it's dynamic
 
 	///////////////////////////////////
 	//-------element 		Id's----------
@@ -211,7 +210,6 @@ var View2 = function (model) {
 			var row2_2 = document.createElement('div');
 			row2_2.className = 'row';
 
-			//createArrowBtn = function(id,direction,parentRow)
 			//left arrow button
 			this.createArrowBtn(i,"<--",row2_2);
 			this.createArrowBtn(i,"-->",row2_2);
@@ -254,23 +252,4 @@ var View2 = function (model) {
 		}
 
 	}
-
-	//create the view instantly so the buttons are possible to find?
-	//this.createHtml(4);
-
-	/*
-	this.startButton = document.createElement('button');
-	this.startButton.className = 'btn btn-primary';
-	var buttonText = document.createTextNode('Start Game');
-	this.startButton.appendChild(buttonText);
-
-	this.backButton = document.createElement('button');
-	this.startButton.className = 'btn btn-primary';
-	var buttonText = document.createTextNode('Start Game');
-	this.startButton.appendChild(buttonText);
-
-	document.getElementById('view2').appendChild(this.startButton);
-	document.getElementById('view2').appendChild(this.startButton);
-	*/
-
 }
