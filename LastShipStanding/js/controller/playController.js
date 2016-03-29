@@ -78,6 +78,7 @@ var playController = function(view,model, bannerController) {
 		paused = false;
 		view.pauseBtn[0].innerHTML = 'Pause Game';
 		enableKeyBindings();
+		gameFinished = false;
 	}	
 
 	view.pauseBtn[0].onclick = function(){
@@ -103,6 +104,7 @@ var playController = function(view,model, bannerController) {
 			bannerController.toggleMusic();	//then on audio to change track
 		}
 		clearInterval(ID);
+		gameFinished = false;
 	};
 	
 	var enableKeyBindings = function(){
@@ -120,6 +122,7 @@ var playController = function(view,model, bannerController) {
 				$("[id=view3]").hide();
 				$("[id=view2]").show();
 				model.removeAllPlayers();
+				gameFinished = false;
 				//view.update(); // too clear the winner text on screen
 				bannerController.setCurrentView('startView');
 				if(bannerController.getPlayMusic()){ //if it's playing
