@@ -27,6 +27,11 @@ var View3 = function (model) {
 		//move out of update if observer is added, can also change updateScore too only do 1 player for effectiveness
 		this.updateScore(); 
 	}
+	
+	this.drawText = function(text){
+		ctx.font = "50px Arial";
+		ctx.fillText(text,canvas.width/2,canvas.height/2);
+	}
 
 	function drawMap(){
 		ctx.fillStyle = '#0000ff';

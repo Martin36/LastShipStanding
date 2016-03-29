@@ -20,8 +20,9 @@ var playController = function(view,model, bannerController) {
 				
 			}
 		}
-		console.log("VICTORYYYY TO " + winner);
+		console.log("Winner: " + winner);
 		stopGame();
+		view.drawText("Winner: " + winner);
 		endGamePressAnyKey();
 	}
 	
@@ -45,11 +46,15 @@ var playController = function(view,model, bannerController) {
 			//here goes the update on view for String/Int that shows countdown on screen.
 			++i;
 			if(i>3){
-				console.log("GOOOO!!");
+				//view.update();
+				//view.drawText("GOOOO!!");
+				//console.log("GOOOO!!");
 				clearInterval(ID);
 				startGame();
 			}
 			else{
+				view.update();
+				view.drawText(4-i);
 				console.log(4-i);
 			}
 		}, 1000);
@@ -59,8 +64,8 @@ var playController = function(view,model, bannerController) {
 		view.initScore();
 		view.update();
 		//Sorry, but I commented it out until we can display it on the screen and not console.log.
-		//countDown();
-		startGame();
+		countDown();
+		//startGame();
 		paused = false;
 		view.pauseBtn[0].innerHTML = 'Pause Game';
 		enableKeyBindings();
@@ -135,7 +140,6 @@ var playController = function(view,model, bannerController) {
 			}
 		}
 	}
-	
 	
 	function timer(){
 		model.update(1);
