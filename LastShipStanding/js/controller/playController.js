@@ -2,6 +2,7 @@ var playController = function(view,model, bannerController) {
 	
 	Players = model.getPlayers();
 	var interValID,paused;
+	var ID;
 	var map = [];
 
 	var winner;
@@ -44,10 +45,8 @@ var playController = function(view,model, bannerController) {
 		clearInterval(interValID);
 	}
 	var countDown = function(){ //Countdown from 4* = 1,2,3 and GO!
-		view.pauseBtn[0].disabled = true;
-		var startIt = 3;
 		var i = 0;
-		var ID = setInterval(
+		ID = setInterval(
 		function () {
 			//here goes the update on view for String/Int that shows countdown on screen.
 			++i;
@@ -87,7 +86,7 @@ var playController = function(view,model, bannerController) {
 			stopGame();
 			paused=true;
 			view.pauseBtn[0].innerHTML = 'Start Game';
-		} 
+		}		
 	}
 
 	view.backBtn[0].onclick = function(){
@@ -100,6 +99,7 @@ var playController = function(view,model, bannerController) {
 			bannerController.toggleMusic(); //turn off
 			bannerController.toggleMusic();	//then on audio to change track
 		}
+		clearInterval(ID);
 	};
 	
 	var enableKeyBindings = function(){
