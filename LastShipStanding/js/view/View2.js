@@ -2,7 +2,7 @@
 var View2 = function (model) {
 	this.startButton = $("#view2_startBtn");
 	this.backButton = $("#view2_backBtn");
-	var keys = [["A","W","D"],["F","T","H"],["J","I","L"],["L-Arrow","UpArrow","R-Arrow"]];
+	var keys = [["A","W","D"],["F","T","H"],["J","I","L"],["Numpad4","Numpad8","Numpad6"]];
 	//Should be created in JavaSCript because it's dynamic
 
 	///////////////////////////////////
@@ -128,7 +128,7 @@ var View2 = function (model) {
 			var row2_1 = document.createElement('div');
 			row2_1.className = 'row';
 			var img = document.createElement('img');
-			img.src = 'images/ships/ship_pattern0.png';
+			img.src = 'images/ships/ship_pattern'+i+'.png';
 			img.setAttribute('id', 'boatImg' + i);
 			row2_1.appendChild(img);
 
