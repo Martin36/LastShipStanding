@@ -3,6 +3,9 @@ var playController = function(view,model, bannerController) {
 	Players = model.getPlayers();
 	var interValID,paused;
 	var map = [];
+
+	var winner;
+	var gameFinished = false;
 	
 	model.addObserver(this);
 	/*
@@ -13,16 +16,15 @@ var playController = function(view,model, bannerController) {
 	*/
 	
 	this.newInfo = function () {
-		var winner;
 		for(player in Players){
 			if(!(Players[player].isDead())){
 				winner = Players[player].getName();
-				
+				gameFinished = true;
 			}
 		}
 		console.log("Winner: " + winner);
 		stopGame();
-		view.drawText("Winner: " + winner);
+		//view.drawText("Winner: " + winner);
 		endGamePressAnyKey();
 	}
 	
@@ -91,12 +93,11 @@ var playController = function(view,model, bannerController) {
 		$("[id=view2]").show();
 		stopGame();
 		model.removeAllPlayers();
-		bannerController.toggleMusic();
 		bannerController.setCurrentView('startView');
-		bannerController.toggleMusic();
-		//model.getSounds().fadeOut( model.getSounds().getBattleAudio() );
-		//model.getSounds().fadeIn( model.getSounds().getBgAudio() );
-		
+		if(bannerController.getPlayMusic()){ //if it's playing
+			bannerController.toggleMusic(); //turn off
+			bannerController.toggleMusic();	//then on audio to change track
+		}
 	};
 	
 	var enableKeyBindings = function(){
@@ -115,8 +116,11 @@ var playController = function(view,model, bannerController) {
 				$("[id=view2]").show();
 				model.removeAllPlayers();
 				bannerController.setCurrentView('startView');
-				bannerController.toggleMusic();
-				document.onkeydown = document.onkeyup = null;
+				if(bannerController.getPlayMusic()){ //if it's playing
+					bannerController.toggleMusic(); //turn off
+					bannerController.toggleMusic();	//then on audio to change track
+				}
+					document.onkeydown = document.onkeyup = null;
 			}
 		}
 	}
@@ -130,6 +134,10 @@ var playController = function(view,model, bannerController) {
 			if (map[keys[1]]) { model.fire(i); }
 			if (map[keys[2]]) { Players[i].rotateRight(); }
 		};
+
+		if(gameFinished){
+			view.drawText('Winner: ' + winner + ', Press Space..');
+		}
 	}
 	
 }

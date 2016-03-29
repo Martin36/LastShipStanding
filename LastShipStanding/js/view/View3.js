@@ -16,7 +16,7 @@ var View3 = function (model) {
 		console.log("Information retrieved from model");
 	}
 
-	this.update = function(){ 
+	this.update = function(){
 		drawMap();
 		drawProjectiles();
 		drawPlayers();
@@ -28,7 +28,7 @@ var View3 = function (model) {
 	
 	this.drawText = function(text){
 		ctx.font = "50px Arial";
-		ctx.fillText(text,canvas.width/2,canvas.height/2);
+		ctx.fillText(text,canvas.width/4,canvas.height/2);
 	}
 
 	function drawMap(){
