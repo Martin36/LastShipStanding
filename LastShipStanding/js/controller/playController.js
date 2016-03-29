@@ -44,6 +44,7 @@ var playController = function(view,model, bannerController) {
 		clearInterval(interValID);
 	}
 	var countDown = function(){ //Countdown from 4* = 1,2,3 and GO!
+		view.pauseBtn[0].disabled = true;
 		var startIt = 3;
 		var i = 0;
 		var ID = setInterval(
@@ -56,6 +57,7 @@ var playController = function(view,model, bannerController) {
 				//console.log("GOOOO!!");
 				clearInterval(ID);
 				startGame();
+				view.pauseBtn[0].disabled = false;
 			}
 			else{
 				view.update();
@@ -115,6 +117,7 @@ var playController = function(view,model, bannerController) {
 				$("[id=view3]").hide();
 				$("[id=view2]").show();
 				model.removeAllPlayers();
+				view.update(); // too clear the winner text on screen
 				bannerController.setCurrentView('startView');
 				if(bannerController.getPlayMusic()){ //if it's playing
 					bannerController.toggleMusic(); //turn off
