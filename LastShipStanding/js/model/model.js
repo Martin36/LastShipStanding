@@ -77,8 +77,10 @@ var model = function () {
 		while (players.length > 0) {
 			players.pop();
 		}
+		while (canonballs.length > 0) {
+			canonballs.pop();
+		}
 		nrOfDeads = 0;
-		canonBalls = [];
 	}
 
 	this.getPlayer = function (index) {
