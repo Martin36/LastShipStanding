@@ -1,1 +1,18 @@
+﻿#gitignore
 
+
+#Visual Studio Files
+.vs/
+*.sln
+merges/
+res/
+www/
+bower.json
+build.json
+config.xml
+*.jsproj
+package.json
+Project_Readme.html
+taco.json
+
+#Meta Files

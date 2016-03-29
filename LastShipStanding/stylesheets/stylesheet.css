@@ -1,0 +1,245 @@
+/* CSS of all */
+body {
+	background-color: gray;
+}
+
+.wrapper {
+	background: gray;
+}
+
+/* CSS of bannerView */
+
+#bannerView{
+	height: 5em;
+	background: #8C768C;
+	border-bottom: 0.25em solid #363230;
+}
+#bannerView .row{
+	margin: 0em; /*caused scroll in x direction */
+}
+
+#bannerView h2{
+	color: #EBE1EA;
+	font-size: 2em;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#bannerView button{
+	margin-top:1em;
+}
+
+
+/* CSS of view1 */
+
+#view1 img{
+	width: 90em;
+	height: 40em;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 4em;
+}
+
+#view1 button {
+	display: table;
+	margin: 0 auto;
+	width: 14em;
+	height: 2.5em;
+
+	font-size: 2em;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+
+	box-shadow: 0 0.25em #999;
+}
+
+#view1 button:active {
+  box-shadow: 0 0.15em #666;
+  transform: translateY(0.10em);
+}
+
+/* CSS of howView */
+#howView p {
+	margin-left: 1.5em;
+	float:left;
+	width: 20em;
+	font-size: 2.2em;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+}
+
+#howView img {
+	margin: 2em;
+	margin-left:3.5em;
+
+	float:left;
+	width: 60em;
+	height: 40em;
+}
+#howView h1{
+	font-size: 6em;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+}
+#howView button{
+	display: table;
+	margin: 0 auto;
+	margin-top: 1em;
+	width: 14em;
+	height: 2.5em;
+
+	font-size: 2em;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+
+	box-shadow: 0 0.25em #999;
+}
+
+#howView button:active {
+  box-shadow: 0 0.15em #666;
+  transform: translateY(0.10em);
+}
+
+/* CSS of view2 */
+#view2 {
+	margin-top: 3em;
+}
+#view2_selections{
+	margin-left:8.6em;
+	margin-right: auto;
+}
+#view2 .container{
+	width:55em;
+	display: inline-block;
+	margin: 1em;
+	border-style: solid;
+	border-width: 0.25em;
+	border-color: black;
+}
+
+#view2 .btn-success{
+	display: table;
+	margin: 0.5em auto;
+	margin-left: 0.5em;
+	width: 5em;
+	height: 5em;
+	font-size: 2em;
+	font-family: "Times New Roman", Times, serif;
+	cursor:default;
+}
+#view2 .btn-info{
+	display: table;
+	margin: 0 auto;
+	margin-bottom: 0.5em;
+	margin-right:0.5em;
+	width: 8em;
+	height: 3em;
+	box-shadow: 0 0.25em #999;
+}
+
+#view2 .btn-info:active {
+  box-shadow: 0 0.15em #666;
+  transform: translateY(0.10em);
+}
+
+#view2 .btn-primary{
+	display: table;
+	margin: 0 auto;
+	width: 14em;
+	height: 2.5em;
+	font-size: 2em;
+	font-family: "Times New Roman", Times, serif;
+
+	box-shadow: 0 0.25em #999;
+}
+
+#view2 .btn-primary:active {
+  box-shadow: 0 0.15em #666;
+  transform: translateY(0.10em);
+}
+
+#view2 .addy{
+	display: table;
+	margin: 0 auto;
+	margin-top:0.3em;
+	padding-bottom: 1.5em;
+	width: 16.5em;
+	height: 1em;
+	font-size: 1.90em;
+	font-family: "Times New Roman", Times, serif;
+
+	box-shadow: 0 0em;
+}
+
+#view2 .addy:active {
+  box-shadow: 0 0;
+  transform: translateY(0em);
+}
+
+
+#view2 .btn-danger{
+	height: 3em;
+	width: 3em;
+	margin-top: 1em;
+	margin-left: 1.5em;
+}
+
+#view2 input{
+	margin-top: 1em;
+	height: 3em;
+	width: 30em;
+}
+#view2 img{
+	margin-top: 2.55em;
+	width: 20em;
+	height: 15em;
+}
+
+#view2 p{
+	color: white;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 2.5em;
+
+	margin-top: 1em;
+	text-align: center;
+
+}
+
+/* CSS of view3 */
+#view3{
+	overflow-x:hidden;
+}
+#view3_canvas{
+	margin-left: 4em;
+	outline:1.25em;
+	border:0.125em solid #000;
+}
+.view3ele{
+	margin-top: 1em;
+	margin-left: 4em;
+}
+
+#view3_windArrow{
+	outline:1.25em;
+	border:0.25em solid #000;
+}
+
+table, th, td {
+	border: 0.25em solid black;
+}
+table{
+	margin-top: 2em;
+	margin-left: 4em;
+}
+th, td{
+	padding: 0.5em;
+}
+footer{
+	margin-left: 4em;
+}
+
+#view3 button {
+	width:8em;
+	height: 3em;
+	margin-bottom: 0.5em;
+}
