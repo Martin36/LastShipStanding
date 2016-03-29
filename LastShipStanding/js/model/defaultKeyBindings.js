@@ -31,7 +31,7 @@ var DefaultKeyBindings = function () {
 		return listOfKeys;
 	};
 	this.defaultPlayer4 = function() {
-		var listOfKeys = [37, 38, 39];			//left, up and right arrow
+		var listOfKeys = [100, 104, 102];			//Numpad
 		return listOfKeys;
 	};
 

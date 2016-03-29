@@ -1,6 +1,6 @@
 var settingsController = function(view, controller, model ) {
 
-	var information = {status:[1,1,1,1], currentShip:[0,0,0,0]};
+	var information = {status:[1,1,1,1], currentShip:[0,1,2,3]};
 	view.createHtml(4);
 	var ships = model.getImages().getShipImagesSrc();
 	var keybindings = new DefaultKeyBindings();
