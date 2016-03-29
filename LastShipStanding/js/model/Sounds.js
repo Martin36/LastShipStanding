@@ -5,10 +5,8 @@
     var fadeOutActive = false;
     this.playFx = true;
 
-    //bgMusicAudio = new Audio('sounds/menuMusic1.mp3');
-    bgMusicAudio = new Audio('sounds/menuMusic2.mp3');
-    //battleAudio = new Audio('sounds/battleMusic1.mp3');
-    battleAudio = new Audio('sounds/battleMusic2.mp3');
+    bgMusicAudio = new Audio('sounds/menuMusic.mp3');
+    battleAudio = new Audio('sounds/battleMusic.mp3');
 
     this.getFireAudio = function () {
         fireAudio = [new Audio('sounds/cannonFire1.mp3'),
