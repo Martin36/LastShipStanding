@@ -28,6 +28,7 @@ var View3 = function (model) {
 	
 	this.drawText = function(text){
 		ctx.font = "50px Arial";
+		ctx.textAlign="center";
 		ctx.fillText(text,canvas.width/2,canvas.height/2);
 	}
 
