@@ -5,14 +5,14 @@ function Game(socket) {
 
     var g = this;
     // setInterval(function() {
-        g.mainLoop();
+    g.mainLoop();
     // }, INTERVAL);
 }
 
 Game.prototype = {
 
     mainLoop: function() {
-      console.log('mainLoop');
+        console.log('mainLoop');
         this.sendData();
     },
 
@@ -73,6 +73,27 @@ Game.prototype = {
         //     // }
         //
         // });
+
+    }
+}
+
+function Ship(id) {
+    this.id = id;
+
+    this.materialize();
+}
+
+Ship.prototype = {
+    materialize: function() {
+        // this.$arena.append('<div id="' + this.id + '" class="tank tank' + this.type + '"></div>');
+
+        this.refresh();
+
+        // if (this.isLocal) {
+        //     this.setControls();
+        // }
+    },
+    refresh: function() {
 
     }
 }
