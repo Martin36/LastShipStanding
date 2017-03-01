@@ -4,9 +4,9 @@ function Game(socket) {
     this.socket = socket;
 
     var g = this;
-    setInterval(function() {
+    // setInterval(function() {
         g.mainLoop();
-    }, INTERVAL);
+    // }, INTERVAL);
 }
 
 Game.prototype = {
