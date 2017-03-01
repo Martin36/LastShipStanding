@@ -1,12 +1,11 @@
 ﻿#gitignore
-
+node_modules
 
 #Visual Studio Files
 .vs/
 *.sln
 merges/
 res/
-www/
 bower.json
 build.json
 config.xml
