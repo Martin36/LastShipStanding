@@ -1,5 +1,7 @@
-﻿<!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
+
 <head>
 	<title>Last Ship Standing</title>
 	<meta charset="utf-8">
@@ -7,27 +9,28 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <!--for 2D vectors. Don't know if it will work-->
-    <script src="libraries/Victor/victor.js"></script> 
+	<!--for 2D vectors. Don't know if it will work-->
+	<script src="libraries/Victor/victor.js"></script>
 	<link rel="stylesheet" href="stylesheets/stylesheet.css">
 </head>
+
 <body>
 
-    <div id="bannerView" class="wrapper" >
-	    <div class="row">
-		    <div class='col-md-10'>
+	<div id="bannerView" class="wrapper">
+		<div class="row">
+			<div class='col-md-10'>
 				<h2>Last Ship Standing</h2>
-		    </div>
-		    <div class='col-md-1'>
+			</div>
+			<div class='col-md-1'>
 				<button type="button" class="btn btn-default" id="bannerView_musicBtn"> Music OFF </button>
-		    </div>
-		    <div class='col-md-1'>
+			</div>
+			<div class='col-md-1'>
 				<button type="button" class="btn btn-default" id="bannerView_fxBtn"> Fx OFF </button>
-		    </div>
-	    </div>
-	</div>	
+			</div>
+		</div>
+	</div>
 
-	<div id="view1" class="wrapper" >
+	<div id="view1" class="wrapper">
 		<img src="images/drawing.png" alt="A cool boat">
 		<button type="button" class="btn btn-primary" id="view1_playBtn">Create New Game</button> <br>
 		<button type="button" class="btn btn-primary" id="view1_HowBtn">How To Play ( Noob )</button> <br>
@@ -38,9 +41,7 @@
 		<img src="images/explain_settings.png" alt="how settings">
 
 		<img src="images/explain_game.png" alt="how game">
-		<p>  Last Ship Standing! Challenge your friends and declare the master of the blue seas.
-		Try your best to control your vessel and shoot down the other ships. Last ship floating is the true champion!
-		Be aware, the sea is a cruel mistress...</p>
+		<p> Last Ship Standing! Challenge your friends and declare the master of the blue seas. Try your best to control your vessel and shoot down the other ships. Last ship floating is the true champion! Be aware, the sea is a cruel mistress...</p>
 		<button type="button" class="btn btn-primary" id="howView_backBtn">Back</button>
 	</div>
 
@@ -49,11 +50,11 @@
 		<button type="button" class="btn btn-primary" id="view2_startBtn">Start Game</button> <br>
 		<button type="button" class="btn btn-primary" id="view2_backBtn">Back</button>
 	</div>
-	
+
 	<div id="view3" class="wrapper" hidden>
 		<div class="row">
 			<table>
-					<tr id='view3_scoreTr'></tr>
+				<tr id='view3_scoreTr'></tr>
 			</table>
 		</div>
 		<div class="row">
@@ -61,10 +62,10 @@
 				Your browser does not support the HTML5 canvas tag.</canvas>
 		</div>
 		<div class="row">
-				<div class="view3ele" id="view3_buttonContainer">
-					<button type="button" class="btn btn-primary" id="view3_backBtn">Back</button>
-					<button type="button" class="btn btn-primary" id="view3_pauseBtn">Pause Game</button>
-				</div>
+			<div class="view3ele" id="view3_buttonContainer">
+				<button type="button" class="btn btn-primary" id="view3_backBtn">Back</button>
+				<button type="button" class="btn btn-primary" id="view3_pauseBtn">Pause Game</button>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
@@ -87,12 +88,16 @@
 	<script src="js/controller/settingsController.js"></script>
 	<script src="js/controller/startController.js"></script>
 	<script src="js/controller/playController.js"></script>
-    <script src="js/model/model.js"></script>
-    <script src="js/model/player.js"></script>
-    <script src="js/model/environment.js"></script>
+	<script src="js/model/model.js"></script>
+	<script src="js/model/player.js"></script>
+	<script src="js/model/environment.js"></script>
 	<script src="js/model/canonball.js"></script>
-    <script src="js/model/defaultKeyBindings.js"></script>
-    <script src="js/model/Sounds.js"></script>
-    <script src="js/model/images.js"></script>
+	<script src="js/model/defaultKeyBindings.js"></script>
+	<script src="js/model/Sounds.js"></script>
+	<script src="js/model/images.js"></script>
+	<!-- Bot  -->
+	<script src="js/controller/botController.js"></script>
+	<script src="js/bot/finiteStateMachine.js"></script>
 </body>
+
 </html>

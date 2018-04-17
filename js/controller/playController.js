@@ -1,15 +1,17 @@
 var playController = function(view,model, bannerController) {
-	
+
 	Players = model.getPlayers();
+	Bots = model.getBots();
+
 	var interValID,paused;
 	var ID;
 	var map = [];
 
 	var winner;
 	var gameFinished;
-	
+
 	model.addObserver(this);
-	
+
 	this.newInfo = function () {
 		for(player in Players){
 			if(!(Players[player].isDead())){
@@ -20,7 +22,7 @@ var playController = function(view,model, bannerController) {
 		stopGame();
 		endGamePressAnyKey();
 	}
-	
+
 	var startGame = function(){
 		winner = undefined;
 		gameFinished = false;
@@ -34,7 +36,7 @@ var playController = function(view,model, bannerController) {
 			bannerController.toggleMusic(); //turn on battleAudio
 		}
 	}
-	
+
 	var stopGame = function(){
 		clearInterval(interValID);
 	}
@@ -56,7 +58,7 @@ var playController = function(view,model, bannerController) {
 			}
 		}, 1000);
 	}
-	
+
 	this.startUp = function(){
 		view.initScore();
 		view.update();
@@ -65,7 +67,7 @@ var playController = function(view,model, bannerController) {
 		view.pauseBtn[0].innerHTML = 'Pause Game';
 		enableKeyBindings();
 		gameFinished = false;
-	}	
+	}
 
 	view.pauseBtn[0].onclick = function(){
 		if(paused){
@@ -76,7 +78,7 @@ var playController = function(view,model, bannerController) {
 			stopGame();
 			paused=true;
 			view.pauseBtn[0].innerHTML = 'Start Game';
-		}		
+		}
 	}
 
 	view.backBtn[0].onclick = function(){
@@ -92,14 +94,14 @@ var playController = function(view,model, bannerController) {
 		clearInterval(ID);
 		gameFinished = false;
 	};
-	
+
 	var enableKeyBindings = function(){
 		document.onkeydown = document.onkeyup = function(e){
 			e = e || event;
 			map[e.keyCode] = e.type == 'keydown';
 		}
 	}
-	
+
 	var endGamePressAnyKey = function(){
 		document.onkeydown = document.onkeyup = function(e){
 			e = e || event;
@@ -118,7 +120,7 @@ var playController = function(view,model, bannerController) {
 			}
 		}
 	}
-	
+
 	function timer(){
 		model.update(1);
 		view.update();
@@ -129,9 +131,14 @@ var playController = function(view,model, bannerController) {
 			if (map[keys[2]]) { Players[i].rotateRight(); }
 		};
 
+		for(i in Bots){
+			Bots[i].fsm.update();
+		}
+
+
 		if(gameFinished){
 			view.drawText('Winner: ' + winner + ', Press Space..');
 		}
 	}
-	
+
 }

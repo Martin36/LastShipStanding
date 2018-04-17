@@ -8,9 +8,9 @@ var View3 = function (model) {
 	canvas.width = 1400;
 	canvas.height = 800;
 	var ctx = canvas[0].getContext('2d');
-	
+
 	model.addObserver(this);
-	
+
 	this.newInfo = function(){
 		//when called from model with newInfo.
 		console.log("Information retrieved from model");
@@ -22,9 +22,9 @@ var View3 = function (model) {
 		drawPlayers();
 		drawArrow( model.getEnvironment().getWindAngle(), model.getEnvironment().getWindMagnitude() );
 
-		this.updateScore(); 
+		this.updateScore();
 	}
-	
+
 	this.drawText = function(text){
 		ctx.font = "50px Arial";
 		ctx.textAlign="center";
@@ -56,7 +56,14 @@ var View3 = function (model) {
 				drawHealth(players[index]);
 				drawCooldown(players[index]);
 			}
-			
+		}
+		var bots = model.getBots();
+		for(index in bots){
+			if(!bots[index].isDead()){
+				drawPlayer(bots[index]);
+				drawHealth(bots[index]);
+				drawCooldown(bots[index]);
+			}
 		}
 	}
 	function drawPlayer(player){
@@ -116,7 +123,7 @@ var View3 = function (model) {
 			for(ind in balls){
 				drawProjectile(balls[ind]);
 			}
-		
+
 	}
 	function drawProjectile(canonball) {
 	    var cImg = model.getImages().getCanonballImage();
