@@ -63,9 +63,9 @@ var model = function() {
     bot.setAngle((Math.random() * Math.PI * 2));
 
     // Create a finite state machine and add to the bot
-    bot.fsm = new FiniteStateMachine();
+    bot.fsm = new FiniteStateMachine(bot);
     // Create states and add to the FSM
-    var attackState = new State(); //TODO:
+    var attackState = new AttackState(); //TODO:
     attackState.init('attackState', bot.fsm);
     var avoidState = new State();
     avoidState.init('avoidState', bot.fsm)
@@ -152,14 +152,14 @@ var model = function() {
   }
 
   //Function for firing the cannon
-  this.fire = function(playerNr) {
-    if (players[playerNr].isFireReady() && !players[playerNr].isDead()) {
+  this.fire = function(entity, playerNr) {
+    if (entity.isFireReady() && !entity.isDead()) {
       if (this.playFx) {
         sound.getFireAudio().play();
       }
 
-      var position = players[playerNr].getPosition().clone();
-      var playerDirection = players[playerNr].getDirection().clone();
+      var position = entity.getPosition().clone();
+      var playerDirection = entity.getDirection().clone();
 
       //The canonballs should be fired in the perpendicular direction to the boat
       var canonball1 = new Canonball();
@@ -177,10 +177,41 @@ var model = function() {
       canonball2.setVelocity(velocity2);
       canonballs.push(canonball1);
       canonballs.push(canonball2);
-      players[playerNr].fired();
-
+      entity.fired();
     }
   };
+
+
+  // //Function for firing the cannon
+  // this.fire = function(playerNr) {
+  //   if (players[playerNr].isFireReady() && !players[playerNr].isDead()) {
+  //     if (this.playFx) {
+  //       sound.getFireAudio().play();
+  //     }
+  //
+  //     var position = players[playerNr].getPosition().clone();
+  //     var playerDirection = players[playerNr].getDirection().clone();
+  //
+  //     //The canonballs should be fired in the perpendicular direction to the boat
+  //     var canonball1 = new Canonball();
+  //     var canonball2 = new Canonball();
+  //     canonball1.setPosition(position);
+  //     canonball2.setPosition(position.clone());
+  //     canonball1.setPlayer(playerNr);
+  //     canonball2.setPlayer(playerNr);
+  //
+  //     //The vector [x, y] have the orthogonal vector [y, -x] for arbitrary values of x and y the reversed vector of [y, -x] is [-y, x]
+  //     //The multiplication with the canonball speed makes sure that the velocity for the canonball is correct
+  //     var velocity1 = new Victor(playerDirection.y * canonball1.getSpeed(), -playerDirection.x * canonball1.getSpeed());
+  //     var velocity2 = new Victor(-playerDirection.y * canonball2.getSpeed(), playerDirection.x * canonball2.getSpeed());
+  //     canonball1.setVelocity(velocity1);
+  //     canonball2.setVelocity(velocity2);
+  //     canonballs.push(canonball1);
+  //     canonballs.push(canonball2);
+  //     players[playerNr].fired();
+  //
+  //   }
+  // };
 
   // Check if someone gets hit by a canonball
   this.checkForCollisions = function() {

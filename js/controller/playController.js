@@ -127,12 +127,15 @@ var playController = function(view,model, bannerController) {
 		for(i in Players){
 			var keys = Players[i].getKeyBindings();
 			if (map[keys[0]])	{ Players[i].rotateLeft(); }
-			if (map[keys[1]]) { model.fire(i); }
+			if (map[keys[1]]) { model.fire(Players[i], i); }
 			if (map[keys[2]]) { Players[i].rotateRight(); }
 		};
 
 		for(i in Bots){
-			Bots[i].fsm.update();
+			action = Bots[i].fsm.update(Players);
+			if (action == 0) { Bots[i].rotateLeft(); }
+			else if (action == 1) { Bots[i].rotateRight(); }
+			else if (action == 2) {model.fire(Bots[i], i + Players.length)}
 		}
 
 
